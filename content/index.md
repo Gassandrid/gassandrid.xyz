@@ -110,7 +110,7 @@ I am a second year student at the [[University Of Vermont]] studying computer sc
 
 ## Happenings 🏡
 
-## Projects 💾
+## [[Projects/]] 💾
 
 **[[DARS]] - Dormitory Automated Residential System**
 
