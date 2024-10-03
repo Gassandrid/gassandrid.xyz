@@ -110,7 +110,11 @@ I am a second year student at the [[University Of Vermont]] studying computer sc
 
 ## Happenings 🏡
 
-## [[Projects/]] 💾
+Getting back into simple woodwork again! I love woodwork, but at University there is never much time for me to get really invested in a project. But finding time to work on a medium stick with my Leatherman has been very enjoyable for the last 2 weeks.
+
+Currently invested in learning Golang, not just as a language but as a Web Framework when used with HTMX. Seems like a lot simpler of a way to do web development, great for someone like me who doesn't have many skills with frontend stuff.
+
+## Current Projects 💾
 
 **[[DARS]] - Dormitory Automated Residential System**
 

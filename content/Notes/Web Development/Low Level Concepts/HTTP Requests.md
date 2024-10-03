@@ -1,9 +1,17 @@
+---
+id: HTTP Requests
+aliases: []
+tags: []
+---
+
 # HTTP Requests
 
 HTTP (Hypertext Transfer Protocol) is essential for data communication on the web. Below are examples of making HTTP requests in various programming languages.
 
 ## Python
+
 Using the `requests` library:
+
 ```python
 import requests
 
@@ -14,11 +22,15 @@ print(response.text)
 ## JavaScript
 
 Using the `fetch` API:
+
 ```js
-fetch('https://api.example.com/data') .then(response => response.text()) .then(data => console.log(data));
+fetch("https://api.example.com/data")
+  .then((response) => response.text())
+  .then((data) => console.log(data));
 ```
 
 Using the `axios` library:
+
 ```
 const axios = require('axios');
 
@@ -78,4 +90,3 @@ int main() {
   return 0;
 }
 ```
-
