@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="{{ site.lang | default('en') }}">
+
+<head>
+  {% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ note.title }} | {{ site.title | default("Notes") }}</title>
+  <link rel="stylesheet" type="text/css" href="{{ base_url | safe }}_static/style.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-dark.min.css">
+  </noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  {% endblock %}
+</head>
+
+<body>
+  {% include "sidebar.html" %}
+
+  <div class="main-area">
+    <div class="topnav">
+      <button id="toggle-menu">☰</button>
+      <nav>
+        {%- if site.topnav and site.topnav.links -%}
+        {% for link in site.topnav.links -%}
+        <a title="{{ link.text }}" href="{{ link.href }}">{{ link.text }}</a>
+        {%- endfor %}
+        {%- endif -%}
+      </nav>
+      {% if site.pagefind %}
+      {% include "search_form.html" %}
+      {% endif %}
+    </div>
+
+    <div class="actions">
+      <button id="toggle-metadata">☰ Metadata</button>
+    </div>
+
+    <main class="main-content">
+      {%- block content %}{% endblock -%}
+    </main>
+  </div>
+
+  <script type="module">
+    import {initGraph, toc} from "{{ base_url | safe }}_static/script.js"
+    const currentPath = {{path | tojson | safe}}
+    const graph = {{graph | tojson | safe}}
+
+    const g = initGraph(currentPath, graph)
+    document.getElementById("graph").appendChild(g.node())
+
+    const menuEl = document.getElementById("menu")
+    const rightSidebar = document.getElementById("article-aside")
+
+    document.getElementById("toggle-menu").addEventListener("click", (event) => {
+      menuEl.classList.toggle("show")
+      rightSidebar.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.getElementById("toggle-metadata").addEventListener("click", (event) => {
+      rightSidebar.classList.toggle("show")
+      menuEl.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.addEventListener("click", (event) => {
+      if (!menuEl.contains(event.target)) {
+        menuEl.classList.remove("show")
+      }
+
+      if (!rightSidebar.contains(event.target)) {
+        rightSidebar.classList.remove("show")
+      }
+    })
+
+    const articleEl = document.getElementById("note-content")
+    const tocSectionEl = document.getElementById("toc-section")
+    toc(articleEl, tocSectionEl)
+  </script>
+</body>
+
+</html>

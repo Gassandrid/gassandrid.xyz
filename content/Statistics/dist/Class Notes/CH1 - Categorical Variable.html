@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CH1 - Categorical Variable | Site name</title>
+  <link rel="stylesheet" type="text/css" href="/_static/style.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-dark.min.css">
+  </noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+</head>
+
+<body>
+  
+
+<aside class="sidebar" id="menu" data-pagefind-ignore="all">
+  <div class="sidebar-wrapper">
+    <div class="site-name">
+      <h1>Site name</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+  <details open>
+    <summary>Class Notes</summary>
+    <ul>
+      <li class="current">
+  <a href="/Class Notes&#x2f;CH1 - Categorical Variable.html" title="CH1 - Categorical Variable">CH1 - Categorical Variable</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling Statistics Continued.html" title="CH1 - Sampling Statistics Continued">CH1 - Sampling Statistics Continued</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling and Descriptive Statistics.html" title="CH1 - Sampling and Descriptive Statistics">CH1 - Sampling and Descriptive Statistics</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Conditional Probability.html" title="CH2 - Conditional Probability">CH2 - Conditional Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Counting Methods.html" title="CH2 - Counting Methods">CH2 - Counting Methods</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Probability.html" title="CH2 - Probability">CH2 - Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Random Variables.html" title="CH2 - Random Variables">CH2 - Random Variables</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH4 - Binomial Distribution.html" title="CH4 - Binomial Distribution">CH4 - Binomial Distribution</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <details open>
+    <summary>Conceptual Notes</summary>
+    <ul>
+      <li>
+  <a href="/Conceptual Notes&#x2f;1 Variable Stats On Calculator.html" title="1 Variable Stats On Calculator">1 Variable Stats On Calculator</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Axiom.html" title="Axiom">Axiom</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;De Morgan&#x27;s Law.html" title="De Morgan&#x27;s Law">De Morgan&#x27;s Law</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Event.html" title="Event">Event</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Population.html" title="Population">Population</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Sample.html" title="Sample">Sample</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <a href="/Statistics Index.html" title="Statistics Index">Statistics Index</a>
+</li>
+
+      </ul>
+    </nav>
+
+    <footer>
+      <p>Built with <a href="https://github/ecarrara/obsidian-garden">Obsidian Garden</a>.</p>
+    </footer>
+  </div>
+</aside>
+
+  <div class="main-area">
+    <div class="topnav">
+      <button id="toggle-menu">☰</button>
+      <nav><a title="Link 1" href="https:&#x2f;&#x2f;example.com&#x2f;link-1">Link 1</a><a title="Link 2" href="https:&#x2f;&#x2f;example.com&#x2f;link-2">Link 2</a></nav>
+      
+    </div>
+
+    <div class="actions">
+      <button id="toggle-metadata">☰ Metadata</button>
+    </div>
+
+    <main class="main-content">
+<article id="note-content" data-pagefind-body>
+  <header>
+    <h1 class="note-title">CH1 - Categorical Variable</h1>
+  </header><h1>CH 1 Continued - Categorical Variables in Statistics</h1>
+<hr />
+<p>Continuing from the previous chapter, we will now look at how to represent categorical data in statistics with an example.</p>
+<blockquote>
+<p>[!example] <strong>1000 ball bearings classified as:</strong></p>
+<ul>
+<li>conforming (<code>910</code>)</li>
+<li>too thick (<code>53</code>)</li>
+<li>too thin (<code>37</code>)</li>
+</ul>
+</blockquote>
+<p>Here, the data is classified into three categories, which are mutually exclusive and exhaustive. The data is categorical because it is classified into categories and not measured.</p>
+<p>Lets make a table of counts for the data.</p>
+<hr />
+<h2>Table of Counts</h2>
+<table><thead><tr><th>Classification</th><th>frequency</th><th>f/n - relative frequency proportion</th></tr></thead><tbody>
+<tr><td>Conforming</td><td>910</td><td>.910</td></tr>
+<tr><td>too thick</td><td>53</td><td>.053</td></tr>
+<tr><td>too thin</td><td>37</td><td>.037</td></tr>
+</tbody></table>
+<hr />
+<h2>Bar Chart with MatPlotLib</h2>
+<pre><code class="language-python">import micropip
+await micropip.install(&quot;matplotlib&quot;)
+import matplotlib.pyplot as plt
+
+# Data
+labels = ['Conforming', 'Too Thick', 'Too Thin']
+values = [0.910, 0.053, 0.037]
+
+# Create the bar chart
+plt.figure(figsize=(6, 4))
+plt.bar(labels, values, color=['green', 'red', 'blue'])
+
+# Add title and labels
+plt.title('Bar Chart of Measurements')
+plt.xlabel('Measurement Type')
+plt.ylabel('Proportion')
+
+# Show the values on top of the bars
+for i, value in enumerate(values):
+    plt.text(i, value + 0.01, f'{value:.3f}', ha='center', va='bottom')
+
+# Display the chart
+plt.show()
+</code></pre>
+<p>This will create a bar chart with the proportion of each category, where the height of the bar represents the proportion of the category.</p>
+<hr />
+<h2>Variable Statistics and Boxplots</h2>
+<p>Now, lets look at another example</p>
+<blockquote>
+<p>[!example] <strong>Chromium VS Nickel Simple Dataset</strong><br />
+<strong>Chromium</strong>: <code>31, 1, 511, 2, 574, 496, 322, 424, 269, 140, 244, 252, 76, 108, 24, 38, 18, 43, 30, 191</code></p>
+<p><strong>Nickel</strong>: <code>23, 22, 55, 39, 283, 34, 159, 37, 61, 34, 163, 140, 32, 23, 54, 837, 64, 354, 376, 471</code></p>
+</blockquote>
+<p>We are going to find:</p>
+<ul>
+<li>Mean</li>
+<li>Median</li>
+<li>Standard Deviation</li>
+<li>Quartiles</li>
+</ul>
+<p>Lets find these with python.</p>
+<pre><code class="language-python">import micropip
+await micropip.install(&quot;numpy&quot;)
+await micropip.install(&quot;scipy&quot;)
+await micropip.install(&quot;matplotlib&quot;)
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy as stats
+
+# Data
+chromium = [31, 1, 511, 2, 574, 496, 322, 424, 269, 140, 244, 252, 76, 108, 24, 38, 18, 43, 30, 191]
+nickel = [23, 22, 55, 39, 283, 34, 159, 37, 61, 34, 163, 140, 32, 23, 54, 837, 64, 354, 376, 471]
+
+# Mean
+mean_chromium = np.mean(chromium)
+mean_nickel = np.mean(nickel)
+
+# standard deviation
+std_chromium = np.std(chromium)
+std_nickel = np.std(nickel)
+
+# Median
+median_chromium = np.median(chromium)
+median_nickel = np.median(nickel)
+
+# Quartiles
+first_quartile_chromium = np.percentile(chromium, 25)
+second_quartile_chromium = np.percentile(chromium, 50)
+third_quartile_chromium = np.percentile(chromium, 75)
+fourth_quartile_chromium = np.percentile(chromium, 100)
+
+firsst_quartile_nickel = np.percentile(nickel, 25)
+second_quartile_nickel = np.percentile(nickel, 50)
+third_quartile_nickel = np.percentile(nickel, 75)
+fourth_quartile_nickel = np.percentile(nickel, 100)
+
+# print the results as f string
+print(f&quot;Chromium Mean: {mean_chromium}, Median: {median_chromium}, Standard Deviation: {std_chromium}&quot;)
+print(f&quot;Chromium Quartiles: {first_quartile_chromium}, {second_quartile_chromium}, {third_quartile_chromium}, {fourth_quartile_chromium}&quot;)
+
+print(f&quot;Nickel Mean: {mean_nickel}, Median: {median_nickel}, Standard Deviation: {std_nickel}&quot;)
+print(f&quot;Nickel Quartiles: {firsst_quartile_nickel}, {second_quartile_nickel}, {third_quartile_nickel}, {fourth_quartile_nickel}&quot;)
+
+</code></pre>
+<p>This yield the 1-Variable Statistics we would normally get from a Ti-84 Graphing Calculator.</p>
+<p>And now let’s plot it as a box plot:</p>
+<pre><code class="language-python"># Boxplot
+plt.figure(figsize=(6, 4))
+plt.boxplot([chromium, nickel], labels=['Chromium', 'Nickel'])
+plt.title('Boxplot of Chromium and Nickel')
+
+# Display the chart
+plt.show()
+</code></pre>
+
+</article>
+
+<aside class="right-sidebar" id="article-aside">
+  <div class="section">
+    <h3 class="section-title">Relationships</h3>
+    <div class="network-graph" id="graph"></div>
+  </div>
+
+  <nav class="section toc hide" id="toc-section">
+    <h3 class="section-title">On this page</h3>
+  </nav>
+</aside>
+
+</main>
+  </div>
+
+  <script type="module">
+    import {initGraph, toc} from "/_static/script.js"
+    const currentPath = "Class Notes/CH1 - Categorical Variable"
+    const graph = {"edge_property":"directed","edges":[],"node_holes":[],"nodes":["Class Notes/CH1 - Categorical Variable"]}
+
+    const g = initGraph(currentPath, graph)
+    document.getElementById("graph").appendChild(g.node())
+
+    const menuEl = document.getElementById("menu")
+    const rightSidebar = document.getElementById("article-aside")
+
+    document.getElementById("toggle-menu").addEventListener("click", (event) => {
+      menuEl.classList.toggle("show")
+      rightSidebar.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.getElementById("toggle-metadata").addEventListener("click", (event) => {
+      rightSidebar.classList.toggle("show")
+      menuEl.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.addEventListener("click", (event) => {
+      if (!menuEl.contains(event.target)) {
+        menuEl.classList.remove("show")
+      }
+
+      if (!rightSidebar.contains(event.target)) {
+        rightSidebar.classList.remove("show")
+      }
+    })
+
+    const articleEl = document.getElementById("note-content")
+    const tocSectionEl = document.getElementById("toc-section")
+    toc(articleEl, tocSectionEl)
+  </script>
+</body>
+
+</html>

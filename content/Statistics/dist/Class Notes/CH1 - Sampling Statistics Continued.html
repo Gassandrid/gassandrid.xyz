@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CH1 - Sampling Statistics Continued | Site name</title>
+  <link rel="stylesheet" type="text/css" href="/_static/style.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-dark.min.css">
+  </noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+</head>
+
+<body>
+  
+
+<aside class="sidebar" id="menu" data-pagefind-ignore="all">
+  <div class="sidebar-wrapper">
+    <div class="site-name">
+      <h1>Site name</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+  <details open>
+    <summary>Class Notes</summary>
+    <ul>
+      <li>
+  <a href="/Class Notes&#x2f;CH1 - Categorical Variable.html" title="CH1 - Categorical Variable">CH1 - Categorical Variable</a>
+</li>
+<li class="current">
+  <a href="/Class Notes&#x2f;CH1 - Sampling Statistics Continued.html" title="CH1 - Sampling Statistics Continued">CH1 - Sampling Statistics Continued</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling and Descriptive Statistics.html" title="CH1 - Sampling and Descriptive Statistics">CH1 - Sampling and Descriptive Statistics</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Conditional Probability.html" title="CH2 - Conditional Probability">CH2 - Conditional Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Counting Methods.html" title="CH2 - Counting Methods">CH2 - Counting Methods</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Probability.html" title="CH2 - Probability">CH2 - Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Random Variables.html" title="CH2 - Random Variables">CH2 - Random Variables</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH4 - Binomial Distribution.html" title="CH4 - Binomial Distribution">CH4 - Binomial Distribution</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <details open>
+    <summary>Conceptual Notes</summary>
+    <ul>
+      <li>
+  <a href="/Conceptual Notes&#x2f;1 Variable Stats On Calculator.html" title="1 Variable Stats On Calculator">1 Variable Stats On Calculator</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Axiom.html" title="Axiom">Axiom</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;De Morgan&#x27;s Law.html" title="De Morgan&#x27;s Law">De Morgan&#x27;s Law</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Event.html" title="Event">Event</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Population.html" title="Population">Population</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Sample.html" title="Sample">Sample</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <a href="/Statistics Index.html" title="Statistics Index">Statistics Index</a>
+</li>
+
+      </ul>
+    </nav>
+
+    <footer>
+      <p>Built with <a href="https://github/ecarrara/obsidian-garden">Obsidian Garden</a>.</p>
+    </footer>
+  </div>
+</aside>
+
+  <div class="main-area">
+    <div class="topnav">
+      <button id="toggle-menu">☰</button>
+      <nav><a title="Link 1" href="https:&#x2f;&#x2f;example.com&#x2f;link-1">Link 1</a><a title="Link 2" href="https:&#x2f;&#x2f;example.com&#x2f;link-2">Link 2</a></nav>
+      
+    </div>
+
+    <div class="actions">
+      <button id="toggle-metadata">☰ Metadata</button>
+    </div>
+
+    <main class="main-content">
+<article id="note-content" data-pagefind-body>
+  <header>
+    <h1 class="note-title">CH1 - Sampling Statistics Continued</h1>
+  </header><blockquote>
+<p>How do we find the standard deviation of a sample?
+Why is it important to know the standard deviation of a sample?</p>
+</blockquote>
+<h2>Standard Deviation of a Sample</h2>
+<p>The standard deviation of a sample is a measure of the amount of variation or dispersion of a set of values. It is calculated as the square root of the variance, which is the average of the squared differences from the mean.</p>
+<p>Here’s the formula for standard deviation (σ):
+$$ \sigma = \sqrt{\frac{\sum_{i=1}^{N} (x_i - \mu)^2}{N}} $$</p>
+<p>Where:</p>
+<ul>
+<li>Σ is the sum of…</li>
+<li>(xi - μ)^2: the squared difference between each data point (xi) and the mean (μ)</li>
+<li>N is the number of data points in the sample</li>
+</ul>
+<p>Knowing the standard deviation of a sample is important because it gives us an understanding of how spread out the values in our data are around the mean. A low standard deviation means that the values tend to be close to the mean, while a high standard deviation means that the values are spread out over a wider range.</p>
+<p>It’s a key concept in statistics and is used in many areas, including finance, physics, and machine learning, to name a few.</p>
+<hr />
+<h3>Example</h3>
+<p>Let’s consider a simple example with a sample of five values: 2, 4, 6, 8, 10.</p>
+<p>First, we calculate the mean (μ):</p>
+<p>$$ \mu = \frac{\sum_{i=1}^{N} x_i}{N} = \frac{2 + 4 + 6 + 8 + 10}{5} = 6 $$</p>
+<p>Next, we calculate the squared differences from the mean:</p>
+<ul>
+<li>(2 - 6)^2 = 16</li>
+<li>(4 - 6)^2 = 4</li>
+<li>(6 - 6)^2 = 0</li>
+<li>(8 - 6)^2 = 4</li>
+<li>(10 - 6)^2 = 16</li>
+</ul>
+<p>Then, we calculate the average of these squared differences (this is the variance):</p>
+<p>$$ \text{Variance} = \frac{\sum_{i=1}^{N} (x_i - \mu)^2}{N} = \frac{16 + 4 + 0 + 4 + 16}{5} = 8 $$</p>
+<p>Finally, we take the square root of the variance to get the standard deviation:</p>
+<p>$$ \sigma = \sqrt{\text{Variance}} = \sqrt{8} \approx 2.83 $$</p>
+<p>So, the standard deviation of our sample is approximately 2.83.</p>
+<h2>Variance</h2>
+<p>Variance is a statistical measurement that describes the spread of data points in a data sample. It measures how far each number in the set is from the mean (average) and thus from every other number in the set. Variance is often denoted by the symbol σ².</p>
+<p>Here’s the formula for variance:</p>
+<p>$$ \sigma^2 = \frac{\sum_{i=1}^{N} (x_i - \mu)^2}{N} $$</p>
+<p>Where:</p>
+<ul>
+<li>Σ is the sum of…</li>
+<li>(xi - μ)^2: the squared difference between each data point (xi) and the mean (μ)</li>
+<li>N is the number of data points in the sample</li>
+</ul>
+<p>Variance is used to see how individual numbers relate to each other within a data set, rather than using broader mathematical techniques such as arranging data into quartiles. It’s a key concept in many areas of statistics, including finance, physics, and machine learning.</p>
+<h3>Example</h3>
+<p>Continuing with our previous example where we had a sample of five values: 2, 4, 6, 8, 10. We calculated the variance as:</p>
+<p>$$ \text{Variance} = \frac{\sum_{i=1}^{N} (x_i - \mu)^2}{N} = \frac{16 + 4 + 0 + 4 + 16}{5} = 8 $$</p>
+<p>So, the variance of our sample is 8.</p>
+<h3>Calculating Variance, Standard Deviation, and more using the TI 84 Calculator</h3>
+<p>In <a href="/Conceptual Notes/1 Variable Stats On Calculator.html" title="1 Variable Stats On Calculator" class="wikilink">1 Variable Stats On Calculator</a>, I discuss how you can use the 1-Var Stats function on the TI-84 Plus CE to calculate the mean, sum of x, sum of x squared, sample standard deviation, population standard deviation, and more for a single-variable data set. This is a useful tool for quickly obtaining these statistics for your data.</p>
+<hr />
+<h2>Python Program to Calculate and Graph Information</h2>
+<pre><code class="language-python">
+	import micropip
+	await micropip.install(&quot;numpy&quot;)
+	await micropip.install(&quot;matplotlib&quot;)
+	await micropip.install(&quot;scipy&quot;)
+
+	from scipy.stats import trim_mean
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	# Example data list
+	lst = [12, 15, 14, 10, 18, 20, 24, 13, 17, 22]
+
+	# Calculate one-var stats
+	mean = np.mean(lst)
+	sum_x = np.sum(lst)
+	sum_x_squared = np.sum(np.square(lst))
+	sample_std_dev = np.std(lst, ddof=1)
+	population_std_dev = np.std(lst)
+	n = len(lst)
+	min_x = np.min(lst)
+	q1 = np.percentile(lst, 25)
+	median = np.median(lst)
+	q3 = np.percentile(lst, 75)
+	max_x = np.max(lst)
+
+	# Calculate 20% trimmed mean
+	trimmed_mean = trim_mean(lst, 0.2)
+
+	# Print the stats
+	print(f&quot;Mean (x̄): {mean}&quot;)
+	print(f&quot;Sum of x (Σx): {sum_x}&quot;)
+	print(f&quot;Sum of x squared (Σx²): {sum_x_squared}&quot;)
+	print(f&quot;Sample Standard Deviation (Sx): {sample_std_dev}&quot;)
+	print(f&quot;Population Standard Deviation (σx): {population_std_dev}&quot;)
+	print(f&quot;Number of data points (n): {n}&quot;)
+	print(f&quot;Minimum value (minX): {min_x}&quot;)
+	print(f&quot;First Quartile (Q1): {q1}&quot;)
+	print(f&quot;Median (Med): {median}&quot;)
+	print(f&quot;Third Quartile (Q3): {q3}&quot;)
+	print(f&quot;Maximum value (maxX): {max_x}&quot;)
+	print(f&quot;20% Trimmed Mean: {trimmed_mean}&quot;)
+
+	# Plotting the results
+	plt.figure(figsize=(6, 4))
+
+	# Boxplot
+	plt.subplot(1, 2, 1)
+	plt.boxplot(lst, vert=False)
+	plt.title('Boxplot of Data')
+	plt.xlabel('Value')
+
+	# Histogram with mean and trimmed mean
+	plt.subplot(1, 2, 2)
+	plt.hist(lst, bins=8, edgecolor='black', alpha=0.7)
+	plt.axvline(mean, color='r', linestyle='dashed', linewidth=2, label=f'Mean: {mean:.2f}')
+	plt.axvline(trimmed_mean, color='g', linestyle='dashed', linewidth=2, label=f'Trimmed Mean: {trimmed_mean:.2f}')
+	plt.title('Histogram of Data')
+	plt.xlabel('Value')
+	plt.ylabel('Frequency')
+	plt.legend()
+
+	plt.tight_layout()
+	plt.show()
+
+</code></pre>
+
+</article>
+
+<aside class="right-sidebar" id="article-aside">
+  <div class="section">
+    <h3 class="section-title">Relationships</h3>
+    <div class="network-graph" id="graph"></div>
+  </div>
+
+  <nav class="section toc hide" id="toc-section">
+    <h3 class="section-title">On this page</h3>
+  </nav>
+</aside>
+
+</main>
+  </div>
+
+  <script type="module">
+    import {initGraph, toc} from "/_static/script.js"
+    const currentPath = "Class Notes/CH1 - Sampling Statistics Continued"
+    const graph = {"edge_property":"directed","edges":[[0,1,null]],"node_holes":[],"nodes":["Class Notes/CH1 - Sampling Statistics Continued","Conceptual Notes/1 Variable Stats On Calculator"]}
+
+    const g = initGraph(currentPath, graph)
+    document.getElementById("graph").appendChild(g.node())
+
+    const menuEl = document.getElementById("menu")
+    const rightSidebar = document.getElementById("article-aside")
+
+    document.getElementById("toggle-menu").addEventListener("click", (event) => {
+      menuEl.classList.toggle("show")
+      rightSidebar.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.getElementById("toggle-metadata").addEventListener("click", (event) => {
+      rightSidebar.classList.toggle("show")
+      menuEl.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.addEventListener("click", (event) => {
+      if (!menuEl.contains(event.target)) {
+        menuEl.classList.remove("show")
+      }
+
+      if (!rightSidebar.contains(event.target)) {
+        rightSidebar.classList.remove("show")
+      }
+    })
+
+    const articleEl = document.getElementById("note-content")
+    const tocSectionEl = document.getElementById("toc-section")
+    toc(articleEl, tocSectionEl)
+  </script>
+</body>
+
+</html>

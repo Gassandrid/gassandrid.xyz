@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article id="note-content" data-pagefind-body>
+  <header>
+    <h1 class="note-title">{{ note.title }}</h1>
+  </header>
+  {{- note_html | safe }}
+</article>
+
+{% include "aside.html" %}
+
+{% endblock %}

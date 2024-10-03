@@ -1,0 +1,8 @@
+---
+title: Site name
+topnav:
+  links:
+    - text: Link 1
+      href: https://example.com/link-1
+    - text: Link 2
+      href: https://example.com/link-2

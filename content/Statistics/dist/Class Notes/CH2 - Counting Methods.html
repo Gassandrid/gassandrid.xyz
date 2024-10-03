@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CH2 - Counting Methods | Site name</title>
+  <link rel="stylesheet" type="text/css" href="/_static/style.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-dark.min.css">
+  </noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+</head>
+
+<body>
+  
+
+<aside class="sidebar" id="menu" data-pagefind-ignore="all">
+  <div class="sidebar-wrapper">
+    <div class="site-name">
+      <h1>Site name</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+  <details open>
+    <summary>Class Notes</summary>
+    <ul>
+      <li>
+  <a href="/Class Notes&#x2f;CH1 - Categorical Variable.html" title="CH1 - Categorical Variable">CH1 - Categorical Variable</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling Statistics Continued.html" title="CH1 - Sampling Statistics Continued">CH1 - Sampling Statistics Continued</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling and Descriptive Statistics.html" title="CH1 - Sampling and Descriptive Statistics">CH1 - Sampling and Descriptive Statistics</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Conditional Probability.html" title="CH2 - Conditional Probability">CH2 - Conditional Probability</a>
+</li>
+<li class="current">
+  <a href="/Class Notes&#x2f;CH2 - Counting Methods.html" title="CH2 - Counting Methods">CH2 - Counting Methods</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Probability.html" title="CH2 - Probability">CH2 - Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Random Variables.html" title="CH2 - Random Variables">CH2 - Random Variables</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH4 - Binomial Distribution.html" title="CH4 - Binomial Distribution">CH4 - Binomial Distribution</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <details open>
+    <summary>Conceptual Notes</summary>
+    <ul>
+      <li>
+  <a href="/Conceptual Notes&#x2f;1 Variable Stats On Calculator.html" title="1 Variable Stats On Calculator">1 Variable Stats On Calculator</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Axiom.html" title="Axiom">Axiom</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;De Morgan&#x27;s Law.html" title="De Morgan&#x27;s Law">De Morgan&#x27;s Law</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Event.html" title="Event">Event</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Population.html" title="Population">Population</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Sample.html" title="Sample">Sample</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <a href="/Statistics Index.html" title="Statistics Index">Statistics Index</a>
+</li>
+
+      </ul>
+    </nav>
+
+    <footer>
+      <p>Built with <a href="https://github/ecarrara/obsidian-garden">Obsidian Garden</a>.</p>
+    </footer>
+  </div>
+</aside>
+
+  <div class="main-area">
+    <div class="topnav">
+      <button id="toggle-menu">☰</button>
+      <nav><a title="Link 1" href="https:&#x2f;&#x2f;example.com&#x2f;link-1">Link 1</a><a title="Link 2" href="https:&#x2f;&#x2f;example.com&#x2f;link-2">Link 2</a></nav>
+      
+    </div>
+
+    <div class="actions">
+      <button id="toggle-metadata">☰ Metadata</button>
+    </div>
+
+    <main class="main-content">
+<article id="note-content" data-pagefind-body>
+  <header>
+    <h1 class="note-title">CH2 - Counting Methods</h1>
+  </header><h1>CH2.2 - Counting Methods</h1>
+<hr />
+<p>So far, S has been small enough that we could list all the outcomes. However, as S grows, it becomes impractical to list all outcomes. We need to develop methods to count the number of outcomes in a sample space.</p>
+<p>There are some counting methods that we will use in this chapter:</p>
+<p>We will also use the following:</p>
+<p>$$ p(A) = \frac{favorable outcomes}{total outcomes} $$</p>
+<hr />
+<h2>Basic Counting Rule</h2>
+<ol>
+<li>There are n ways to make choice 1.</li>
+<li>For each of these n ways, there are n ways to make choice 2.</li>
+</ol>
+<p>–&gt; <strong>Total number of ways to make both choices is n * n = n^2</strong></p>
+<pre><code class="language-mermaid">graph TD
+    A[Choice 1] --&gt; C[Total number of ways n^2]
+    B[Choice 2] --&gt; C
+</code></pre>
+<hr />
+<h2>Permutations</h2>
+<p>Permutations are arrangements of objects in a specific order, where ordering of “n” objects is important.</p>
+<p>$$ P(n,r) = \frac{n!}{(n-r)!} $$</p>
+<blockquote>
+<p>[!Example] <strong>Permutations Example</strong>
+how many ways can you arrange the letters in the word <code>math</code>?</p>
+</blockquote>
+<p>$$ P(4,4) = \frac{4!}{(4-4)!} = 4! = 4 \times 3 \times 2 \times 1 = 24 $$</p>
+<hr />
+<h2>Combinations</h2>
+<p>ORDER DOES NOT MATTER</p>
+<p>Combinations are selections of objects in which the order of selection is not important.</p>
+<blockquote>
+<p>[!Example] <strong>Combinations Example</strong>
+50 students apply for a scholarship. How many ways can 5 students be selected to receive the scholarship?</p>
+</blockquote>
+<p>We can use the combination formula:</p>
+<p>$$ C(n,r) = \frac{n!}{r!(n-r)!} $$</p>
+<p>And plug in the numbers:</p>
+<p>$$ C(50,5) = \frac{50!}{5!(50-5)!} = \frac{50!}{5!45!} = 2118760 $$</p>
+<hr />
+<h2>Bigger Examples</h2>
+<p>There are 17 broken lightbulbs in a box of 100 lightbulbs. A random sample of 3 lightbulbs is chosen without replacement.</p>
+<ol>
+<li>How many ways can the sample be chosen?</li>
+</ol>
+<blockquote>
+<p>[!success] $$ C(100,3) = \frac{100!}{3!(100-3)!} = 161700 $$</p>
+</blockquote>
+<ol start="2">
+<li>How many samples contain no broken lightbulbs?</li>
+</ol>
+<blockquote>
+<p>[!success] $$ C(83,3) = \frac{83!}{3!(83-3)!} = 91881 $$</p>
+</blockquote>
+<ol start="3">
+<li>What is the probability that a sample contains no broken lightbulbs?</li>
+</ol>
+<blockquote>
+<p>[!success] $$ P(x=0) = \frac{91881}{161700} = .5682 $$</p>
+</blockquote>
+
+</article>
+
+<aside class="right-sidebar" id="article-aside">
+  <div class="section">
+    <h3 class="section-title">Relationships</h3>
+    <div class="network-graph" id="graph"></div>
+  </div>
+
+  <nav class="section toc hide" id="toc-section">
+    <h3 class="section-title">On this page</h3>
+  </nav>
+</aside>
+
+</main>
+  </div>
+
+  <script type="module">
+    import {initGraph, toc} from "/_static/script.js"
+    const currentPath = "Class Notes/CH2 - Counting Methods"
+    const graph = {"edge_property":"directed","edges":[],"node_holes":[],"nodes":["Class Notes/CH2 - Counting Methods"]}
+
+    const g = initGraph(currentPath, graph)
+    document.getElementById("graph").appendChild(g.node())
+
+    const menuEl = document.getElementById("menu")
+    const rightSidebar = document.getElementById("article-aside")
+
+    document.getElementById("toggle-menu").addEventListener("click", (event) => {
+      menuEl.classList.toggle("show")
+      rightSidebar.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.getElementById("toggle-metadata").addEventListener("click", (event) => {
+      rightSidebar.classList.toggle("show")
+      menuEl.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.addEventListener("click", (event) => {
+      if (!menuEl.contains(event.target)) {
+        menuEl.classList.remove("show")
+      }
+
+      if (!rightSidebar.contains(event.target)) {
+        rightSidebar.classList.remove("show")
+      }
+    })
+
+    const articleEl = document.getElementById("note-content")
+    const tocSectionEl = document.getElementById("toc-section")
+    toc(articleEl, tocSectionEl)
+  </script>
+</body>
+
+</html>

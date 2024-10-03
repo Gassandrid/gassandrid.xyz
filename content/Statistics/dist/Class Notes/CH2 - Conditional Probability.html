@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CH2 - Conditional Probability | Site name</title>
+  <link rel="stylesheet" type="text/css" href="/_static/style.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-a11y-dark.min.css">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-dark.min.css">
+  </noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+</head>
+
+<body>
+  
+
+<aside class="sidebar" id="menu" data-pagefind-ignore="all">
+  <div class="sidebar-wrapper">
+    <div class="site-name">
+      <h1>Site name</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+  <details open>
+    <summary>Class Notes</summary>
+    <ul>
+      <li>
+  <a href="/Class Notes&#x2f;CH1 - Categorical Variable.html" title="CH1 - Categorical Variable">CH1 - Categorical Variable</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling Statistics Continued.html" title="CH1 - Sampling Statistics Continued">CH1 - Sampling Statistics Continued</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH1 - Sampling and Descriptive Statistics.html" title="CH1 - Sampling and Descriptive Statistics">CH1 - Sampling and Descriptive Statistics</a>
+</li>
+<li class="current">
+  <a href="/Class Notes&#x2f;CH2 - Conditional Probability.html" title="CH2 - Conditional Probability">CH2 - Conditional Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Counting Methods.html" title="CH2 - Counting Methods">CH2 - Counting Methods</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Probability.html" title="CH2 - Probability">CH2 - Probability</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH2 - Random Variables.html" title="CH2 - Random Variables">CH2 - Random Variables</a>
+</li>
+<li>
+  <a href="/Class Notes&#x2f;CH4 - Binomial Distribution.html" title="CH4 - Binomial Distribution">CH4 - Binomial Distribution</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <details open>
+    <summary>Conceptual Notes</summary>
+    <ul>
+      <li>
+  <a href="/Conceptual Notes&#x2f;1 Variable Stats On Calculator.html" title="1 Variable Stats On Calculator">1 Variable Stats On Calculator</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Axiom.html" title="Axiom">Axiom</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;De Morgan&#x27;s Law.html" title="De Morgan&#x27;s Law">De Morgan&#x27;s Law</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Event.html" title="Event">Event</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Population.html" title="Population">Population</a>
+</li>
+<li>
+  <a href="/Conceptual Notes&#x2f;Sample.html" title="Sample">Sample</a>
+</li>
+</ul>
+  </details>
+  
+</li>
+<li>
+  <a href="/Statistics Index.html" title="Statistics Index">Statistics Index</a>
+</li>
+
+      </ul>
+    </nav>
+
+    <footer>
+      <p>Built with <a href="https://github/ecarrara/obsidian-garden">Obsidian Garden</a>.</p>
+    </footer>
+  </div>
+</aside>
+
+  <div class="main-area">
+    <div class="topnav">
+      <button id="toggle-menu">☰</button>
+      <nav><a title="Link 1" href="https:&#x2f;&#x2f;example.com&#x2f;link-1">Link 1</a><a title="Link 2" href="https:&#x2f;&#x2f;example.com&#x2f;link-2">Link 2</a></nav>
+      
+    </div>
+
+    <div class="actions">
+      <button id="toggle-metadata">☰ Metadata</button>
+    </div>
+
+    <main class="main-content">
+<article id="note-content" data-pagefind-body>
+  <header>
+    <h1 class="note-title">CH2 - Conditional Probability</h1>
+  </header><h1>CH2.3 - Conditional Probability and Independence</h1>
+<p>This section covers conditional probability and independence. Conditional probability is the probability of an event given that another event has occurred. Independence is when the occurrence of one event does not affect the probability of another event.</p>
+<hr />
+<h2>Example</h2>
+<blockquote>
+<p>[!Example]
+$$ p(A|B) = \frac{p(A \cap B)}{p(B)} $$</p>
+</blockquote>
+<p>This probability is an Intersection and joint probability, think of multiply, but only if you can answer the following question.</p>
+<hr />
+<h2>Independence</h2>
+<blockquote>
+<p>[!question]
+Are the events <strong>Independent</strong> of each other?</p>
+</blockquote>
+<p><strong>Independent</strong> - the outcome of one event does not effect the probability of the other event</p>
+<p>Here are some examples of independent events:</p>
+<blockquote>
+<p>[!Example] <strong>Independent Events</strong></p>
+<ul>
+<li>spin a roulette wheel twice</li>
+<li>flip a coin twice</li>
+<li>rolling two dice</li>
+<li>sampling with replacement</li>
+</ul>
+</blockquote>
+<p>Going back to the question, lets look at the possible answers.</p>
+<blockquote>
+<p>[!success] Option 1: Yes
+$$ p(A \cap B) = p(A) \times p(B) $$
+$$ p(Ace \cap nAce2) = p(Ace) \times p(Ace2) $$
+$$ p(A \cap B) = \frac{4}{52} \times \frac{4}{52} $$</p>
+</blockquote>
+<blockquote>
+<p>[!failure] Option 2: No
+$$ p(A \cap B) \neq p(A) \times p(B) $$
+$$ p(Ace \cap nAce2) \neq p(Ace) \times p(Ace2) $$
+$$ p(A \cap B) = \frac{4}{52} \times \frac{4}{51} $$</p>
+</blockquote>
+<p>Lets tackle a practice problem now.</p>
+<hr />
+<h2>Practice Problem</h2>
+<blockquote>
+<p>[!question] Problem
+Mobile telephones perform <em>handoffs</em> as they move from call to cell. During a call, a telephone either performs zero handoffs (<strong>0</strong>), one handoff (<strong>H1</strong>), or more than one handoff (<strong>H2</strong>). IN addition, each call is either long (<strong>L</strong>), if it last more then three minutes, or brief (<strong>B</strong>). We have the following table that represents the data, a sample of 100 calls:</p>
+<table><thead><tr><th></th><th>H0</th><th>H1</th><th>H2</th><th>Row Total</th></tr></thead><tbody>
+<tr><td>L</td><td>10</td><td>10</td><td>20</td><td>40</td></tr>
+<tr><td>B</td><td>40</td><td>10</td><td>10</td><td>60</td></tr>
+<tr><td>Col Total</td><td>50</td><td>20</td><td>30</td><td>n=100</td></tr>
+</tbody></table>
+</blockquote>
+<p><strong>Research Question</strong>: Are <em>lengths</em> and <em>handoffs</em> Independent of Each Other?</p>
+<ol>
+<li><strong>Marginal Distributions</strong></li>
+</ol>
+<blockquote>
+<p>[!info] Length
+Probability of a Long Call
+$$ p(L) = \frac{40}{100} = 0.4 $$
+Probability of a Brief Call
+$$ p(B) = \frac{60}{100} = 0.6 $$</p>
+</blockquote>
+<blockquote>
+<p>[!info] Handoffs
+Probability of Zero Handoffs
+$$ p(H0) = \frac{50}{100} = 0.5 $$
+Probability of One Handoff
+$$ p(H1) = \frac{20}{100} = 0.2 $$
+Probability of More than One Handoff
+$$ p(H2) = \frac{30}{100} = 0.3 $$</p>
+</blockquote>
+<ol start="2">
+<li></li>
+<li>
+<p><strong>Conditional Distributions</strong></p>
+</li>
+</ol>
+<p>Condition in a level for one categorical variable given the level of another categorical variable.</p>
+<p>Calculating for the following probabilities:</p>
+<ul>
+<li>Probability of Zero Handoffs given a Long Call</li>
+</ul>
+<blockquote>
+<p>[!info] P ( * | L)
+$$ p(H0|L) = \frac{10}{40} = 0.25 $$
+$$ p(H1|L) = \frac{10}{40} = 0.25 $$
+$$ p(H2|L) = \frac{20}{40} = 0.5 $$</p>
+</blockquote>
+<ul>
+<li>Probability of Zero Handoffs given a Brief Call</li>
+</ul>
+<blockquote>
+<p>[!info] P ( * | B)
+$$ p(H0|B) = \frac{40}{60} = 0.67 $$
+$$ p(H1|B) = \frac{10}{60} = 0.17 $$
+$$ p(H2|B) = \frac{10}{60} = 0.17 $$</p>
+</blockquote>
+<ul>
+<li>Probability of a Long Call given Zero Handoffs</li>
+</ul>
+<blockquote>
+<p>[!info] P ( * | H0)
+$$ p(L|H0) = \frac{10}{50} = 0.2 $$
+$$ p(B|H0) = \frac{40}{50} = 0.8 $$</p>
+</blockquote>
+<ul>
+<li>Probability of a Brief Call given Zero Handoffs</li>
+</ul>
+<blockquote>
+<p>[!info] P ( * | H1)
+$$ p(L|H1) = \frac{10}{20} = 0.5 $$
+$$ p(B|H1) = \frac{10}{20} = 0.5 $$</p>
+</blockquote>
+<ul>
+<li>Probability of a Long Call given More than One Handoff</li>
+</ul>
+<blockquote>
+<p>[!info] P ( * | H2)
+$$ p(L|H2) = \frac{20}{30} = 0.67 $$
+$$ p(B|H2) = \frac{10}{30} = 0.33 $$</p>
+</blockquote>
+<p><strong>Bringing it all together, let’s calculate the following:</strong></p>
+<blockquote>
+<p>[!success] Final Calculations
+$$ P(L) = 0.4 $$
+$$ P(B) = 0.6 $$</p>
+</blockquote>
+<h3>Segmented Bar Chart with Matplotlib</h3>
+<pre><code class="language-python">import micropip
+await micropip.install(&quot;matplotlib&quot;)
+await micropip.install(&quot;numpy&quot;)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# define the data
+# bar Chart
+N = 3
+ind = np.arange(N)  # the x locations for the groups
+width = 0.35       # the width of the bars
+
+p1 = plt.bar(ind, (0.25, 0.67, 0.67), width, color='r')
+p2 = plt.bar(ind, (0.25, 0.17, 0.17), width, color='b', bottom=(0.25, 0.67, 0.67))
+p3 = plt.bar(ind, (0.5, 0.17, 0.17), width, color='g', bottom=(0.5, 0.17, 0.17))
+
+# add some text for labels, title and axes ticks
+plt.ylabel('Probability')
+plt.title('Probability by Length and Handoff')
+plt.xticks(ind, ('H0', 'H1', 'H2'))
+plt.yticks(np.arange(0, 1.1, 0.1))
+plt.legend((p1[0], p2[0], p3[0]), ('L', 'B', 'H2'))
+
+# Display the chart
+plt.show()
+</code></pre>
+<p>![[Screenshot 2024-09-12 at 10.44.38 AM.png]]</p>
+<p><strong>Either:</strong></p>
+<p>Conditionals are <em>not similar</em> to marginals, there is an association between the two, and thus, not independent.</p>
+<p><strong>Or:</strong></p>
+<p>Conditionals are <em>Similar</em> to Marginals, there is no association between the two, and thus, independent.</p>
+<hr />
+<h2>Showing Mathematically: are two events independent</h2>
+<p>Lets find a random combination from that table and determine if they are independent.</p>
+<blockquote>
+<p>[!question]
+Are L and H0 independent of each other?
+$$ p(L \cap H0) = p(L) \times p(H0) $$
+$$ 10/100 = (\frac{40}{100}) \times (\frac{50}{100}) $$</p>
+</blockquote>
+<p>Therefore, $P(L \cap H0)$ is $\color{red}{not\ independent}$</p>
+<hr />
+<h2>Example - Independence</h2>
+<blockquote>
+<p>[!example]
+If you own two cars, what is the probablity that:</p>
+<ul>
+<li>neither will need repair?</li>
+<li>both will need repair?</li>
+<li>at least one car will need repair?</li>
+</ul>
+</blockquote>
+<h3>Probability table</h3>
+<table><thead><tr><th>X</th><th>p(x)</th></tr></thead><tbody>
+<tr><td>0</td><td>.72</td></tr>
+<tr><td>1</td><td>.17</td></tr>
+<tr><td>2</td><td>.07</td></tr>
+<tr><td>≥ 3</td><td>.04</td></tr>
+</tbody></table>
+<ol>
+<li><strong>Neither will need repair</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(x1 = 0, x2 = 0) = P(x1 = 0) \times P(x2 = 0) = 0.72 \times 0.72 = 0.5184 $$</p>
+</blockquote>
+<ol start="2">
+<li><strong>Both will need repair</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(x1 \ge 1, x2 \ge 1) = P(x1 \ge 1) \times P(x2 \ge 1) = 0.28 \times 0.28 = 0.0784 $$</p>
+</blockquote>
+<ol start="3">
+<li><strong>At least one car will need repair</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(x1 \ge 1, x2 \ge 1) = 1 - P(x1 = 0, x2 = 0) = 1 - 0.5184 = 0.4816 $$</p>
+</blockquote>
+<h2>Example - Independence</h2>
+<p>Classic exmaple: Balls in Urn to Demonstrate Tree Diagrams, Conditional Probability, Joint Probability, and Independence.</p>
+<blockquote>
+<p>[!example]
+10 balls in an urn, 3 are orange, 5 are red, and 2 are blue.
+Draw two balls without replacement.</p>
+</blockquote>
+<h3>Mermaid Tree Diagram</h3>
+<p>The following tree diagram is a visual representation of the problem.</p>
+<pre><code class="language-mermaid">graph LR
+    Start[&quot;Start (10 balls)&quot;]
+
+    Start --&gt; O1[&quot;Orange (3/10)&quot;]
+    Start --&gt; R1[&quot;Red (5/10)&quot;]
+    Start --&gt; B1[&quot;Blue (2/10)&quot;]
+
+    %% After first orange draw
+    O1 --&gt; O2[&quot;Orange (2/9)&quot;]
+    O1 --&gt; R2[&quot;Red (5/9)&quot;]
+    O1 --&gt; B2[&quot;Blue (2/9)&quot;]
+
+    %% After first red draw
+    R1 --&gt; O3[&quot;Orange (3/9)&quot;]
+    R1 --&gt; R3[&quot;Red (4/9)&quot;]
+    R1 --&gt; B3[&quot;Blue (2/9)&quot;]
+
+    %% After first blue draw
+    B1 --&gt; O4[&quot;Orange (3/9)&quot;]
+    B1 --&gt; R4[&quot;Red (5/9)&quot;]
+    B1 --&gt; B4[&quot;Blue (1/9)&quot;]
+
+</code></pre>
+<p>From the tree diagram, we can calculate the following:</p>
+<ol>
+<li><strong>Probability of Drawing an Orange Ball</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(O) = \frac{3}{10} = 0.3 $$
+$$ P(O) = \frac{2}{9} = 0.2222 $$
+$$ P(O) = \frac{3}{9} = 0.3333 $$</p>
+</blockquote>
+<ol start="2">
+<li><strong>Probability of Drawing a Red Ball</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(R) = \frac{5}{10} = 0.5 $$
+$$ P(R) = \frac{5}{9} = 0.5556 $$
+$$ P(R) = \frac{4}{9} = 0.4444 $$</p>
+</blockquote>
+<ol start="3">
+<li><strong>Probability of Drawing a Blue Ball</strong></li>
+</ol>
+<blockquote>
+<p>[!success] Correct Answer
+$$ P(B) = \frac{2}{10} = 0.2 $$
+$$ P(B) = \frac{2}{9} = 0.2222 $$
+$$ P(B) = \frac{1}{9} = 0.1111 $$</p>
+</blockquote>
+
+</article>
+
+<aside class="right-sidebar" id="article-aside">
+  <div class="section">
+    <h3 class="section-title">Relationships</h3>
+    <div class="network-graph" id="graph"></div>
+  </div>
+
+  <nav class="section toc hide" id="toc-section">
+    <h3 class="section-title">On this page</h3>
+  </nav>
+</aside>
+
+</main>
+  </div>
+
+  <script type="module">
+    import {initGraph, toc} from "/_static/script.js"
+    const currentPath = "Class Notes/CH2 - Conditional Probability"
+    const graph = {"edge_property":"directed","edges":[],"node_holes":[],"nodes":["Class Notes/CH2 - Conditional Probability"]}
+
+    const g = initGraph(currentPath, graph)
+    document.getElementById("graph").appendChild(g.node())
+
+    const menuEl = document.getElementById("menu")
+    const rightSidebar = document.getElementById("article-aside")
+
+    document.getElementById("toggle-menu").addEventListener("click", (event) => {
+      menuEl.classList.toggle("show")
+      rightSidebar.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.getElementById("toggle-metadata").addEventListener("click", (event) => {
+      rightSidebar.classList.toggle("show")
+      menuEl.classList.remove("show")
+      event.stopPropagation()
+    })
+    document.addEventListener("click", (event) => {
+      if (!menuEl.contains(event.target)) {
+        menuEl.classList.remove("show")
+      }
+
+      if (!rightSidebar.contains(event.target)) {
+        rightSidebar.classList.remove("show")
+      }
+    })
+
+    const articleEl = document.getElementById("note-content")
+    const tocSectionEl = document.getElementById("toc-section")
+    toc(articleEl, tocSectionEl)
+  </script>
+</body>
+
+</html>
