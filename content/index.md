@@ -109,7 +109,10 @@ date: "2024-10-02"
 I am a second year student at the [[University Of Vermont]] studying computer science and robotics. I have a big passion and desire to specialize in [[Artificial Intelligence]] and [[Mathematics]], but I also take part in a wide variety of other Computer Science fields.
 
 [test]("../test.html"")
+
+<div>
 <a href="../test.html">test</a>
+</div>
 
 ## Happenings 🏡
 
