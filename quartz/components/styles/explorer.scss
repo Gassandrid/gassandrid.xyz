@@ -1,28 +1,5 @@
 @use "../../styles/variables.scss" as *;
 
-.explorer {
-  display: flex;
-  flex-direction: column;
-  overflow-y: hidden;
-  &.desktop-only {
-    @media all and not ($mobile) {
-      display: flex;
-    }
-  }
-  /*&:after {
-    pointer-events: none;
-    content: "";
-    width: 100%;
-    height: 50px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    background: linear-gradient(transparent 0px, var(--light));
-  }*/
-}
-
 button#explorer {
   background-color: transparent;
   border: none;
@@ -67,8 +44,7 @@ button#explorer {
 #explorer-content {
   list-style: none;
   overflow: hidden;
-  overflow-y: auto;
-  max-height: 100%;
+  max-height: none;
   transition:
     max-height 0.35s ease,
     visibility 0s linear 0s;
@@ -76,11 +52,14 @@ button#explorer {
   visibility: visible;
 
   &.collapsed {
-    max-height: 0;
     transition:
       max-height 0.35s ease,
       visibility 0s linear 0.35s;
     visibility: hidden;
+  }
+
+  &.collapsed > .overflow::after {
+    opacity: 0;
   }
 
   & ul {
@@ -96,9 +75,6 @@ button#explorer {
       opacity: 0.75;
       pointer-events: all;
     }
-  }
-  > #explorer-ul {
-    max-height: none;
   }
 }
 

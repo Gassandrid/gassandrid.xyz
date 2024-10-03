@@ -1,3 +1,155 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+@use "./variables.scss" as *;
+
+body[data-slug="index"] img {
+  filter: invert(0%);
+  opacity: 0.85;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+[saved-theme="dark"] #texture {
+  mix-blend-mode: overlay;
+}
+
+[saved-theme="dark"] body[data-slug="index"] img[src*="banner.svg"] {
+  filter: invert(100%);
+}
+
+body[data-slug="thoughts/craft"] {
+  & li:has(> img, > video) {
+    list-style-type: none;
+
+    & > img,
+    & > video {
+      margin: 1rem 0;
+    }
+  }
+
+  article > ul {
+    padding-left: 0;
+
+    & > li {
+      list-style-type: none;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.left {
+  display: flex !important;
+  gap: 1.5rem !important;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content min-content min-content;
+  align-items: center;
+
+  .page-title {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  .search {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .darkmode {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .toc {
+    grid-row: 3;
+    grid-column: 1 / 3;
+  }
+
+  .recent-notes:nth-last-child(2) {
+    grid-area: 3 / 1 / 3 / 3;
+  }
+
+  .recent-notes:nth-last-child(1) {
+    grid-area: 4 / 1 / 4 / 3;
+  }
+
+  @media all and (max-width: $fullPageWidth) {
+    display: flex !important;
+  }
+}
+
+hr {
+  overflow: visible;
+  padding: 0;
+  height: 0;
+  margin: 4em auto;
+  border: none;
+  text-align: center;
+  width: 100%;
+
+  &:after {
+    content: "* * *";
+    display: inline-block;
+    margin: -1em 0 0.5em;
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    color: var(--gray);
+  }
+}
+
+pre.poetry {
+  font-size: 1.2rem;
+  font-family: biro_script_standardRgus;
+  border: none;
+  padding: 0;
+  position: unset;
+}
+
+.meta,
+.content-meta {
+  font-family: biro_script_standardRgus, var(--bodyFont);
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: var(--lightgray);
+}
+
+.forced-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  // gap: 2rem;
+  top: 0;
+  // width: initial;
+  // margin-top: 2rem;
+  box-sizing: border-box;
+  padding: 0;
+  position: initial;
+  & .map,
+  .darkmode,
+  .minibutton {
+    margin: 0.4rem;
+  }
+  @media all and (max-width: $fullPageWidth) {
+    justify-content: flex-end;
+  }
+}
+
+.forced-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  top: 0;
+  box-sizing: border-box;
+  padding: 0;
+  position: initial;
+  & .map,
+  .darkmode {
+    margin: 0.4rem;
+  }
+  @media all and (max-width: $fullPageWidth) {
+    justify-content: flex-end;
+  }
+}

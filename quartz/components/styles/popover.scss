@@ -70,7 +70,7 @@
     opacity 0.3s ease,
     visibility 0.3s ease;
 
-  @media all and ($mobile) {
+  @media all and (max-width: $mobileBreakpoint) {
     display: none !important;
   }
 }
