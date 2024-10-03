@@ -2,11 +2,48 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { SimpleSlug } from "./quartz/util/path"
 
+const giscusConfig = {
+  provider: "giscus",
+  options: {
+    // from data-repo
+    repo: "gassandrid/gassandrid.xyz",
+    // from data-repo-id
+    repoId: "R_kgDOM6tvbQ",
+    // from data-category
+    category: "Announcements",
+    // from data-category-id
+    categoryId: "DIC_kwDOM6tvbc4CjBtr",
+    mapping: "mathname",
+    strict: false,
+    reactionsEnabled: true,
+    inputPosition: "top",
+    term: "Guestbook",
+  },
+}
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.Comments({
+      provider: "giscus",
+      options: {
+        // from data-repo
+        repo: "fanteastick/quartz-test",
+        // from data-repo-id
+        repoId: "R_kgDOMVIwGw",
+        // from data-category
+        category: "Announcements",
+        // from data-category-id
+        categoryId: "DIC_kwDOMVIwG84Cguqi",
+        mapping: "specific",
+        strict: false,
+        reactionsEnabled: false,
+        inputPosition: "top",
+      },
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/gassandrid",
