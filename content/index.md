@@ -112,8 +112,13 @@ I am a second year student at the [[University Of Vermont]] studying computer sc
 
 ## Projects 💾
 
+**[[DARS]] - Dormitory Automated Residential System**
+
+A model replica of TARS from interstellar, built for the purpose of mapping natural human language to discrete functional output through the use of LLM's and microcontrollers.
 ## About me ⛵️
 
 Outside of Computer Science, my main interests are [[Sailing]], [[Health|Health/Fitness]], and [[Woodwork]]
 
-## How to use this garden 🪴
+Recently, I have picked up a habit of [[Touch Typing]], and have quickly become addicted [MonkeyType](https://monkeytype.com/profile/Gassandrid), and in the span of about 6 months, have gone from not being able to type with more than 2 fingers to **180**wpm on some of the tests! This is not to say that I am gifted at typing, only that I am addicted to it in this way, which should be clear given how much time I've spent on it!
+
+## About this garden 🪴
