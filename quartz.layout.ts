@@ -53,9 +53,10 @@ export const defaultContentPageLayout: PageLayout = {
         },
       }),
     ),
+    Component.MobileOnly(Component.TagList()),
   ],
   right: [
-    Component.TagList(),
+    Component.DesktopOnly(Component.TagList()),
     Component.Graph({
       localGraph: {
         linkDistance: 50,
