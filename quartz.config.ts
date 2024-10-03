@@ -67,9 +67,7 @@ const config: QuartzConfig = {
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "absolute", lazyLoad: true }),
       Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }), // Plugin.quartzPlugins[0],
-      // Plugin.quartzPlugins[1],
-      Staticrypt(),
+      Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
