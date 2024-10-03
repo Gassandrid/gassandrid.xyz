@@ -108,12 +108,6 @@ date: "2024-10-02"
 
 I am a second year student at the [[University Of Vermont]] studying computer science and robotics. I have a big passion and desire to specialize in [[Artificial Intelligence]] and [[Mathematics]], but I also take part in a wide variety of other Computer Science fields.
 
-[test]("./test.html"")
-
-<div>
-<a href="./test.html">test</a>
-</div>
-
 ## Happenings 🏡
 
 Getting back into simple woodwork again! I love woodwork, but at University there is never much time for me to get really invested in a project. But finding time to work on a medium stick with my Leatherman has been very enjoyable for the last 2 weeks.
@@ -125,7 +119,6 @@ Currently invested in learning Golang, not just as a language but as a Web Frame
 **[[DARS]] - Dormitory Automated Residential System**
 
 A model replica of TARS from interstellar, built for the purpose of mapping natural human language to discrete functional output through the use of LLM's and microcontrollers.
-
 ## About me ⛵️
 
 Outside of Computer Science, my main interests are [[Sailing]], [[Health|Health/Fitness]], and [[Woodwork]]

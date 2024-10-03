@@ -176,3 +176,11 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+
+---
+
+## Practice for Quiz
+
+To practice for the quiz on this unit, we can practice the Assignment 3 problems 1-6, and apply these methods for the different questions on the quiz.
+
+Visit [[Quiz Practice - Random Variables]] for more.
