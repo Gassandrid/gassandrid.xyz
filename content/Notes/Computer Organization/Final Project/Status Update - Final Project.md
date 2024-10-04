@@ -9,17 +9,11 @@
 
 ## 1. Summary Of Progress
 
-For now, all of my research has been on the software side of things, as that will be the most challenging part. I have a rough idea of the physical appearance of the DARS machine, but the real work will be designing and fine tuning the LLM behind it.
-
-For the function calling side of things, I have been researching and playing around with [Langroid](https://github.com/langroid/langroid), a specialized tool for structuring and chaining the input/output of Language Models to fit certain tasks.
-
-For my purpose, I have been figuring out how to map LLM output to call GPIO functions that will control hardware in my room, like turning on/off the lights. Whether this is through GPIO directly, or through a wireless medium protocol like ESP32 microcontrollers.
-
 ---
 
 ## 2. Time Log 
 
-| Date      | Name | Role                   | Description                                                        | Time(Hrs) |
+| date      | Name | Role                   | Description                                                        | Time(Hrs) |
 | --------- | ---- | ---------------------- | ------------------------------------------------------------------ | --------- |
 | 9/17/2024 | Ewan | Lead Model Engineer    | Researched LANGROID and function calling                           | 3.5       |
 | 9/20      | Ewan | Lead Creative Designer | Browsed open source models for most tunable, choosing Llama 3.1 8b | 1.5       |
