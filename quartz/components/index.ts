@@ -23,6 +23,7 @@ import Comments from "./Comments"
 import Divider from "./Divider"
 import Map from "./_Map"
 import Row from "./_Row"
+import Cv from "./_Cv"
 
 export {
   ArticleTitle,
@@ -50,4 +51,5 @@ export {
   Divider,
   Map,
   Row,
+  Cv,
 }

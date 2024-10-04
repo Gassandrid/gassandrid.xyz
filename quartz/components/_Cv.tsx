@@ -1,14 +1,14 @@
 // @ts-ignore
 // loosely based off of the darkmode component
-import styles from "./styles/_map.scss"
+import styles from "./styles/cv.scss"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
 
-const Map: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
+const Cv: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
   return (
-    <div class={classNames(displayClass, "map")}>
-      <a href="/meta/Map" class="toggle" tabIndex={-1}>
+    <div class={classNames(displayClass, "cv")}>
+      <a href="/meta/cv" class="toggle" tabIndex={-1}>
         <label for="darkmode-toggle" tabIndex={-1}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +38,6 @@ const Map: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
   )
 }
 
-Map.css = styles
+Cv.css = styles
 
-export default (() => Map) satisfies QuartzComponentConstructor
+export default (() => Cv) satisfies QuartzComponentConstructor

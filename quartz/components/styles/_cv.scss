@@ -1,0 +1,17 @@
+.cv {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+
+  & svg {
+    cursor: pointer;
+    //   opacity: 0;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 10px);
+    fill: var(--darkgray);
+    transition: opacity 0.1s ease;
+  }
+}
