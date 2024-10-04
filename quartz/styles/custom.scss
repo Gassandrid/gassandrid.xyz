@@ -3,6 +3,12 @@
 // put your custom CSS here!
 @use "./variables.scss" as *;
 
+// banner color switcher for light/darkmode
+// class is indexBanner, setting path of svg to a fill background-color
+[saved-theme="dark"] path.indexBanner {
+  fill: var(--lightgray);
+}
+
 body[data-slug="index"] img {
   filter: invert(0%);
   opacity: 0.85;
