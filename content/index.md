@@ -126,3 +126,5 @@ Outside of Computer Science, my main interests are [[Sailing]], [[Health|Health/
 Recently, I have picked up a habit of [[Touch Typing]], and have quickly become addicted [MonkeyType](https://monkeytype.com/profile/Gassandrid), and in the span of about 6 months, have gone from not being able to type with more than 2 fingers to **180**wpm on some of the tests! This is not to say that I am gifted at typing, only that I am addicted to it in this way, which should be clear given how much time I've spent on it!
 
 ## About this garden 🪴
+
+This is my version of what is called a [[Digital Garden]]( and yes, every digital garden mentions what a digital garden is)
