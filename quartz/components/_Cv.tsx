@@ -17,9 +17,10 @@ const Cv: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
             id="nightIcon"
             x="0px"
             y="0px"
-            viewBox="0 0 24 24"
+            viewBox="0 0 20 20"
             style="enable-background:new 0 0 100 100"
             xmlSpace="preserve"
+            transform="translate(10, 10)"
           >
             <title>{i18n(cfg.locale).components.themeToggle.lightMode}</title>
             <path
