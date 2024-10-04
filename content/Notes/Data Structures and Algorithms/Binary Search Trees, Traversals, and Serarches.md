@@ -4,17 +4,26 @@ tags:
   - generated
 ---
 ## Overview
+
 In a binary search tree (BST), nodes are arranged such that:
+
 - The left child of a node contains a value smaller than the node.
 - The right child of a node contains a value greater than the node.
 
 There are four common tree traversal methods and two important search strategies:
+
 1. **In-order Traversal**
 2. **Pre-order Traversal**
 3. **Post-order Traversal**
 4. **Level-order Traversal**
 5. **Breadth-First Search (BFS)**
 6. **Depth-First Search (DFS)**
+
+### Example Tree
+
+We will be using this tree to illustrate the different strategies you can use to navigate a BST.
+
+![[Pasted image 20241004112328.png]]
 
 ---
 
@@ -26,6 +35,13 @@ In-order traversal visits nodes in ascending order (for a BST).
 > 2. Visit the root.
 > 3. Traverse the right subtree.
 
+**Example for the given tree:**
+- Traverse left subtree of 1 → Traverse left subtree of 2 → Visit 4 → Visit 2 → Visit 5 → Visit 1 → Traverse right subtree of 1 → Visit 6 → Visit 3 → Visit 7
+
+**In-order traversal result:** `4, 2, 5, 1, 6, 3, 7`
+
+**Implementation**:
+
 ```cpp
 void inOrder(Node* root) {
     if (root == nullptr) return;
@@ -34,9 +50,6 @@ void inOrder(Node* root) {
     inOrder(root->right);
 }
 ```
-
-> [!note] **Use Case**
-> In-order traversal is used when you want to print nodes of a binary search tree in sorted order.
 
 ---
 
@@ -48,6 +61,13 @@ Pre-order traversal visits the root before its subtrees.
 > 2. Traverse the left subtree.
 > 3. Traverse the right subtree.
 
+**Example for the given tree:**
+- Visit 1 → Traverse left subtree of 1 → Visit 2 → Visit 4 → Visit 5 → Traverse right subtree of 1 → Visit 3 → Visit 6 → Visit 7
+
+**Pre-order traversal result:** `1, 2, 4, 5, 3, 6, 7`
+
+**Implementation**:
+
 ```cpp
 void preOrder(Node* root) {
     if (root == nullptr) return;
@@ -56,9 +76,6 @@ void preOrder(Node* root) {
     preOrder(root->right);
 }
 ```
-
-> [!tip] **Use Case**
-> Pre-order is useful for copying a tree or evaluating prefix expressions.
 
 ---
 
@@ -70,6 +87,13 @@ Post-order traversal visits the root after its subtrees.
 > 2. Traverse the right subtree.
 > 3. Visit the root.
 
+**Example for the given tree:**
+- Traverse left subtree of 1 → Traverse left subtree of 2 → Visit 4 → Visit 5 → Visit 2 → Traverse right subtree of 1 → Visit 6 → Visit 7 → Visit 3 → Visit 1
+
+**Post-order traversal result:** `4, 5, 2, 6, 7, 3, 1`
+
+**Implementation**:
+
 ```cpp
 void postOrder(Node* root) {
     if (root == nullptr) return;
@@ -79,9 +103,6 @@ void postOrder(Node* root) {
 }
 ```
 
-> [!warning] **Use Case**
-> Post-order is important in deleting a tree, as it ensures you delete children before their parent.
-
 ---
 
 ## 4. Level-order Traversal
@@ -90,6 +111,13 @@ Level-order traversal visits nodes level by level.
 > **Algorithm**:  
 > 1. Visit each level of the tree starting from the root.
 > 2. Traverse left to right within each level.
+
+**Example for the given tree:**
+- Visit level 1: Visit 1 → Visit level 2: Visit 2, 3 → Visit level 3: Visit 4, 5, 6, 7
+
+**Level-order traversal result:** `1, 2, 3, 4, 5, 6, 7`
+
+**Implementation**:
 
 ```cpp
 void levelOrder(Node* root) {
@@ -106,18 +134,17 @@ void levelOrder(Node* root) {
 }
 ```
 
-> [!info] **Use Case**
-> Level-order traversal is used for breadth-first search in trees.
-
 ---
 
 ## 5. Breadth-First Search (BFS)
 Breadth-First Search explores the tree level by level, starting at the root.
 
-> **Algorithm**:  
-> 1. Start from the root.
-> 2. Use a queue to traverse the tree level by level.
-> 3. Visit all nodes at the current depth before moving to the next level.
+**Example for the given tree:**
+- Start at root 1 → Visit 2, 3 → Visit 4, 5, 6, 7
+
+**BFS result:** `1, 2, 3, 4, 5, 6, 7`
+
+**Implementation**:
 
 ```cpp
 bool BFS(Node* root, int target) {
@@ -137,19 +164,18 @@ bool BFS(Node* root, int target) {
 }
 ```
 
-> [!example] **Use Case**
-> BFS is useful when searching for the shortest path in an unweighted tree or graph.
-
 ---
 
 ## 6. Depth-First Search (DFS)
 Depth-First Search explores the tree as deep as possible before backtracking.
 
-> **Algorithm**:  
-> 1. Start at the root and explore as far as possible along each branch before backtracking.
-> 2. Can be implemented recursively (in-order, pre-order, post-order) or iteratively using a stack.
+**DFS - Pre-order example for the given tree:**
+- Start at root 1 → Visit 2 → Visit 4 → Visit 5 → Visit 3 → Visit 6 → Visit 7
 
-### DFS - Recursive In-Order Example
+**DFS result (Pre-order):** `1, 2, 4, 5, 3, 6, 7`
+
+**Implementation**:
+
 ```cpp
 bool DFS(Node* root, int target) {
     if (root == nullptr) return false;
@@ -160,34 +186,21 @@ bool DFS(Node* root, int target) {
 }
 ```
 
-### DFS - Iterative Pre-Order Example
-```cpp
-bool iterativeDFS(Node* root, int target) {
-    if (root == nullptr) return false;
-    std::stack<Node*> s;
-    s.push(root);
-    
-    while (!s.empty()) {
-        Node* current = s.top();
-        s.pop();
-        if (current->data == target) return true;
-        
-        if (current->right != nullptr) s.push(current->right);
-        if (current->left != nullptr) s.push(current->left);
-    }
-    return false;
-}
-```
-
-> [!info] **Use Case**
-> DFS is useful when searching in depth-first scenarios, like pathfinding where deep paths are prioritized over breadth.
-
 ---
 
 ## Inserting Elements into an Empty Binary Search Tree
 
 When inserting elements into an empty BST:
 - Recursively place a node into the correct position, adhering to the BST property.
+
+**Example insertion sequence:**
+- To insert the sequence `1, 2, 3, 4, 5, 6, 7` into an empty BST:
+    - Start with `1` as root.
+    - Insert `2` to the right of `1` (since 2 > 1).
+    - Insert `3` to the right of `2` (since 3 > 2).
+    - Continue similarly for the rest.
+
+**Implementation**:
 
 ```cpp
 Node* insert(Node* root, int data) {
@@ -202,13 +215,6 @@ Node* insert(Node* root, int data) {
 }
 ```
 
-> [!example] **Example**
-> To insert the sequence `10, 5, 15, 3, 7, 12, 17` into an empty BST:
-> - Insert `10` as the root.
-> - Insert `5` to the left of `10`.
-> - Insert `15` to the right of `10`.
-> - Continue similarly for the rest.
-
 ---
 
 ## Summary
@@ -221,3 +227,4 @@ Traversals of a BST allow for different ways of visiting and processing nodes. U
 - **Level-order**: Breadth-first search (top-down level-wise traversal).
 - **BFS**: Searches the tree level by level.
 - **DFS**: Searches the tree as deeply as possible before backtracking.
+
