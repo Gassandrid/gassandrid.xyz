@@ -1,6 +1,6 @@
 // @ts-ignore
 // loosely based off of the darkmode component
-import styles from "./styles/cv.scss"
+import styles from "./styles/_cv.scss"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
