@@ -49,6 +49,7 @@ export const sharedPageComponents: SharedLayout = {
       GitHub: "https://github.com/gassandrid",
       Instagram: "https://instagram.com/ewan_pedersen",
       MonkeyType: "https://monkeytype.com/profile/Gassandrid",
+      LinkedIn: "https://linkedin.com/in/ewan-pedersen",
     },
   }),
 }
