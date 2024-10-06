@@ -20,7 +20,7 @@ const Cv: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
             viewBox="0 0 40 40"
             style="enable-background:new 0 0 40 40"
             xmlSpace="preserve"
-            transform="translate(7, 7)"
+            transform="translate(8, 7)"
           >
             <title>{i18n(cfg.locale).components.themeToggle.lightMode}</title>
             <path

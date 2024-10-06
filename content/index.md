@@ -1,8 +1,9 @@
 ---
 id: index
-aliases: []
-tags: []
-date: "2024-10-02"
+aliases: 
+tags: 
+date: 2024-10-02
+title: Home Page
 ---
 
 <div>
