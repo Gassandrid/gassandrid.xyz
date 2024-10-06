@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # De Morgan's Law in Statistics
 
 **De Morgan's Laws** are fundamental principles in set theory and probability theory that describe the relationship between the complement of unions and intersections of sets (or events, in the context of probability). They provide a way to simplify complex expressions involving complements, unions, and intersections.

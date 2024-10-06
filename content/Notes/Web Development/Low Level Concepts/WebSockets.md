@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # WebSockets
 
 WebSockets provide a full-duplex communication channel over a single TCP connection, allowing real-time interaction between a client and a server.

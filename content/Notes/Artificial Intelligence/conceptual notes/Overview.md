@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 ## Building a Neural Network: A Step-by-Step Overview
 
 ### 1. **Understanding Neural Networks**

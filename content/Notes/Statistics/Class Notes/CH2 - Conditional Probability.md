@@ -1,7 +1,8 @@
 ---
 id: CH2 - Conditional Probability
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 # CH2.3 - Conditional Probability and Independence

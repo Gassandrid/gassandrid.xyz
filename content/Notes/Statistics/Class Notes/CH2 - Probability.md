@@ -1,7 +1,8 @@
 ---
 id: CH2 - Probability
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 # Probability In statistics

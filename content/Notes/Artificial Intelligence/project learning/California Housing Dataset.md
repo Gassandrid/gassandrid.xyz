@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Analysis of my California Housing Dataset Neural Network
 
 This document serves as a reflection on the process and design choices for my neural network. The code uses **PyTorch** to build and train a regression model to predict housing prices based on the **California Housing dataset**. Here’s a deeper analysis of its components:

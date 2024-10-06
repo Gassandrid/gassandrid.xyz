@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Neural Network Modeling Workflow
 
 ## 1. Problem Definition

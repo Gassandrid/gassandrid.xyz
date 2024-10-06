@@ -1,7 +1,8 @@
 ---
 id: Telescopes
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 # Telescopes in Astronomy

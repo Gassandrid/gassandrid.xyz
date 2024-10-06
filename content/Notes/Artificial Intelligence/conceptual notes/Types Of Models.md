@@ -1,7 +1,8 @@
 ---
 id: Types Of Models
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 ## Overview of AI/ML Model Types

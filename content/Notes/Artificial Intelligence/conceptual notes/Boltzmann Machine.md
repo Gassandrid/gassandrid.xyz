@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Boltzmann Machine Neural Network
 
 ![[Pasted image 20240924102913.png]]

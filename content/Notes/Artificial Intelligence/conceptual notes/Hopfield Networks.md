@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Hopfield Networks
 
 ## Overview

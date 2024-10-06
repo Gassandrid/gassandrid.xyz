@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Latent Variables in Generative Machine Learning
 
 Latent variables are variables that are not directly observed but are inferred from other observable variables in the model. They play a crucial role in generative models, where the goal is to generate data from a learned distribution.

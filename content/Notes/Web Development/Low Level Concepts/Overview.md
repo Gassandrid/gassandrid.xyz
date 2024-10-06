@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Internet-Related Programming Overview
 
 This overview provides a summary of various protocols and methods used in internet-related programming. Each method is detailed in separate notes linked below.

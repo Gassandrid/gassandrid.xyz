@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Event in Statistics
 
 An **event** in statistics refers to a specific outcome or a set of outcomes from a random experiment or process. Events are the basic objects of study in probability theory, and they can range from simple occurrences, like rolling a specific number on a die, to more complex combinations of outcomes.

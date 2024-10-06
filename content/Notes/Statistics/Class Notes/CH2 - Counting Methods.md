@@ -1,7 +1,8 @@
 ---
 id: CH2 - Counting Methods
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 # CH2.2 - Counting Methods

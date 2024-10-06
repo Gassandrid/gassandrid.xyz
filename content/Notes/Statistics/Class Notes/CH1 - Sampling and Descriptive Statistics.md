@@ -5,6 +5,7 @@ tags:
   - sampling
   - data
   - latex
+date: 2024-09-12
 ---
 # CH1 - Sampling and Descriptive Statistics
 

@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # TI-84 Plus CE: 1-Var Stats Breakdown
 
 The "1-Var Stats" function on the TI-84 Plus CE provides a summary of key statistics for a single variable data set. Here's what each component of the output means:

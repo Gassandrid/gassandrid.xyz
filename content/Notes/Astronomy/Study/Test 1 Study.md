@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 This exam will cover chapters1,2, and 5.  
 
 ### Key Concepts:  

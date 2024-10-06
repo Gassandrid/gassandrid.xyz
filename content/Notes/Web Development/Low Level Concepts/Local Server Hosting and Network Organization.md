@@ -1,7 +1,8 @@
 ---
 id: Local Server Hosting and Network Organization
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 ## Local Server Hosting

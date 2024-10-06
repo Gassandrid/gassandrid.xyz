@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Batch Normalization
 
 ![[Screenshot 2024-09-17 at 10.22.04 AM.png]]

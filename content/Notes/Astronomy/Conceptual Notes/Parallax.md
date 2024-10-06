@@ -1,7 +1,8 @@
 ---
 id: Parallax
-aliases: []
-tags: []
+aliases: 
+tags: 
+date: 2024-09-12
 ---
 
 # Parallax in Astronomy

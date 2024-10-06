@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 
 > [!info] **Instructions:**
 > Complete the following exercises and enter your answers into Blackboard. Hardcopy answers will not be accepted.

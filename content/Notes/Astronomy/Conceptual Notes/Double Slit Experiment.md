@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 ![[Pasted image 20240903105449.png]]
 # The Oddities of Light
 

@@ -1,10 +1,11 @@
 ---
 id: CH2 - Sampling Statistics Continued
-aliases: []
+aliases: 
 tags:
   - latex
   - standardDev
   - python
+date: 2024-09-12
 ---
 
 > How do we find the standard deviation of a sample?

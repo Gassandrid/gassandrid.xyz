@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Statistics Notes
 
 A collection of my class notes for STAT2430

@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 ![[Pasted image 20240808134117.png]]
 
 ## The Structure of a Neuron in Neural Networks

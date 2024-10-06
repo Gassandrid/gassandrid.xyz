@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Finding the Perfect Hidden Layer Structure for Neural Networks
 
 Designing the hidden layer structure for a neural network involves finding the right balance between model complexity and generalization. The goal is to develop a model that performs well on unseen data without overfitting to the training data. Several techniques can help optimize hidden layer structures, including cross-validation and hyperparameter tuning.

@@ -1,3 +1,6 @@
+---
+date: 2024-09-12
+---
 # Notable Resources for learning concepts of Artificial intelligence
 
 Here is a compiled list of some online resources that can be used to learn the basics of AI for free. Most of these are video playlists, but some of these sources are reading materials.
