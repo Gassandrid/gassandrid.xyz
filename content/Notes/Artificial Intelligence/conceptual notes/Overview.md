@@ -22,7 +22,7 @@ date: 2024-09-12
     - Common types: Sigmoid, ReLU, Tanh, Softmax, etc.
 - **Learning Process**
     - How neurons learn (weight adjustments)
-    - Gradient descent and backpropagation (coming soon)
+    - [[Gradient descent]] and backpropagation (coming soon)
 
 ### 3. **Designing the Architecture**
 
