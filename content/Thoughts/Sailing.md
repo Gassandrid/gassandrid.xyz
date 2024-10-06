@@ -1,3 +1,8 @@
+---
+tags:
+  - hobbies
+date: 2024-10-05
+---
 
 As someone who lives in the Bay Area( at least when I'm not in University), I have had the opportunity to grow up around the ocean for all my life. And in addition to that, my family has had the pleasure of owning a [Catalina 320](https://en.wikipedia.org/wiki/Catalina_320) sailing Yacht, for which I have practically grown up sailing.
 
