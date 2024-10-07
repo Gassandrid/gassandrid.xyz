@@ -1,4 +1,6 @@
-## TNB Frame (Tangent, Normal, Binormal Frame)
+---
+date: 2024-09-20
+---
 
 The TNB frame, also known as the **Frenet-Serret frame**, is a coordinate system associated with a point on a space curve. It consists of three mutually perpendicular vectors:
 1. **Tangent vector (T)**
@@ -6,6 +8,8 @@ The TNB frame, also known as the **Frenet-Serret frame**, is a coordinate system
 3. **Binormal vector (B)**
 
 This frame moves along the curve, providing insight into the curve’s geometry in 3D space.
+
+---
 
 ### 1. **Tangent Vector  $\mathbf{T}$ **
 

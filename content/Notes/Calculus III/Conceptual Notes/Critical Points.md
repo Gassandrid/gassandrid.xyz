@@ -1,4 +1,6 @@
-# Critical Points in Calculus 3
+---
+date: 2024-09-27
+---
 
 > [!info] **Overview**  
 Critical points occur where the gradient of a function is zero or undefined. They help identify maxima, minima, and saddle points in multivariable functions.
