@@ -110,3 +110,46 @@ solving by parts
 
 $$$$
 
+## double integral problem
+
+$$\int_{0}^1 \int_{\arcsin y}^{\frac{\pi}{2}} \cos x \sqrt{ 16+\cos^2x } \ dx \ dy$$
+set arcsiny = x
+set pi/2 = x
+
+$$x = \arcsin y \rightarrow \sin x = y$$
+
+ setting up the integral again with this information
+
+$$\int \int_{0}^{\sin x} \cos x \sqrt{ 16+\cos^2 x } \ dy \ dx$$
+
+integrate with respect to y:
+no y's so we just add one y at the begginging
+
+$$\left. y\cos x\sqrt{ 16+\cos^2 x } \right|_{0=y}^{\sin x=y}$$
+y is replaced by sin x for the integration limits
+
+$$\sin x\cos x\sqrt{ 16+\cos^2 }$$
+
+$$\int _{0}^{\frac{\pi}{2}} \sin x \cos x\sqrt{ 16+\cos^2x } \ dx$$
+
+$$u = 16+\cos^2x$$
+$$du = -2\sin x\cos x \ dx$$
+
+$$-\frac{1}{2} du = \sin x\cos x \ dx$$
+
+$$- \int_{0}^1 u \sqrt{ 16+u^2 } \ du$$
+
+trig sub
+
+$$u = 4\tan \theta$$
+
+$$du = 4\sec^2 \theta \ d\theta$$
+
+$$\int 4 \tan \theta \cdot \sqrt{ 16+16\tan^2 \theta \cdot 4\sec^2\theta }  \ d \theta$$
+$$64 \int \tan \theta \cdot \sec^3 \theta \ d\theta$$
+
+$$\int \tan \theta \cdot (\tan^2 \theta + 1 ) \ \sec \theta$$
+$$64 \int \tan \theta \cdot \sec \theta \cdot \sec^2 \theta \ d \theta$$
+$$v = \sec \theta, \ \ \ 64 \int v^2 dv = \frac{64v^3}{3}$$
+
+
