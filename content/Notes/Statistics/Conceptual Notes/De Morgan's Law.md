@@ -1,5 +1,7 @@
 ---
 date: 2024-09-12
+tags:
+  - statistics
 ---
 # De Morgan's Law in Statistics
 

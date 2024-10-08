@@ -5,6 +5,7 @@ tags:
   - chart
   - boxplot
   - python
+  - statistics
 date: 2024-09-12
 ---
 # CH 1 Continued - Categorical Variables in Statistics

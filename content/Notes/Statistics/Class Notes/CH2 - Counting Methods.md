@@ -1,7 +1,8 @@
 ---
 id: CH2 - Counting Methods
 aliases: 
-tags: 
+tags:
+  - statistics
 date: 2024-09-12
 ---
 

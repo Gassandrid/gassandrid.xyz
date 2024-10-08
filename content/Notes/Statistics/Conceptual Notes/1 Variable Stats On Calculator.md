@@ -1,5 +1,7 @@
 ---
 date: 2024-09-12
+tags:
+  - statistics
 ---
 # TI-84 Plus CE: 1-Var Stats Breakdown
 

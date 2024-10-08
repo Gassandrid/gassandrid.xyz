@@ -1,7 +1,8 @@
 ---
 id: Population
 aliases: 
-tags: 
+tags:
+  - statistics
 date: 2024-09-12
 ---
 

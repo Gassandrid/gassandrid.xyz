@@ -1,7 +1,8 @@
 ---
 id: CH2 - Probability
 aliases: 
-tags: 
+tags:
+  - statistics
 date: 2024-09-12
 ---
 

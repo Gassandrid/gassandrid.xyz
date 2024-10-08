@@ -1,7 +1,8 @@
 ---
 id: CH4 - Binomial Distribution
 aliases: 
-tags: 
+tags:
+  - statistics
 date: 2024-09-12
 ---
 

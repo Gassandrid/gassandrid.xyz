@@ -5,6 +5,7 @@ tags:
   - latex
   - standardDev
   - python
+  - statistics
 date: 2024-09-12
 ---
 
