@@ -26,23 +26,23 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    Component.Comments({
-      provider: "giscus",
-      options: {
-        // from data-repo
-        repo: "fanteastick/quartz-test",
-        // from data-repo-id
-        repoId: "R_kgDOMVIwGw",
-        // from data-category
-        category: "Announcements",
-        // from data-category-id
-        categoryId: "DIC_kwDOMVIwG84Cguqi",
-        mapping: "specific",
-        strict: false,
-        reactionsEnabled: false,
-        inputPosition: "top",
-      },
-    }),
+    // Component.Comments({
+    //   provider: "giscus",
+    //   options: {
+    //     // from data-repo
+    //     repo: "fanteastick/quartz-test",
+    //     // from data-repo-id
+    //     repoId: "R_kgDOMVIwGw",
+    //     // from data-category
+    //     category: "Announcements",
+    //     // from data-category-id
+    //     categoryId: "DIC_kwDOMVIwG84Cguqi",
+    //     mapping: "specific",
+    //     strict: false,
+    //     reactionsEnabled: false,
+    //     inputPosition: "top",
+    //   },
+    // }),
   ],
   footer: Component.Footer({
     links: {
