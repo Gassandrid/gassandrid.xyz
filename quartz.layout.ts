@@ -13,7 +13,7 @@ const giscusConfig = {
     category: "Announcements",
     // from data-category-id
     categoryId: "DIC_kwDOM6tvbc4CjBtr",
-    mapping: "mathname",
+    mapping: "pathname",
     strict: false,
     reactionsEnabled: true,
     inputPosition: "top",
