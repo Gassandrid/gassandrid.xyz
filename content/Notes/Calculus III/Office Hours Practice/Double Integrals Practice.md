@@ -153,3 +153,18 @@ $$64 \int \tan \theta \cdot \sec \theta \cdot \sec^2 \theta \ d \theta$$
 $$v = \sec \theta, \ \ \ 64 \int v^2 dv = \frac{64v^3}{3}$$
 
 
+## anotha one
+
+$$\int \int_{R} ye ^ { -xy} \ dA \ , \ \ \ R = [0,2] \times [ 0,3]$$
+
+$$\int_{0}^3 \int_{0}^2  ye ^{-xy} dx dy$$
+
+$$\int _{0}^2 ye ^ {-xy} dx = \int - e^u du$$
+$$u = -xy \ \ \ \ du = -ydx$$
+
+$$= \left. -e^u \right|_{0}^{-2y}$$
+
+$$3 - \int_{0}^3 e^{-2y} dy$$
+
+$$u = -2y$$
+$$du = -2dy$$

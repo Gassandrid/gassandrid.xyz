@@ -1,3 +1,8 @@
+---
+tags:
+  - math
+date: 2024-09-04
+---
 ## How do you "add" two vectors together?
 
 ![[Pasted image 20240826123538.png]]
