@@ -15,3 +15,5 @@ In other words, in the great vastness that is the Universe, there is no grand me
 ## Isn't that what existentialism is all about?
 
 Absurdism and existentialism both explore the human quest for meaning in a seemingly indifferent universe, but they diverge in their conclusions. Existentialism, particularly in the works of philosophers like Jean-Paul Sartre, emphasizes that individuals must create their own meaning and values through personal choice and action, despite the lack of inherent meaning in the universe. Absurdism, as articulated by Albert Camus, suggests that while humans naturally seek meaning, the universe offers none, leading to an inherent conflict or absurdity. Instead of resolving this tension by creating meaning (as existentialists suggest), absurdism advocates for embracing the absurd and continuing to live without resolving the contradiction.
+
+---
