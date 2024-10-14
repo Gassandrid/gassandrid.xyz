@@ -31,7 +31,7 @@ $$
 $$
 
 where:
-- \( x^{(i)} \) is the input for the i-th neuron in the layer.
+- $x^{(i)}$ is the input for the $i_{th}$ neuron in the layer.
 - \( \mu_B \) is the mean of the mini-batch.
 - \( \sigma_B^2 \) is the variance of the mini-batch.
 - \( \epsilon \) is a small constant added for numerical stability.

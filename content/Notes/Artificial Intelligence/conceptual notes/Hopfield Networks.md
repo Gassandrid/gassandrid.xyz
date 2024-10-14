@@ -19,7 +19,7 @@ A Hopfield Network is a type of recurrent artificial neural network that serves 
 
   $$E = -\frac{1}{2} \sum_{i \neq j} w_{ij} s_i s_j$$
   
-  where \( w_{ij} \) is the weight between neurons \( i \) and \( j \), and \( s_i \) and \( s_j \) are the states of the respective neurons.
+  where $w_{ij}$ is the weight between neurons $i$ and $j$, and $s_i$ and $s_j$ are the states of the respective neurons.
 
 ### Stability and Convergence
 - The network converges to a stable state (local minimum of the energy function) after a number of iterations. Once in a stable state, the network remains there, which corresponds to a stored memory.
