@@ -166,3 +166,26 @@ audio::-webkit-media-controls-panel {
   justify-content: center;
   align-items: center;
 }
+
+.python-runnable {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.run-python {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.python-output {
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  padding: 0.5em;
+  white-space: pre-wrap;
+  display: none;
+}

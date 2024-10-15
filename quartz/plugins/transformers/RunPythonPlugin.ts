@@ -60,6 +60,33 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
   },
   setupHooks: {
     async afterDOMLoaded(ctx) {
+      // Inject CSS
+      const style = document.createElement("style")
+      style.textContent = `
+        .python-runnable {
+          position: relative;
+          margin-bottom: 1em;
+        }
+        .run-python {
+          position: absolute;
+          bottom: 0.5em;
+          right: 0.5em;
+          background: none;
+          border: none;
+          font-size: 1.2em;
+          cursor: pointer;
+        }
+        .python-output {
+          background-color: #f0f0f0;
+          border-top: 1px solid #ccc;
+          padding: 0.5em;
+          white-space: pre-wrap;
+          display: none;
+        }
+      `
+      document.head.appendChild(style)
+
+      // Inject JS
       const script = document.createElement("script")
       script.textContent = `
         let pyodide;
@@ -108,6 +135,14 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         });
       `
       document.body.appendChild(script)
+
+      // Load external Pyodide script
+      const externalScript = document.createElement("script")
+      externalScript.src = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
+      externalScript.onload = () => {
+        console.log("Pyodide script loaded.")
+      }
+      document.body.appendChild(externalScript)
     },
   },
 })
