@@ -12,8 +12,8 @@ Mostly from college classes, but I do a lot of independent study for things like
 
 ### Calculus 3
 
-You can check out #math for most of the notes, a more thought out organizer is coming!
+You can check out <a href="tags/math">#math</a> for most of the notes, a more thought out organizer is coming!
 
 ### Statistics for Engineering
 
-Like Calc 3, you can go to #statistics , but I also made an [[Statistics Index|organizer]]
+Like Calc 3, you can go to <a href="tags/statistics">#statistics</a>, but I also made an [[Statistics Index|organizer]]
