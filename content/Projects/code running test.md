@@ -8,10 +8,6 @@ print("hello world")
 matplotlib test
 
 ```python
-import micropip
-await micropip.install("matplotlib")
-await micropip.install("numpy")
-
 import matplotlib.pyplot as plt
 import numpy as np
 
