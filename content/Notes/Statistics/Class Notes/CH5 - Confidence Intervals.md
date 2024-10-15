@@ -8,6 +8,16 @@ For confidence intervals and the like, we need to start with a **Research Questi
 
 Taking a sample and find the sample statistic, What to estimate about the population grown, conduct a [[Hypothesis Test]]Proportions
 
+## 5.1 - Point Estimates and Confidence Intervals
+
+Point estimates are single values that are used to estimate population parameters. They are calculated from sample data and are used to estimate the true population parameter.
+
+### Point Estimates
+
+We can find point estimates for population parameters using sample data. For example, we can use the sample mean to estimate the population mean or the sample proportion to estimate the population proportion.
+
+---
+
 ## 5.2 - Confidence Intervals for Proportions
 
 > [!Warning] Note
@@ -82,3 +92,19 @@ $$ \hat{p} \pm z \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} $$
 Where $z$ is the critical value for the desired confidence level.
 
 Let's take a sample ($n =$) and get a sample proportion ($\hat{p} =$), and then construct a 95% CI.
+
+**For 95%**
+
+$$C = 95\% \rightarrow \frac{\alpha}{2} = 0.025 \ rightarrow z_{.025} = | invNorm(0.025) | = 1.96$$
+
+**For 90%**
+
+$$C = 90\% \rightarrow \frac{\alpha}{2} = 0.05 \ rightarrow z_{.05} = | invNorm(0.05) | = 1.645$$
+
+**For 80%**
+
+$$C = 80\% \rightarrow \frac{\alpha}{2} = 0.10 \ rightarrow z_{.10} = | invNorm(0.10) | = 1.282$$
+
+> [!Note] Something to notice
+> As the confidence level increases, the margin of error increases as well, meaning our precision decreases.
+
