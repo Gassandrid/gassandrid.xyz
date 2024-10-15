@@ -159,3 +159,10 @@ audio::-webkit-media-controls-panel {
     justify-content: flex-end;
   }
 }
+
+// center math bocks in the middle of the page
+.katex .math {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
