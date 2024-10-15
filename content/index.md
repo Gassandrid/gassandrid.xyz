@@ -123,10 +123,17 @@ Currently invested in learning Golang, not just as a language but as a Web Frame
 A model replica of TARS from interstellar, built for the purpose of mapping natural human language to discrete functional output through the use of LLM's and microcontrollers.
 ## About me ⛵️
 
-Outside of Computer Science, my main interests are [[Sailing]], [[Health|Health/Fitness]], and [[Woodwork]]
+Outside of Computer Science, my main interests are [[Sailing]], [[Health|Health/Fitness]], and [[Woodwork]]/Engineering
 
-Recently, I have picked up a habit of [[Touch Typing]], and have quickly become addicted [MonkeyType](https://monkeytype.com/profile/Gassandrid), and in the span of about 6 months, have gone from not being able to type with more than 2 fingers to **180**wpm on some of the tests! This is not to say that I am gifted at typing, only that I am addicted to it in this way, which should be clear given how much time I've spent on it!
+Recently have picked up a habit of [[Touch Typing]], and have quickly become addicted [MonkeyType](https://monkeytype.com/profile/Gassandrid), currently at 181 words per minute!
 
+While I have spent most my life in the United States, I am actually a tri-citizen! I am [[South Africa|South African]], American, and British!
+
+I love building and tinkering! While doing some construction work, I found a interest and skill in building my own things and projects!
+
+>[!Info] Photo
+> ![[IMG_1992 1.jpg|350]]
+> *me having a little too much fun mixing cement!*
 ## About this garden 🪴
 
 This is my version of what is called a [[Digital Garden]]( and yes, every digital garden mentions what a digital garden is)
