@@ -92,5 +92,4 @@ $$ P(X = k) = \binom{k + r - 1}{k} p^r (1 - p)^k $$
 > [!question]
 > How many trials are needed to achieve $k$ successes in a binomial distribution with probability $p$?
 
-TODO
 
