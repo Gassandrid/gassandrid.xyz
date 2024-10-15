@@ -110,7 +110,9 @@ title: Home Page
 
 I am a second year student at the [[University Of Vermont]] studying computer science and robotics. I have a big passion and desire to specialize in [[Artificial Intelligence]] and [[Mathematics]], but I also take part in a wide variety of other Computer Science fields.
 
-## Happenings 🏡
+## Thoughts 🏡
+
+To hell with specialization! You can have a focus on being good at one thing, but I guarentee you will be happier enjoying all your varied interests/skills.
 
 Getting back into simple woodwork again! I love woodwork, but at University there is never much time for me to get really invested in a project. But finding time to work on a medium stick with my Leatherman has been very enjoyable for the last 2 weeks.
 
