@@ -17,6 +17,10 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
                 <button class="run-python" data-target="${id}">▶️</button>
                 <div class="python-output" id="${id}-output"></div>
               </div>
+              // due to quartz style, i will just move the script here, and let the css be handled outside of the document
+              // importing the pyodide script here will cause the script to be loaded multiple
+              
+              
             `
           }
         })
@@ -32,30 +36,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
           contentType: "external",
         },
       ],
-      css: [
-        `
-        .python-runnable {
-          position: relative;
-          margin-bottom: 1em;
-        }
-        .run-python {
-          position: absolute;
-          bottom: 0.5em;
-          right: 0.5em;
-          background: none;
-          border: none;
-          font-size: 1.2em;
-          cursor: pointer;
-        }
-        .python-output {
-          background-color: #f0f0f0;
-          border-top: 1px solid #ccc;
-          padding: 0.5em;
-          white-space: pre-wrap;
-          display: none;
-        }
-        `,
-      ],
+      css: [],
     }
   },
   setupHooks: {
@@ -86,7 +67,6 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       `
       document.head.appendChild(style)
 
-      // Inject JS
       const script = document.createElement("script")
       script.textContent = `
         let pyodide;
