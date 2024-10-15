@@ -168,26 +168,3 @@ audio::-webkit-media-controls-panel {
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-.python-runnable {
-  position: relative;
-  margin-bottom: 1em;
-}
-
-.run-python {
-  position: absolute;
-  bottom: 0.5em;
-  right: 0.5em;
-  background: none;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.python-output {
-  background-color: #f0f0f0;
-  border-top: 1px solid #ccc;
-  padding: 0.5em;
-  white-space: pre-wrap;
-  display: none;
-}

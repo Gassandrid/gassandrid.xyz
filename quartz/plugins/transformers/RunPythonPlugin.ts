@@ -18,7 +18,6 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
                 <div class="python-output" id="${id}-output"></div>
               </div>
               <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
-              //pyodide setup
               <script>
                       let pyodide;
 
