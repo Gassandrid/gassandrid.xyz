@@ -162,9 +162,4 @@ audio::-webkit-media-controls-panel {
 
 .katex {
   padding: 0.5em;
-  border-radius: 0.5em;
-  // add a gray background to the math blocks and a lighter gray outline,
-  // but make it transparent so other colors can add to it
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
