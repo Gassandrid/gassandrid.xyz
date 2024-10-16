@@ -9,17 +9,20 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       () => (tree: Root, _file) => {
         visit(tree, "code", (node) => {
           if (node.lang === "python") {
-            // copy the node into newNode
+            // get the old type
+            let oldType = node.type
             let newNode = JSON.parse(JSON.stringify(node))
             const id = `python-${Math.random().toString(36).substr(2, 9)}`
-            newNode.type = "html" as "code"
-            newNode.value = `
+            node.type = "html" as "code"
+            node.value = `
               <div class="python-runnable">
-                <pre><code id="${id}">${newNode.value}</code></pre>
+                <pre><code id="${id}">${node.value}</code></pre>
                 <button class="run-python" data-target="${id}">:arrow_forward:</button>
                 <div class="python-output" id="${id}-output"></div>
               </div>
             `
+            // set tupe back to original
+            node.type = oldType
           }
         })
       },
