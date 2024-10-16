@@ -147,3 +147,25 @@ $$(x-2)^2 + y^2 =4 \ \ \ r = 4\cos \theta$$
 
 $r = 4\cos \theta$
 
+
+$$I_{1}: \ \ \int r^2 \cos \theta \ dr$$
+$$ \left. \frac{r^3}{3}\cos \theta \right|_{4\cos \theta}^4$$
+
+$$\frac{64}{3}\cos \theta - \frac{64}{3}\cos^4 \theta$$
+
+$$$\frac{64}{3}\int_{0}^ \frac{\pi}{2} \cos \theta - \cos^4 \theta \ d\theta$$
+
+$$\frac{64}{3} \int _{0}^ \frac{\pi}{2} \cos \theta - \frac{64}{3}\int_{0}^ \frac{\pi}{2} \cos^4 \theta \ d\theta$$
+
+now we just simplify mechanically
+
+$$\int_{o}^ \frac{\pi}{2} \left( \frac{1-\cos 2\theta}{2} \right)^2 d\theta$$
+
+$$\int_{0}^ \frac{\pi}{2} \frac{1}{4} ( 1-2\cos 2 \theta + \cos^2(2\theta))d\theta$$
+
+$$ \frac{1}{2} \int_{0}^ \frac{\pi}{2} 1+2\cos(2\theta)+\left( \frac{1+cos (4\theta)}{2} \right)d\theta$$
+
+$$\frac{1}{4} \int_{0}^ \frac{\pi}{2} \frac{3}{2} + 2\cos(2\theta)+\frac{\cos(4\theta)}{2} d\theta$$
+
+$$\frac{1}{4 } \left(  \frac{3}{2}\theta + \sin (2\theta)+ \frac{\sin(4\theta)}{8} \right) d\theta$$
+
