@@ -11,7 +11,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
           if (node.lang === "python" && parent?.children) {
             const id = `python-${Math.random().toString(36).substr(2, 9)}`
 
-            // Create the HTML node that will go below the code block
+            // new html block
             const htmlNode: Content = {
               type: "html",
               value: `
@@ -22,14 +22,14 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
               `,
             }
 
-            // Ensure the original code block has an ID for targeting
+            // ensure has id
             node.data = {
               hProperties: {
                 id: id,
               },
             }
 
-            // Insert the HTML node after the code block
+            // appending the new html
             parent.children.splice(index + 1, 0, htmlNode)
           }
         })
