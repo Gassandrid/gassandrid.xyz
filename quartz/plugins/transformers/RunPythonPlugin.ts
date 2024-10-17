@@ -134,6 +134,10 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
               `,
             }
 
+
+            // debugging why the string literals are encoding " into &quot;
+            console.log(node.value);
+
             node.data = {
               hProperties: {
                 id: id,
