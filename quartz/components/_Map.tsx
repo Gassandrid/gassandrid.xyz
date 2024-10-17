@@ -8,7 +8,7 @@ import { classNames } from "../util/lang"
 const Map: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
   return (
     <div class={classNames(displayClass, "map")}>
-      <a href="./Map" class="toggle" tabIndex={-1}>
+      <a href="./map" class="toggle" tabIndex={-1}>
         <label for="darkmode-toggle" tabIndex={-1}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
