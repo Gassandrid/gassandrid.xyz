@@ -106,7 +106,9 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
 
                       // display the plot
                       let plotElement = document.getElementById('${id}-plot');
-                      plotElement.innerHTML = '<img src="data:image/png;base64,' + plotData + '" />';
+                      const imgElement = document.createElement('img');
+                      imgElement.src = 'data:image/png;base64,' + plotData;
+                      plotElement.appendChild(imgElement);
       
                       // check the python file for a matplotlib import, if not there hide the output graph
                       if (!code.includes('import matplotlib.pyplot as plt')) {
