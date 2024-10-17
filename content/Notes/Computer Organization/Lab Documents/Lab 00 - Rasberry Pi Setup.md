@@ -1,4 +1,8 @@
-# Q1 Lab 00 - Installing Raspberry Pi OS
+---
+date: 2024-09-11
+tags:
+  - embedded
+---
 
 > [!abstract] Student Information
 > Ewan Pedersen

@@ -1,4 +1,8 @@
-# Q1 Lab 02 - Building a Web Server
+---
+date: 2024-09-25
+tags:
+  - embedded
+---
 
 > [!abstract] Student Information
 > Ewan Pedersen

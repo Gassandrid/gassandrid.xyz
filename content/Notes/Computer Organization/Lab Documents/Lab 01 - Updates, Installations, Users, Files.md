@@ -1,4 +1,8 @@
-# Q1 Lab 01 - Updates | Installations | Users | Files
+---
+date: 2024-09-18
+tags:
+  - embedded
+---
 
 > [!abstract] Student Information
 > Ewan Pedersen

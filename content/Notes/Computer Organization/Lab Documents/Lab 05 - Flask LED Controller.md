@@ -3,8 +3,8 @@ date: 2024-10-17
 tags:
   - python
   - embedded
+  - web
 ---
-# Q1 Lab 02 - Building a Web Server
 
 > [!abstract] Student Information
 > Ewan Pedersen
