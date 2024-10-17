@@ -163,3 +163,18 @@ audio::-webkit-media-controls-panel {
 .katex {
   padding: 0.5em;
 }
+
+// darkmode / lightmode for python output class
+[saved-theme="dark"] .python-output {
+  background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark);
+}
+
+[saved-theme="light"] .python-output {
+  background-color: var(--shiki-light-bg);
+  color: var(--shiki-light);
+}
+
+.python-output {
+  border-radius: 5px;
+}

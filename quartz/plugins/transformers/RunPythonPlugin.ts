@@ -45,6 +45,17 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       height: 16px;
       vertical-align: middle;
     }
+    .python-output {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgba(128, 128, 128, 0.5); /* grey and mostly transparent */
+      border: 2px solid rgba(64, 64, 64, 0.8); /* darker gray and less transparent border */
+      border-radius: 10px; /* rounded corners */
+    }
+    .python-output.visible {
+      display: block; /* make visible after running */
+    }
   </style>
   <div class="python-runnable">
     <pre><code id="${id}" style="display: none;">${node.value}</code></pre>
@@ -56,8 +67,10 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       </span>
       <span class="spinner"></span>
     </button>
-    <div class="python-output" id="${id}-output"></div>
-    <div class="python-plot" id="${id}-plot"></div>
+    <div class="python-output" id="${id}-output">
+      <div class="python-text" id="${id}-text"></div>
+      <div class="python-plot" id="${id}-plot"></div>
+    </div>
   </div>
   <script>
     (function() {
@@ -70,6 +83,11 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
               const pyodide = await loadPyodide();
               console.log('Pyodide loaded successfully');
               await pyodide.loadPackage('matplotlib');
+              await pyodide.loadPackage('numpy');
+              await pyodide.loadPackage('pandas');
+              await pyodide.loadPackage('scipy');
+              await pyodide.loadPackage('sympy');
+              await pyodide.loadPackage('scikit-learn');
               return pyodide;
             } catch (error) {
               console.error('Error loading Pyodide:', error);
@@ -100,7 +118,12 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
           await pyodide.loadPackagesFromImports(code);
           await pyodide.runPythonAsync(code);
           let output = pyodide.runPython('sys.stdout.getvalue()');
-          document.getElementById('${id}-output').innerHTML = output;
+          const outputElement = document.getElementById('${id}-text');
+          outputElement.innerHTML = output;
+          outputElement.classList.add('visible');
+          // make output wrapper visible
+          const outputWrapper = document.getElementById('${id}-output');
+          outputWrapper.style.display = 'block';
 
           let plotData = pyodide.runPython(\`
             import io
@@ -124,7 +147,9 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
 
         } catch (error) {
           console.error('Error running Python code:', error);
-          document.getElementById('${id}-output').innerHTML = 'Error: ' + error.message;
+          const outputElement = document.getElementById('${id}-output');
+          outputElement.innerHTML = 'Error: ' + error.message;
+          outputElement.classList.add('visible');
         } finally {
           playIcon.style.display = 'inline';
           spinner.style.display = 'none';
