@@ -41,7 +41,6 @@ export function getStaticResourcesFromPlugins(ctx: BuildCtx) {
 export * from "./transformers"
 export * from "./filters"
 export * from "./emitters"
-export * from "./transformers/RunPythonPlugin"
 
 declare module "vfile" {
   // inserted in processors.ts
