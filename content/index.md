@@ -106,7 +106,6 @@ title: Home Page
 >
 </div>
 
-![[Daft Punk - Veridis Quo.mp3]]
 
 # Hello! My name is Ewan
 
@@ -119,6 +118,10 @@ To hell with specialization! You can have a focus on being good at one thing, bu
 Getting back into simple woodwork again! I love woodwork, but at University there is never much time for me to get really invested in a project. But finding time to work on a medium stick with my Leatherman has been very enjoyable for the last 2 weeks.
 
 Currently invested in learning Golang, not just as a language but as a Web Framework when used with HTMX. Seems like a lot simpler of a way to do web development, great for someone like me who doesn't have many skills with frontend stuff.
+
+*give this song a listen to!*
+
+![[Daft Punk - Veridis Quo.mp3]]
 
 ## Current Projects 💾
 
