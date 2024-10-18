@@ -178,3 +178,60 @@ audio::-webkit-media-controls-panel {
 .python-output {
   border-radius: 5px;
 }
+
+audio {
+  width: 100%;
+  outline: none;
+}
+
+/* Webkit (Chrome, Safari) styles */
+audio::-webkit-media-controls-panel {
+  background-color: var(--bg-color);
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: var(--text-color);
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover,
+audio::-webkit-media-controls-mute-button:hover {
+  background-color: var(--secondary-color);
+}
+
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-timeline {
+  background-color: var(--slider-bg);
+  border-radius: 5px;
+  height: 4px;
+}
+
+audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb,
+audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+}
+
+/* Firefox styles */
+audio::-moz-range-track {
+  background-color: var(--slider-bg);
+  border-radius: 5px;
+  height: 4px;
+}
+
+audio::-moz-range-thumb {
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
