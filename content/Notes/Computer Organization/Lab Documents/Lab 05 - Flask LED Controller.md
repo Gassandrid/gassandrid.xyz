@@ -37,6 +37,8 @@ tags:
 >[!Info] Screenshot
 > ![[Screenshot 2024-10-17 at 3.53.04 PM.png]]
 
---
+---
 
 **PS**: I highly recommend you check out my [website](https://gassandrid.xyz/Notes/Computer-Organization/Lab-Documents/) for these documents, as compiling markdown to pdf often ends up with images spanning multiple pages in a really ugly way!
+
+> [!Info] ### Test

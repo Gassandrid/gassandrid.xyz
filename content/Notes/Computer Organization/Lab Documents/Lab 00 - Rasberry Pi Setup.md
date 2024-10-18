@@ -159,3 +159,14 @@ This was me connecting to my Rasberry Pi 5, but I did the same thing for the Pi 
 [^3]: https://www.geeksforgeeks.org/unix-file-system/
 [^4]: https://www.techtarget.com/searchwindowsserver/definition/NTFS#:~:text=NTFS%2C%20which%20stands%20for%20NT,%2Dstate%20drives%20(SSDs).
 [^5]: https://en.wikipedia.org/wiki/Disk_partitioning
+
+```mermaid
+graph TD
+    F --> I
+    F --> R
+    I --> E
+    I --> Y
+    R --> S
+
+	
+```
