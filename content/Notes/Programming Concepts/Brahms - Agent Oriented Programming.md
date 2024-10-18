@@ -1,7 +1,10 @@
 ---
 id: Brahms - Agent Oriented Programming
-aliases: []
-tags: []
+aliases: 
+tags:
+  - cs
+  - ai
+date: 2024-10-17
 ---
 
 > [!Note]
