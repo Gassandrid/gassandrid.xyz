@@ -15,7 +15,7 @@ tags:
 
 ## Picture of Constructed Circuit Board
 
->[!Info] Photo
+>[!Info]- Photo
 > ![[Screenshot 2024-10-10 at 7.17.05 PM.png]]
 
 ---
@@ -24,21 +24,19 @@ tags:
 
 `app.py`
 
->[!Info] Screenshot
+>[!Info]- Screenshot
 > ![[Screenshot 2024-10-17 at 3.51.57 PM.png]]
 
 `button.js`
 
->[!Info] Screenshot
+>[!Info]- Screenshot
 > ![[Screenshot 2024-10-17 at 3.52.30 PM.png]]
 
 `button.html`
 
->[!Info] Screenshot
+>[!Info]- Screenshot
 > ![[Screenshot 2024-10-17 at 3.53.04 PM.png]]
 
 ---
 
 **PS**: I highly recommend you check out my [website](https://gassandrid.xyz/Notes/Computer-Organization/Lab-Documents/) for these documents, as compiling markdown to pdf often ends up with images spanning multiple pages in a really ugly way!
-
-> [!Info] ### Test

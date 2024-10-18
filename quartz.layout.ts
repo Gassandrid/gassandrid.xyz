@@ -24,7 +24,7 @@ const giscusConfig = {
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [Component.LinksHeader()],
   afterBody: [
     // Component.Comments({
     //   provider: "giscus",

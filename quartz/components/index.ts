@@ -24,6 +24,7 @@ import Divider from "./Divider"
 import Map from "./_Map"
 import Row from "./_Row"
 import Cv from "./_Cv"
+import LinksHeader from "./LinksHeader"
 
 export {
   ArticleTitle,
@@ -52,4 +53,5 @@ export {
   Map,
   Row,
   Cv,
+  LinksHeader,
 }
