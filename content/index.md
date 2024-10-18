@@ -105,7 +105,9 @@ title: Home Page
 </svg
 >
 </div>
+
 ![[Daft Punk - Veridis Quo.mp3]]
+
 # Hello! My name is Ewan
 
 I am a second year student at the [[University Of Vermont]] studying computer science and robotics. I have a big passion and desire to specialize in [[Artificial Intelligence]] and [[Mathematics]], but I also take part in a wide variety of other Computer Science fields.

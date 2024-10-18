@@ -16,19 +16,3 @@ But because of this, I was lucky to grow up with a family that taught me these t
 
 But the reason I really like woodworking is the calming portion of the experience. There is nothing more stress relieving than going to sit outside in the park, pick up a stick, and spend an hour or two shaving away at it until you get something you are happy with. The process of making slow, methodical cuts is honestly more enjoyable than any result you come up with at the end, but a cool art piece is always a nice bonus!
 
-
-# tite
-**sdfsdf**
-- fsdfsdf
-- sdfsdf
-
-1. fsdf
-2. sdfsd
-	1. sdfsdf
-
-
-```python
-print("hello wrold")
-```
-
-
