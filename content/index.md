@@ -138,7 +138,7 @@ While I have spent most my life in the United States, I am actually a tri-citize
 
 I love building and tinkering! While doing some construction work, I found a interest and skill in building my own things and projects!
 
->[!Info] Photo
+>[!Info]- Photo
 > ![[IMG_1992 1.jpg|350]]
 > *me having a little too much fun mixing cement!*
 
