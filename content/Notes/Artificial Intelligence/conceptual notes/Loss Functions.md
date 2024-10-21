@@ -9,6 +9,8 @@ date: 2024-09-12
 
 Loss functions, also known as cost functions or objective functions, are critical components in the training of neural networks. They measure the difference between the model's predictions and the actual target values, providing a way to evaluate the performance of the model. The goal of training a neural network is to minimize the loss function, thereby improving the model's accuracy.
 
+For loss functions to be effective in any way, normalization of the data is required. If there is a difference in scaling for competiting features of a dataset, then some will overpower the others in their percieved value
+
 ### Purpose of Loss Functions
 
 1. **Quantifying Error**

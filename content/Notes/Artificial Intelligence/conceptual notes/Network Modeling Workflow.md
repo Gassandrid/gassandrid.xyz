@@ -1,7 +1,6 @@
 ---
 date: 2024-09-12
 ---
-# Neural Network Modeling Workflow
 
 ## 1. Problem Definition
 - **Identify the Task:** Determine whether the problem is classification, regression, clustering, or another type of problem.

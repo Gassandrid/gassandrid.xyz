@@ -146,3 +146,5 @@ I love to chat about philosophy! Let's start a conversation!
 ## About this garden 🪴
 
 This is my version of what is called a [[Digital Garden]]( and yes, every digital garden mentions what a digital garden is)
+
+You can navigate this garden by using the [[map]](or clicking the map icon in the top right), using `CMD+K` or `CRTL+K` to pull up the page search,

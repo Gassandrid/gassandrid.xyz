@@ -27,9 +27,9 @@ A Hopfield Network is a type of recurrent artificial neural network that serves 
 
 ## Learning in Hopfield Networks
 
-### Hebbian Learning Rule
+	### Hebbian Learning Rule
 - The weights in a Hopfield Network are typically determined using Hebbian learning, which can be summarized as: "cells that fire together wire together."
-- For a set of patterns \( \{x^1, x^2, \dots, x^p\} \), the weight matrix \( W \) is defined as:
+- For a set of patterns $\{x^1, x^2, \dots, x^p\}$, the weight matrix $W$  is defined as:
 
 $$
   w_{ij} = \sum_{\mu=1}^{p} x_i^\mu x_j^\mu
