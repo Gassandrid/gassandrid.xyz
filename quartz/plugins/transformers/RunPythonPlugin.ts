@@ -428,19 +428,9 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
     })();
   </script>
 `
-
-            const htmlNode: Content = {
-              type: "html",
-              value: htmlContent,
-            }
-
-            node.data = {
-              hProperties: {
-                id: id,
-              },
-            }
-
-            parent.children.splice(index + 1, 0, htmlNode)
+            // replace the node the new html content
+            node.type = "html" as "code"
+            node.value = htmlContent
           }
         })
       },
