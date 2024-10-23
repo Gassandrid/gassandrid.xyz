@@ -143,36 +143,68 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         pointer-events: none;
       }
 </style>
-  <div class="code-block">
-    <div class="code-header">
-      <div class="code-language">Python</div>
-      <div class="code-actions">
-        <button id="${id}-copy" aria-label="Copy code">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-        </button>
-        <button id="${id}-button" aria-label="Run code">
-          <span class="play-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<div class="code-block">
+  <div class="code-header">
+    <div class="code-language">Python</div>
+    <div class="code-actions">
+      <button id="${id}-copy" aria-label="Copy code">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          ></path>
+        </svg>
+      </button>
+      <button id="${id}-button" aria-label="Run code">
+        <span class="play-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
-          </span>
-          <span class="spinner"></span>
-        </button>
-        <button id="${id}-expand" aria-label="Expand code">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div id="codeContent-${id}" class="code-content">
-      <textarea id="codeTextarea-${id}">${node.value}</textarea>
-      <div id="codeGradient-${id}" class="code-gradient"></div>
+        </span>
+        <span class="spinner"></span>
+      </button>
+      <button id="${id}-expand" aria-label="Expand code">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </div>
   </div>
+  <div id="codeContent-${id}" class="code-content">
+    <textarea id="codeTextarea-${id}">${node.value}</textarea>
+    <div id="codeGradient-${id}" class="code-gradient"></div>
+  </div>
+</div>
 
   <div class="python-output" id="${id}-output">
     <div class="python-text" id="${id}-text"></div>
@@ -181,6 +213,8 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" />
 <script>
     // make sure scripts are loaded before running the code
     if (typeof CodeMirror === 'undefined') {
@@ -205,8 +239,26 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         lineNumbers: true,
         lineWrapping: true,
         readOnly: false,
-            });
+    });
 
+    // update expand button icon based on isExpanded
+    const updateExpandButtonIcon = () => {
+      const svgElement = document.createElement('svg');
+      svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      svgElement.setAttribute('width', '20');
+      svgElement.setAttribute('height', '20');
+      svgElement.setAttribute('viewBox', '0 0 24 24');
+      svgElement.setAttribute('fill', 'none');
+      svgElement.setAttribute('stroke', 'currentColor');
+      svgElement.setAttribute('stroke-width', '2');
+      svgElement.setAttribute('stroke-linecap', 'round');
+      svgElement.setAttribute('stroke-linejoin', 'round');
+
+      const polylineElement = document.createElement('polyline');
+      polylineElement.setAttribute('points', isExpanded ? '20 6 9 17 4 12' : '6 9 12 15 18 9');
+      svgElement.appendChild(polylineElement);
+      expandBtn.innerHTML = svgElement.outerHTML;
+    };
 
     editor.setSize(null, '150px'); // Set initial size to make sure it's visible
 
@@ -217,24 +269,6 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       editor.setSize(null, isExpanded ? 'auto' : '150px'); // Apply new height to CodeMirror editor
       editor.refresh();
 
-      // update expand button icon based on isExpanded
-      const updateExpandButtonIcon = () => {
-        const svgElement = document.createElement('svg');
-        svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        svgElement.setAttribute('width', '20');
-        svgElement.setAttribute('height', '20');
-        svgElement.setAttribute('viewBox', '0 0 24 24');
-        svgElement.setAttribute('fill', 'none');
-        svgElement.setAttribute('stroke', 'currentColor');
-        svgElement.setAttribute('stroke-width', '2');
-        svgElement.setAttribute('stroke-linecap', 'round');
-        svgElement.setAttribute('stroke-linejoin', 'round');
-
-        const polylineElement = document.createElement('polyline');
-        polylineElement.setAttribute('points', isExpanded ? '20 6 9 17 4 12' : '6 9 12 15 18 9');
-        svgElement.appendChild(polylineElement);
-        expandBtn.innerHTML = svgElement.outerHTML;
-      };
 
       updateExpandButtonIcon(); // Set the initial icon
       });
