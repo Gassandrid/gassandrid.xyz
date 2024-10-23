@@ -362,7 +362,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
 
         try {
           const pyodide = await loadPyodideAndPackages();
-          const code = document.getElementById('codeTextarea-${id}').value;
+          const code = editor${id}.getValue();
           pyodide.runPython(\`
             import io, sys
             import matplotlib.pyplot as plt
