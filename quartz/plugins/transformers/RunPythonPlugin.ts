@@ -44,7 +44,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       () => (tree: Root, _file) => {
         visit(tree, "code", (node, index, parent) => {
           if (node.lang === "python" && parent?.children) {
-            const id = `python-${Math.random().toString(36).substr(2, 9)}`
+            const id = `${Math.random().toString(36).substr(2, 9)}`
 
             // Assemble the entire HTML content as a string
             const htmlContent = `
@@ -223,17 +223,17 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       console.log('CodeMirror loaded successfully'); 
     }
 
-    const codeContent = document.getElementById('codeContent-${id}');
-    const codeTextarea = document.getElementById('codeTextarea-${id}');
-    const codeGradient = document.getElementById('codeGradient-${id}');
-    const copyBtn = document.getElementById('${id}-copy');
-    const runBtn = document.getElementById('${id}-button');
-    const expandBtn = document.getElementById('${id}-expand');
+    const codeContent${id} = document.getElementById('codeContent-${id}');
+    const codeTextarea${id} = document.getElementById('codeTextarea-${id}');
+    const codeGradient${id} = document.getElementById('codeGradient-${id}');
+    const copyBtn${id} = document.getElementById('${id}-copy');
+    const runBtn${id} = document.getElementById('${id}-button');
+    const expandBtn${id} = document.getElementById('${id}-expand');
 
-    let isExpanded = false;
+    let isExpanded${id} = false;
 
     // Initialize CodeMirror editor
-    const editor = CodeMirror.fromTextArea(codeTextarea, {
+    const editor${id} = CodeMirror.fromTextArea(codeTextarea${id}, {
         mode: 'python',
         theme: 'dracula',
         lineNumbers: true,
@@ -241,8 +241,8 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         readOnly: false,
     });
 
-    // update expand button icon based on isExpanded
-    const updateExpandButtonIcon = () => {
+    // update expand button icon based on isExpanded${id}
+    const updateExpandButtonIcon${id} = () => {
       const svgElement = document.createElement('svg');
       svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
       svgElement.setAttribute('width', '20');
@@ -255,26 +255,26 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       svgElement.setAttribute('stroke-linejoin', 'round');
 
       const polylineElement = document.createElement('polyline');
-      polylineElement.setAttribute('points', isExpanded ? '20 6 9 17 4 12' : '6 9 12 15 18 9');
+      polylineElement.setAttribute('points', isExpanded${id} ? '20 6 9 17 4 12' : '6 9 12 15 18 9');
       svgElement.appendChild(polylineElement);
       expandBtn.innerHTML = svgElement.outerHTML;
     };
 
-    editor.setSize(null, '150px'); // Set initial size to make sure it's visible
+    editor${id}.setSize(null, '150px'); // Set initial size to make sure it's visible
 
-    expandBtn.addEventListener('click', () => {
-      isExpanded = !isExpanded;
-      codeContent.classList.toggle('expanded', isExpanded);
-      codeGradient.style.display = isExpanded ? 'none' : 'block';
-      editor.setSize(null, isExpanded ? 'auto' : '150px'); // Apply new height to CodeMirror editor
-      editor.refresh();
+    expandBtn${id}.addEventListener('click', () => {
+      isExpanded${id} = !isExpanded${id};
+      codeContent${id}.classList.toggle('expanded', isExpanded${id});
+      codeGradient${id}.style.display = isExpanded${id} ? 'none' : 'block';
+      editor${id}.setSize(null, isExpanded${id} ? 'auto' : '150px'); // Apply new height to CodeMirror editor
+      editor${id}.refresh();
 
 
-      updateExpandButtonIcon(); // Set the initial icon
+      updateExpandButtonIcon${id}(); // Set the initial icon
       });
 
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(editor.getValue()).then(() => {
+    copyBtn${id}.addEventListener('click', () => {
+      navigator.clipboard.writeText(editor${id}.getValue()).then(() => {
         const svgElement = document.createElement('svg');
         svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
         svgElement.setAttribute('width', '20');
@@ -288,10 +288,10 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         const polylineElement = document.createElement('polyline');
         polylineElement.setAttribute('points', '20 6 9 17 4 12');
         svgElement.appendChild(polylineElement);
-        copyBtn.innerHTML = svgElement.outerHTML;
+        copyBtn${id}.innerHTML = svgElement.outerHTML;
 
         setTimeout(() => {
-          copyBtn.innerHTML = 'Copy';
+          copyBtn${id}.innerHTML = 'Copy';
           const originalSvg = document.createElement('svg');
           originalSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
           originalSvg.setAttribute('width', '20');
@@ -313,7 +313,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
           const pathElement = document.createElement('path');
           pathElement.setAttribute('d', 'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1');
           originalSvg.appendChild(pathElement);
-          copyBtn.innerHTML = originalSvg.outerHTML;
+          copyBtn${id}.innerHTML = originalSvg.outerHTML;
         }, 2000);
       });
     });
