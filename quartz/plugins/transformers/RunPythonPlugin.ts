@@ -237,14 +237,6 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       };
 
       updateExpandButtonIcon(); // Set the initial icon
-
-      expandBtn.addEventListener('click', () => {
-        isExpanded = !isExpanded;
-        codeContent.classList.toggle('expanded', isExpanded);
-        codeGradient.style.display = isExpanded ? 'none' : 'block';
-        editor.setSize(null, isExpanded ? 'auto' : '150px'); // Apply new height to CodeMirror editor
-        editor.refresh();
-        updateExpandButtonIcon(); // Update the icon based on the new state
       });
 
     copyBtn.addEventListener('click', () => {
