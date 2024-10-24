@@ -7,6 +7,7 @@ import { Staticrypt } from "./quartz/password"
  *
  * See https://quartz.jzhao.xyz/configuration for more information.
  */
+
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "GΛSSAИDRΙϽ.ΧΨZ",
@@ -16,10 +17,12 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
+
     locale: "en-US",
     baseUrl: "gassandrid.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
+
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
@@ -28,6 +31,7 @@ const config: QuartzConfig = {
         body: "Bricolage Grotesque",
         code: "JetBrains Mono",
       },
+
       colors: {
         lightMode: {
           light: "#fffdfa",
@@ -40,6 +44,7 @@ const config: QuartzConfig = {
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
+
         darkMode: {
           light: "#0c0f14",
           lightgray: "#1D232D",
@@ -54,6 +59,7 @@ const config: QuartzConfig = {
       },
     },
   },
+
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
@@ -70,7 +76,9 @@ const config: QuartzConfig = {
       Plugin.Latex({ renderEngine: "katex" }),
       Plugin.RunPythonPlugin(),
     ],
+
     filters: [Plugin.RemoveDrafts()],
+
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
