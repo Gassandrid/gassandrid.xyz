@@ -412,6 +412,8 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
       }
 
       function initializePythonRunner() {
+        // start preloading the loadPackagesFromImports
+        loadPyodideAndPackages();
         const button = document.getElementById('${id}-button');
         if (button) {
           button.addEventListener('click', runPython);
@@ -426,6 +428,7 @@ export const RunPythonPlugin: QuartzTransformerPlugin = () => ({
         initializePythonRunner();
       }
     })();
+
   </script>
 `
             // replace the node the new html content
