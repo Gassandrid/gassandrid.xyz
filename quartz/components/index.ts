@@ -25,6 +25,7 @@ import Map from "./_Map"
 import Row from "./_Row"
 import Cv from "./_Cv"
 import LinksHeader from "./LinksHeader"
+import OnlyFor from "./_OnlyFor"
 
 export {
   ArticleTitle,
@@ -54,4 +55,5 @@ export {
   Row,
   Cv,
   LinksHeader,
+  OnlyFor,
 }

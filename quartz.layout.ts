@@ -2,6 +2,9 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { SimpleSlug } from "./quartz/util/path"
 
+const homePageTitle = "Home Page"
+const mapTitle = "Atlas"
+
 const giscusConfig = {
   provider: "giscus",
   options: {
@@ -69,12 +72,11 @@ export const defaultContentPageLayout: PageLayout = {
     // Component.Search(),
     // Component.Darkmode(),
 
-    Component.DesktopOnly(
-      Component.RecentNotes({
-        title: "Most recent",
-        limit: 5,
-      }),
+    Component.OnlyFor(
+      { titles: [homePageTitle, mapTitle] },
+      Component.DesktopOnly(Component.RecentNotes({ title: "Most recent", limit: 5 })),
     ),
+
     Component.DesktopOnly(
       Component.Explorer({
         title: "Explore",
