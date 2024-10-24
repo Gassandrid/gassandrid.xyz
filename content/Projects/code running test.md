@@ -4,6 +4,9 @@ also seems to break syntax highlighter, though should be an easy fix
 print("hello world")
 ```
 
+```ts title="quartz.layout.ts"
+console.log("hello")
+```
 
 matplotlib test m
 
