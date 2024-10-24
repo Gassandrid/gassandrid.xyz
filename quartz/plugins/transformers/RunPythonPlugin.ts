@@ -481,8 +481,6 @@ svgElement.setAttribute('width', '20');
       }
 
       function initializePythonRunner() {
-        // start preloading the loadPackagesFromImports
-        loadPyodideAndPackages();
         const button = document.getElementById('${id}-button');
         if (button) {
           button.addEventListener('click', runPython);
