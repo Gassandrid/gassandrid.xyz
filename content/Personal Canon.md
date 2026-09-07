@@ -4,7 +4,7 @@ description: works and people that have shaped how i think
 tags:
   - seed
   - philosophy
-updated: 2026-08-25T14:47:47-07:00
+updated: 2026-09-07T11:45:32-04:00
 ---
 
 inspired by [David Cole's](http://davidcole.me/canon/) and [aarnphm's](https://notes.aarnphm.xyz/personal-canon)
@@ -25,11 +25,15 @@ the works that rewired my brain, the people who showed me new ways of seeing. no
 
 ***
 
+**[[Sophia Sanborn]]**, a [[Computational Neuroscience|computational neuroscientist]], mentioned a fascination with the word [[Representation]] in a podcast, and that has stuck with me to this day, and is the guiding principle for my specific pursuits in a PhD through representation learning as an [[In Silico]] tool for [[Mechanistic Interpretability|Interpretability]]. Her work has also inspired me across the board for projects of fascination.
+
 **[[Artem Kirsanov]]** for making [[Computational Neuroscience]] feel accessible and beautiful. differential equations as the language of change, [[Theta Rhythm|theta rhythms]] as memory's clock. showed me how to build understanding through visualization.
 
 **[[3Blue1Brown]]** for teaching me to see math instead of just computing it. linear transformations as movement, not matrices. [[Manim]] as proof that pedagogy is an art form.
 
-**exurb1a** for the existential questions and [[Absurdism - how to party at the end of meaning|absurdist]] answers. meaning at the end of meaning. sparked my interest in understanding consciousness from the inside.
+**[[exurb1a]]** for the existential questions and [[Absurdism - how to party at the end of meaning|absurdist]] answers. meaning at the end of meaning. sparked my interest in understanding consciousness from the inside.
+
+**Talita**, for helping me to see everything.
 
 ***
 

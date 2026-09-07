@@ -1,6 +1,7 @@
 ---
 id: Mechanistic Interpretability
-aliases: []
+aliases:
+  - Interpretability
 tags:
   - cs/ai/interpretability
   - cs/ai/llm
