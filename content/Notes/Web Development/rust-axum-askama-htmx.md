@@ -1,17 +1,8 @@
 ---
 date: 2024-09-12
-updated: 2025-10-15
+updated: 2026-03-13T14:08:42-07:00
 tags:
   - cs/web/techstacks
-class:
-  - note
-source:
-  - https://github.com/emarifer/rust-axum-askama-htmx-todoapp
-related:
-author:
 ---
-If for any reason I do find myself doing web development, I would probably use the [[go-echo-templ-htmx]] stack for simplicity. But, if somehow that is not performant enough(I cannot think of a scenario where that is the case, but hey), I would use this stack.
 
-I use **HTMX** here because I hate frontend dev, but in reality nowadays, you could probably just use AI to generate a react frontend. I am not sure if that would scale, so if that is a worry Htmx is perfect.
-
-Other than that, this framework is built around the rust backend language choice, and thus, the tooling is quite niche.
+boring ahh tech stack I came up with in 2024 when I thought I would have to do some fullstack dev in the future - safe to say I will never need to. but I still have this if need be - either this or [[go-echo-templ-htmx]].

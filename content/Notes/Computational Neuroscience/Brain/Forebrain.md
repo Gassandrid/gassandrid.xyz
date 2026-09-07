@@ -1,6 +1,7 @@
 ---
 aliases:
   - Prosencephalon
+  - Neocortex
 class: brain-region
 type: cortex
 upstream:
@@ -36,6 +37,8 @@ associated-disorders:
 tags:
   - comp-neuro/brain/region
   - biology
+date: 2026-02-22T22:03:12-05:00
+updated: 2026-09-02T15:53:43-04:00
 ---
 
 The forebrain (prosencephalon) is the most anterior and evolutionarily recent major brain division. It encompasses the [[Cerebral Cortex|neocortex]] and subcortical structures, and is responsible for the majority of higher cognitive functions.

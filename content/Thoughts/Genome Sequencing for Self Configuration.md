@@ -22,10 +22,10 @@ aliases:
   - Genome sequencing as self configuration
   - Pharmacogenomics as decoder ring
 date: 2026-04-24T12:56:30-04:00
-updated: 2026-07-30T11:13:43-07:00
+updated: 2026-09-02T11:35:55-04:00
 ---
 
-[[On Whole Genome Sequencing|Whole Genome Sequencing]] feels like quite an obvious step for me given what I have already done. it fits the [[My Eternal Golden Braid]] path well, another strand in the braid where [[Neuropharmacology]], [[On Capturing Personal Data|Quantified Self]], [[Computational Neuroscience]], and [[Self Configuration]] fold back into each other.
+[[On Whole Genome Sequencing|Whole Genome Sequencing]] feels like quite an obvious step for me given what I have already done. it fits the [[My Eternal Golden Braid]] path well, another strand in the braid where [[Neuropharmacology]], [[On Capturing Personal Data|Quantified Self]], [[Computational Neuroscience]], and [[Self Configuration]] fold back into each other. Likely to do this using a kit from [[The ODIN]]
 
 Beyond extended [[Health]]/[[Longevity]] data, there are some uses for experiment loops involving [[Neuropharmacology]].
 

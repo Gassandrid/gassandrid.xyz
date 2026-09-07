@@ -4,7 +4,7 @@ aliases:
 tags:
 date: 2024-10-02
 title: Ewans Florilegium
-updated: 2026-08-02T14:23:16-07:00
+updated: 2026-09-03T11:24:08-04:00
 class: navigation
 ---
 
@@ -12,7 +12,7 @@ class: navigation
 
 ---
 
-Hi, my name is Ewan. I'm a third-year Computer Science student at the [[University Of Vermont]] where my focus is [[Computational Neuroscience]], [[Mathematics]], and how brains and machines overlap. You can reach me via email or find me tinkering on my [[Saturn V Server Rack|homelab]].
+Hi, my name is Ewan. I'm a undergrad senior Computer Science student at the [[University Of Vermont]] where my focus is [[Computational Neuroscience]], [[Mathematics]], and how brains and machines overlap. You can reach me via email or find me tinkering on my [[Saturn V Server Rack|homelab]].
 
 I believe intelligence is pattern all the way down, which makes the interesting question not "what is the brain doing" but "can we reconstruct the process from its traces." Every measurement of cognition is a lossy projection of something you can't directly observe, but enough projections, sampled at the right timescales, recover the manifold. I spend most of my time chasing that idea: modeling 2+ years of git commits across my **Obsidian vault** alongside [[ActivityWatch]] computer usage data, noisy but interesting EEG via [[BrainAccess HALO]], and eye tracking to [[Mapping The Mind|map the semantic phase space of human cognition]]. The deeper question is directionality: cognition shapes what you consume, but consumption reshapes cognition. I'm working on capturing these substrates densely enough to reconstruct the higher-order cognitive model that generates them, asking whether you can [[Probing Nurture with Content Consumption|deliberately steer cognitive trajectory by shaping your content diet]].
 

@@ -4,7 +4,7 @@ tags:
   - todo/neuro
   - math/calculus/differential
 date: 2024-10-28
-updated: 2026-05-12T22:19:24-04:00
+updated: 2026-09-03T15:28:45-04:00
 class: transcript
 source:
   - "[[Differential Equations - The Language of Change]]"
@@ -86,6 +86,8 @@ I_{Na^+} &= g_{Na} m^3 h (E_{Na} - V_{m}) \\ \\
 I_{l} &= g_{l}(E_{l}-V_{m}) 
 \end{align*}
 $$
+
+aka the [[Hodgkin Huxley Model]] lol
 
 ---
 

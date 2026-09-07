@@ -2,7 +2,7 @@
 aliases: []
 image: https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid=71508291&t=l
 date: 2026-02-17
-updated: 2026-08-29T13:17:55-04:00
+updated: 2026-09-06T15:47:12-04:00
 class:
   - medication
 category: cognitive

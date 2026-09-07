@@ -6,8 +6,9 @@ tags:
   - transhumanism
 date: 2025-02-27
 title: Hedonic Setpoint
-updated: 2025-03-03
+updated: 2026-09-03T20:43:09-04:00
 ---
+
 The _Hedonic Cycle_, also known as the _Hedonic Treadmill_ or _Hedonic Adaptation_ describes the tendency for humans to return to a baseline emotional level, even after particularly happy or traumatic moments in ones life.
 
 ---
@@ -16,7 +17,7 @@ Essentially, despite all that goes in on our lives, we will return to some emoti
 
 This is a very interesting concept to me, as it seems to be a very deterministic view of the world. It seems to suggest that no matter what we do, we will always return to some baseline level of happiness. This is a very depressing thought, as it suggests that we can never truly be happy, no matter what we do.
 
-## Posthumanism and the possibility of changing the Hedonic Setpoint
+## Posthumanism and the Possibility of Changing the Hedonic Setpoint
 
 Something that has been advancing rapidly is the field of genetics and genetic modification through tools like CRISPR. It is possible that in the future, we could modify our own genetics to change our hedonic setpoint. This could be a very interesting development, as it could potentially allow us to be much happier than we are now.
 

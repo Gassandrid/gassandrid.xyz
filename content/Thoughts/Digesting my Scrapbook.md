@@ -9,7 +9,7 @@ author:
 description:
 aliases:
 date: 2026-07-30T11:47:44-07:00
-updated: 2026-09-02T11:31:55-04:00
+updated: 2026-09-03T13:03:51-04:00
 ---
 - I have talked a lot on various youtube interviews about how I use my obsidian vault to mannage the [[Consuming and Choosing Content Effectively|content I consume]]
 	- I have several base view for mediums of content: [[Youtube.base]], [[Papers.base]], [[Books.base]], however most of the notes of various youtube videos or papers have no content besides the content that the clipper creates - they kind of just serve as a tracker for if I have watched that youtube video and where I wrote about it.
@@ -30,16 +30,17 @@ However, these still serve a lot of use, as oftentimes I find myself using the [
 
 I think I was conflating *digesting* a clipping with *promoting* it into `Thoughts/Atomic`. Digesting a video does not require the video note itself to become an atomic note. It means deciding what role the video has in the vault and routing anything useful out of it.
 
-A video note can remain in `Resources/youtube` even when I annotate it. This is the right place for source-specific comments: timestamps, memorable explanations, disagreements with the presenter, or relational observations such as how something Artem discusses connects to [[Neural Manifolds]] or another idea. These annotations make the resource easier to recover and evaluate, but do not necessarily change its identity: it is still primarily a note *about that video*.
+A video note can remain in `Resources/youtube` even when I annotate it. This is the right place for source-specific comments: timestamps, memorable explanations, disagreements with the presenter, or relational observations such as how something Artem discusses connects to [[Neural Manifolds]] or another idea. These annotations make the resource easier to recover and evaluate, but do not necessarily change its identity: it is still primarily a note *about that video* and not the concept it duscusses.
 
 If an observation advances my understanding of the related concept, I should also write the useful part in the concept note and link back to the video as its source. The video note then acts as a source record and retrieval object, while the atomic note holds the understanding I want to compound. I do not need to duplicate every annotation between them; only the idea that matters outside the context of the video needs to leave the resource note.
 
 Moving the video note itself into `Thoughts/Atomic` makes sense only when my writing becomes independently worth revisiting as a thought: for example, a response to a philosophy video, a critique of its argument, a reconstruction of its model, or an idea organized around the video as a whole. At that point the note is no longer merely evidence that I watched something. It has become one of my notes, while retaining `class: video` and its original source metadata.
 
-This gives video digestion three possible endings:
+This gives video digestion a few possible endings:
 
 - A video was only considered: keep it as a lightweight resource while it remains intentionally queued, or delete/drop it if it no longer deserves attention.
 - A video was useful as a source: keep it in `Resources/youtube`, annotate it as lightly as useful, link its related concepts, and route transferable insights into those notes.
 - My response became the main object: add `class: note` and move it into `Thoughts/Atomic`.
+- I prune the video after finding it to never be touched or used. Pruning
 
 Therefore folder location should follow what the note *is*, not whether I happened to write in it. A few relational comments do not require promotion. Digestion is complete once the useful material has a home and I have made an explicit decision about the source; `done` can represent that without implying that every video note must become an atomic note.

@@ -20,9 +20,9 @@ distribution:
   - substantia nigra
   - nucleus accumbens (ventral striatum)
 primary-neurotransmitters:
-  - dopamine
-  - GABA
-  - glutamate
+  - "[[GABA]]"
+  - "[[Glutamate]]"
+  - "[[Dopamine]]"
 associated-functions:
   - voluntary motor control
   - action selection
@@ -38,6 +38,8 @@ associated-disorders:
 tags:
   - neuroscience
   - brain-region
+date: 2026-02-22T22:03:44-05:00
+updated: 2026-09-02T15:50:04-04:00
 ---
 
 The basal ganglia are a set of subcortical nuclei that form a key loop with the cortex and thalamus. Their core function is **action selection** — gating which motor programs (or cognitive/behavioral patterns) get executed and which get suppressed, via the direct (go) and indirect (no-go) pathways.

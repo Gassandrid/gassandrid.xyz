@@ -11,6 +11,7 @@ author:
 description:
 aliases:
   - Action Potential
+  - Spike
 ---
 
 a change in the state of a [[Neuron]] that involves a rapid electric charge spike. 

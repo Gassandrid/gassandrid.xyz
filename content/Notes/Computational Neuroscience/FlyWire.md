@@ -11,7 +11,7 @@ tags:
   - comp-neuro/models/connectome
 related:
 date: 2026-02-08T10:21:07-05:00
-updated: 2026-08-30T11:41:21-04:00
+updated: 2026-09-04T15:10:33-04:00
 title: Drosophila Connectome
 aliases:
   - Drosophila
@@ -21,6 +21,11 @@ aliases:
 ---
 
 Part of the brain mapping project, first full connectome of a brain. Partially done by researchers at [[University Of Vermont]]. First full connectome of a living brain!
+
+>[!Warning] [[09-03-2026]] **BIG UPDATE**!!!
+> The Janelia Research Campus has done it again, this time mapping the [male CNS counterpart](https://www.janelia.org/project-team/flyem/male-cns-connectome). For the first time in history, we can actually look at sexual dimorphism of brains in rigorous detail.
+> 
+> *"Comparing male and female fly brain connectomes, we identify 262 sex-specific and 114 sexually dimorphic cell types, comprising 4.8% of the central brain. Using whole-brain comparative connectomics, we reveal specific circuits originating from distinct sensory streams and uncover general principles governing how neural architecture encodes the capacity for sex-shared, sex-specific, and flexible behaviors."*
 
 A funny project you see a lot of people doing is running the connectome as a [[Spiking Neural Network]] simulation within [[Brian2]] or other sim engines. While fun and interesting, those experiments of "uploading a fly brain" are a little exeggerated as they manually tagged a few motor neurons responsible for direction/orientation
 

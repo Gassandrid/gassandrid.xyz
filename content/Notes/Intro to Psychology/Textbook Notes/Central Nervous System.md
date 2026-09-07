@@ -8,8 +8,11 @@ source:
 related:
 author:
 date: 2025-09-11
-updated: 2025-09-11
+updated: 2026-09-02T15:45:48-04:00
+aliases:
+  - CNS
 ---
+
 The **Central Nervous System (CNS)** is the primary control center for the body, responsible for processing and integrating information from the peripheral nervous system (PNS) and coordinating bodily functions. It consists of two main components: the [[Brain]] and the [[Spinal Cord]].
 
 ![[CNS.png]]

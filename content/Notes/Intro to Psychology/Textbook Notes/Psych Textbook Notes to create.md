@@ -26,10 +26,10 @@ author:
 	- [x] [[Parietal Lobe]] - Integrates sensory information (touch, temperature) and spatial awareness.
 	- [x] [[Frontal Lobe]] - Manages executive functions: planning, decision-making, and personality. 🧠
 	- [x] [[Insular Lobe]] - Involved in emotion, self-awareness, and internal body sensations.
-- [ ] [[Forebrain#Subcortex]] - Structures below the cortex handling memory, emotion, and drives.
-	- [ ] [[Hippocampus]] - Forms new memories and is key for spatial navigation. 🗺️
-	- [ ] [[Amygdala]] - The brain's emotional center, especially for fear and aggression.
-	- [ ] [[Basal Ganglia]] - Controls voluntary motor movements, habit formation, and procedural learning.
+- [x] [[Forebrain#Subcortex]] - Structures below the cortex handling memory, emotion, and drives.
+	- [x] [[Hippocampus]] - Forms new memories and is key for spatial navigation. 🗺️
+	- [x] [[Amygdala]] - The brain's emotional center, especially for fear and aggression.
+	- [x] [[Basal Ganglia]] - Controls voluntary motor movements, habit formation, and procedural learning.
 	- [ ] [[Thalamus]] - Acts as the main relay station for sensory information. 📮
 	- [ ] [[Hypothalamus]] - Regulates basic drives like hunger, thirst, and body temperature.
 - [ ] [[Midbrain]] - Connects the forebrain and hindbrain; involved in vision, hearing, and movement.

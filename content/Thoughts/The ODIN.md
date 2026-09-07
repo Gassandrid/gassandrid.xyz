@@ -7,7 +7,7 @@ tags:
   - transhumanism/biohacking
 related:
 date: 2026-06-29T09:56:39-07:00
-updated: 2026-08-02T14:19:50-07:00
+updated: 2026-09-02T11:35:40-04:00
 ---
 
 Shop for buying [[Biohacking]] related gear founded by [[Josie Zayner]] - first person to publicly inject a CRISPR therapy and a very notable person in the [[Transhumanism]]/[[Biohacking]] space.
@@ -15,6 +15,8 @@ Shop for buying [[Biohacking]] related gear founded by [[Josie Zayner]] - first 
 They have much better options for my [[On Whole Genome Sequencing|whole genome sequencing]] plans, and will actually delete your data the moment you get it. Beyond that they also have CRISPR kits for learning and intros which might be something worth looking at eventually.
 
 Beyond that this is a company that shares my vision for the future and ideals, better this than something like Nebula Genomics
+
+Also could be relevant in [[Genome Sequencing for Self Configuration|Genome sequencing as self configuration]].
 
 ---
 

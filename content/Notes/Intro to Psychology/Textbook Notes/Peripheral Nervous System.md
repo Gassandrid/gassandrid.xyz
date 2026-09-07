@@ -7,9 +7,14 @@ source:
 related:
 author:
 date: 2025-09-11
-updated: 2026-01-15T15:41:23-05:00
+updated: 2026-09-02T15:51:14-04:00
 ---
+
 Unlike the [[Central Nervous System]], which consists of the brain and spinal cord, the **Peripheral Nervous System (PNS)** is made up of all the nerves that lie outside the CNS. The [[Peripheral Nervous System]] extends from the [[Spinal Cord]] and [[Brain]] to the rest of the body, including the limbs and organs. Its primary function is to connect the CNS to the limbs and organs, facilitating communication between the brain and spinal cord and the rest of the body.
+
+- automatic nervous system - involuntary control
+	- regulated by [[Hypothalamus]]
+	- fight or flihgt respononse
 
 ![[PNS.png]]
 

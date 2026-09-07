@@ -13,7 +13,7 @@ author:
 description:
 aliases:
 date: 2026-03-19T10:11:09-04:00
-updated: 2026-03-19T11:05:36-04:00
+updated: 2026-09-03T20:36:13-04:00
 ---
 
 >[!Abstract] Theorem

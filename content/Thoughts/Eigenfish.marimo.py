@@ -1,6 +1,7 @@
 # description: Shape an eigenvalue creature by editing a matrix and its torus-sampled entries.
 # static-preview: true
 # /// script
+# requires-python = ">=3.14"
 # dependencies = [
 #     "marimo==0.23.9",
 #     "numpy==2.3.5",
