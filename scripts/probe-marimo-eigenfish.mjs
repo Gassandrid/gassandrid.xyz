@@ -99,7 +99,7 @@ try {
     const notebook = document.querySelector(".marimo-notebook-page")
     const matrices = [...document.querySelectorAll("marimo-matrix")]
     const conradi = [...document.querySelectorAll("a")].find(
-      (anchor) => anchor.textContent?.trim() === "Simon Conradi",
+      (anchor) => anchor.textContent?.trim() === "Simone Conradi",
     )
     const resources = performance.getEntriesByType("resource")
     const resource = (fragment) => resources.find((entry) => entry.name.includes(fragment)) ?? null
@@ -126,7 +126,7 @@ try {
       conradiText: conradi?.textContent?.trim(),
       conradiHref: conradi?.getAttribute("href"),
       conradiResolvedHref: conradi?.href,
-      literalWikilinkVisible: document.body.innerText.includes("[[Simon Conradi]]"),
+      literalWikilinkVisible: document.body.innerText.includes("[[Simone Conradi]]"),
       staticPreviewVisible:
         (document.querySelector(".eigenfish-figure img")?.getBoundingClientRect().height ?? 0) >
         200,
@@ -145,8 +145,8 @@ try {
   assert.equal(state.matrices, 2)
   assert.equal(state.hydratedMatrices, 2)
   assert.equal(state.visibleMatrices, 2)
-  assert.equal(state.conradiText, "Simon Conradi")
-  assert.match(state.conradiResolvedHref ?? "", /\/simon-conradi$/)
+  assert.equal(state.conradiText, "Simone Conradi")
+  assert.match(state.conradiResolvedHref ?? "", /\/thoughts\/simone-conradi$/)
   assert.equal(state.literalWikilinkVisible, false)
   assert.equal(state.staticPreviewVisible, true)
   assert.deepEqual(pageErrors, [])

@@ -24,6 +24,7 @@
     "probe": "node ./scripts/probe-build.mjs",
     "probe:browser": "node ./scripts/probe-browser.mjs",
     "probe:eigenfish": "node ./scripts/probe-marimo-eigenfish.mjs",
+    "probe:markdown": "node ./scripts/probe-marimo-markdown.mjs",
     "probe:showcase": "node ./scripts/probe-marimo-showcase.mjs",
     "probe:responsive": "node ./scripts/probe-responsive-layout.mjs",
     "validate": "npm run plugins:install && npm run check && npm test && npm run build && npm run probe",

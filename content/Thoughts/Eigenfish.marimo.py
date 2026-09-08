@@ -189,7 +189,7 @@ def _(PALETTES, PRESETS, mo):
         [
             mo.md(r"""
             A small matrix becomes a creature when selected entries move around a
-            complex torus. Inspired by [[Simon Conradi]].
+            complex torus. Inspired by [[Simone Conradi]].
             """),
             mo.hstack(
                 [preset, samples, radius, palette],

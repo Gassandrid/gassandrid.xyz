@@ -7,7 +7,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "build": "mkdir -p dist && cp index.js render.py dist/"
+    "build": "mkdir -p dist && cp index.js render.py obsidian.py dist/"
   },
   "peerDependencies": {
     "@quartz-community/utils": "*",

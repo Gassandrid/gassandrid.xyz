@@ -42,7 +42,9 @@ parameters, neuron count, and step sequence reproduce the same network activity.
 The recipe and ink survive Quartz SPA navigation; simulation time restarts on each
 page. Sliders affect the running network without resetting it.
 
-On is the default on desktop and mobile; saved visitor choices still take precedence.
+Motion defaults to Off on screens up to 800px wide and On on desktop; saved visitor
+choices still take precedence. Seed-derived defaults use gentler input current,
+recurrence, oscillation, rhythm speed, and fluctuation; all sliders retain their full range.
 Mobile uses 80 neurons, 24fps, DPR at most 1, and a panel sized to the viewport.
 Optional Auto observes reduced motion, small screens, data saving, low device
 memory and a measured draw budget. Every mode pauses in a hidden document.

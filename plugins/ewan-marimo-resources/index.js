@@ -1,3 +1,4 @@
+import fs from "node:fs"
 import { simplifySlug, slugifyFilePath } from "@quartz-community/utils/path"
 
 const MARIMO_ISLANDS_VERSION = "0.23.9"
@@ -6,6 +7,9 @@ const MARIMO_PACKAGE_ROOT = `${MARIMO_CDN_ORIGIN}/npm/@marimo-team/islands@${MAR
 const MARIMO_RUNTIME_URL = `${MARIMO_PACKAGE_ROOT}/main.js`
 const MARIMO_STYLE_URL = `${MARIMO_PACKAGE_ROOT}/style.css`
 const PYODIDE_VERSION = "0.27.7"
+const OBSIDIAN_EMBEDS_RUNTIME = fs
+  .readFileSync(new URL("./obsidian-embeds.js", import.meta.url), "utf8")
+  .replace("export function", "function")
 
 function marimoRoutes(ctx) {
   return (ctx?.allFiles ?? [])
@@ -32,6 +36,10 @@ export function createMarimoLoader(routes = []) {
   var readyTimeout = null;
   var hoverTimer = null;
   var mountedPage = null;
+  var clearMarkdown = null;
+  var markdownPage = null;
+  ${OBSIDIAN_EMBEDS_RUNTIME}
+  var watchMarkdown = watchObsidianEmbeds;
 
   function normalizedPath(value) {
     var pathname;
@@ -192,6 +200,9 @@ export function createMarimoLoader(routes = []) {
     syncExportTrust(hasIslands);
     if (!hasIslands) {
       clearReadiness();
+      if (clearMarkdown) clearMarkdown();
+      clearMarkdown = null;
+      markdownPage = null;
       var css = document.querySelector("link[data-ewan-marimo-css]");
       if (css) css.disabled = true;
       return;
@@ -204,6 +215,11 @@ export function createMarimoLoader(routes = []) {
     }
     mountedRoute = route;
     mountedPage = page;
+    if (markdownPage !== page) {
+      if (clearMarkdown) clearMarkdown();
+      clearMarkdown = watchMarkdown(page);
+      markdownPage = page;
+    }
     preload(true);
     ensureStyle();
     watchReadiness(page);
