@@ -157,6 +157,12 @@
       "commit": "local",
       "installedAt": "2026-07-28T00:47:15.718Z"
     },
+    "ewan-neural-background": {
+      "source": "./plugins/ewan-neural-background",
+      "resolved": "/Users/gassandrid/Lab/projects/ewan.my/plugins/ewan-neural-background",
+      "commit": "local",
+      "installedAt": "2026-09-07T22:40:28.584Z"
+    },
     "ewan-quartz-toc": {
       "source": "./plugins/ewan-quartz-toc",
       "resolved": "/private/tmp/ewan-my-v5-local/plugins/ewan-quartz-toc",

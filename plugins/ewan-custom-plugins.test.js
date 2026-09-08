@@ -90,7 +90,7 @@ test("v4 typography and proportional TOC remain available", () => {
   assert.match(LORA_STYLESHEET, /Lora:ital,wght/)
   const toc = QuartzTOC()
   assert.match(toc.css, /quartztoc-rail-thumb/)
-  assert.match(toc.afterDOMLoaded, /--toc-top/)
+  assert.match(toc.afterDOMLoaded, /--toc-y/)
 })
 
 test("citations retain the v4 bibliography structure and external-link labels", () => {

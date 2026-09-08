@@ -5,8 +5,6 @@ const MARIMO_CDN_ORIGIN = "https://cdn.jsdelivr.net"
 const MARIMO_PACKAGE_ROOT = `${MARIMO_CDN_ORIGIN}/npm/@marimo-team/islands@${MARIMO_ISLANDS_VERSION}/dist`
 const MARIMO_RUNTIME_URL = `${MARIMO_PACKAGE_ROOT}/main.js`
 const MARIMO_STYLE_URL = `${MARIMO_PACKAGE_ROOT}/style.css`
-// The worker filename is content-addressed by the pinned islands release.
-const MARIMO_WORKER_URL = `${MARIMO_PACKAGE_ROOT}/assets/worker-ip3AI_sN.js`
 const PYODIDE_VERSION = "0.27.7"
 
 function marimoRoutes(ctx) {
@@ -27,12 +25,13 @@ export function createMarimoLoader(routes = []) {
   var marimoRoutes = new Set(${JSON.stringify(routes)});
   var runtimeUrl = ${JSON.stringify(MARIMO_RUNTIME_URL)};
   var styleUrl = ${JSON.stringify(MARIMO_STYLE_URL)};
-  var workerUrl = ${JSON.stringify(MARIMO_WORKER_URL)};
   var pyodideRoot = ${JSON.stringify(`${MARIMO_CDN_ORIGIN}/pyodide/v${PYODIDE_VERSION}/full/`)};
   var exportContextSource = "ewan-quartz-marimo";
   var mountedRoute = null;
   var readyObserver = null;
   var readyTimeout = null;
+  var hoverTimer = null;
+  var mountedPage = null;
 
   function normalizedPath(value) {
     var pathname;
@@ -79,14 +78,17 @@ export function createMarimoLoader(routes = []) {
     return link;
   }
 
-  function preload() {
+  function preload(full = false) {
+    if (!full && (navigator.connection?.saveData || /(?:slow-)?2g/.test(navigator.connection?.effectiveType || ""))) return;
     ensureConnection(${JSON.stringify(MARIMO_CDN_ORIGIN)});
     ensureConnection("https://wasm.marimo.app");
     ensureHint("modulepreload", runtimeUrl);
-    ensureHint("modulepreload", workerUrl);
+
     ensureHint("preload", styleUrl, "style");
-    ensureHint("prefetch", pyodideRoot + "pyodide.asm.wasm", "fetch");
-    ensureHint("prefetch", pyodideRoot + "python_stdlib.zip", "fetch");
+    if (full && !navigator.connection?.saveData) {
+      ensureHint("prefetch", pyodideRoot + "pyodide.asm.wasm", "fetch");
+      ensureHint("prefetch", pyodideRoot + "python_stdlib.zip", "fetch");
+    }
   }
 
   function syncExportTrust(hasIslands) {
@@ -106,6 +108,7 @@ export function createMarimoLoader(routes = []) {
   function ensureStyle() {
     var link = document.querySelector('link[data-ewan-marimo-href="' + styleUrl + '"]');
     if (link) {
+      link.disabled = false;
       link.rel = "stylesheet";
       link.removeAttribute("as");
       link.dataset.ewanMarimoCss = "true";
@@ -128,12 +131,19 @@ export function createMarimoLoader(routes = []) {
     if (label && message) label.textContent = message;
   }
 
+  function clearReadiness() {
+    readyObserver?.disconnect();
+    readyObserver = null;
+    window.clearTimeout(readyTimeout);
+    readyTimeout = null;
+  }
+
   function watchReadiness(page) {
-    if (readyObserver) readyObserver.disconnect();
-    if (readyTimeout) window.clearTimeout(readyTimeout);
+    clearReadiness();
     var update = function() {
       var error = page.querySelector('marimo-island[data-status="error"]');
-      var ready = page.querySelector('marimo-island[data-reactive="true"][data-status]');
+      var cells = Array.from(page.querySelectorAll('marimo-island[data-reactive="true"]'));
+      var ready = cells.length > 0 && cells.every(function(cell) { return cell.dataset.status === "idle"; });
       if (error) {
         setState(page, "error", "Python could not start on this page.");
         return true;
@@ -146,7 +156,7 @@ export function createMarimoLoader(routes = []) {
     };
     if (update()) return;
     readyObserver = new MutationObserver(function() {
-      if (update()) readyObserver.disconnect();
+      if (update()) clearReadiness();
     });
     readyObserver.observe(page, { subtree: true, attributes: true, attributeFilter: ["data-status"] });
     readyTimeout = window.setTimeout(function() {
@@ -164,7 +174,8 @@ export function createMarimoLoader(routes = []) {
     script.dataset.ewanMarimoRuntime = "true";
     script.dataset.persist = "true";
     script.addEventListener("error", function() {
-      setState(page, "error", "Python runtime failed to download.");
+      script.remove();
+      setState(document.querySelector(".marimo-notebook-page"), "error", "Python runtime failed to download. Reload to retry.");
     });
     document.head.appendChild(script);
   }
@@ -179,15 +190,21 @@ export function createMarimoLoader(routes = []) {
     var page = document.querySelector(".marimo-notebook-page");
     var hasIslands = Boolean(page && page.querySelector("marimo-island"));
     syncExportTrust(hasIslands);
-    if (!hasIslands) return;
+    if (!hasIslands) {
+      clearReadiness();
+      var css = document.querySelector("link[data-ewan-marimo-css]");
+      if (css) css.disabled = true;
+      return;
+    }
 
     var route = normalizedPath(window.location.pathname);
-    if (mountedRoute && mountedRoute !== route && customElements.get("marimo-island")) {
+    if (mountedPage && mountedPage !== page && customElements.get("marimo-island")) {
       hardNavigateCurrentPage();
       return;
     }
     mountedRoute = route;
-    preload();
+    mountedPage = page;
+    preload(true);
     ensureStyle();
     watchReadiness(page);
     ensureScript(page);
@@ -195,13 +212,19 @@ export function createMarimoLoader(routes = []) {
 
   document.addEventListener("pointerover", function(event) {
     var anchor = event.target?.closest?.("a[href]");
-    if (isMarimoLink(anchor)) preload();
+    clearTimeout(hoverTimer);
+    if (isMarimoLink(anchor)) hoverTimer = setTimeout(function() { preload(); }, 120);
+  }, { passive: true, capture: true });
+  document.addEventListener("pointerout", function(event) {
+    var anchor = event.target?.closest?.("a[href]");
+    if (anchor && !anchor.contains(event.relatedTarget)) clearTimeout(hoverTimer);
   }, { passive: true, capture: true });
   document.addEventListener("focusin", function(event) {
     var anchor = event.target?.closest?.("a[href]");
     if (isMarimoLink(anchor)) preload();
   }, true);
   document.addEventListener("click", function(event) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     var anchor = event.target?.closest?.("a[href]");
     if (!mountedRoute || !isMarimoLink(anchor)) return;
     var targetRoute = normalizedPath(anchor.href);

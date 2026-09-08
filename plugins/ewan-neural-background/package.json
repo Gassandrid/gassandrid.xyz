@@ -1,0 +1,30 @@
+{
+  "name": "@ewan/quartz-neural-background",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./components": "./components.js",
+    "./network": "./network.js"
+  },
+  "peerDependencies": {
+    "preact": "^10.28.2"
+  },
+  "quartz": {
+    "name": "ewan-neural-background",
+    "displayName": "Recurrent Neural Field",
+    "description": "A bounded, adaptive spiking-network background with motion controls.",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "category": "component",
+    "defaultOrder": 50,
+    "components": {
+      "NeuralBackground": {
+        "displayName": "Recurrent Neural Field",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 100
+      }
+    }
+  }
+}

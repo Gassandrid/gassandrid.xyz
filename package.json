@@ -26,7 +26,11 @@
     "probe:eigenfish": "node ./scripts/probe-marimo-eigenfish.mjs",
     "probe:showcase": "node ./scripts/probe-marimo-showcase.mjs",
     "probe:responsive": "node ./scripts/probe-responsive-layout.mjs",
-    "validate": "npm run plugins:install && npm run check && npm test && npm run build && npm run probe"
+    "validate": "npm run plugins:install && npm run check && npm test && npm run build && npm run probe",
+    "probe:reading": "node ./scripts/probe-reading-experience.mjs",
+    "probe:graph": "node ./scripts/probe-graph-performance.mjs",
+    "probe:mobile": "node ./scripts/probe-mobile-navigation.mjs",
+    "probe:neural": "node ./scripts/probe-neural-background.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
@@ -68,7 +72,7 @@
     "remark-rehype": "^11.1.2",
     "rfdc": "^1.4.1",
     "serve-handler": "^6.1.6",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.4",
     "source-map-support": "^0.5.21",
     "to-vfile": "^8.0.0",
     "unified": "^11.0.5",
@@ -88,7 +92,7 @@
     "@types/source-map-support": "^0.5.10",
     "@types/ws": "^8.18.1",
     "@types/yargs": "^17.0.35",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.28.2",
     "prettier": "^3.8.1",
     "puppeteer-core": "^25.3.0",
     "tsx": "^4.21.0",

@@ -54,6 +54,9 @@ async function inspect(name, viewport) {
       dividerWidth: bar ? getComputedStyle(bar).borderBottomWidth : null,
       graphSidebarDisplay: graphSidebar ? getComputedStyle(graphSidebar).display : null,
       graphVisible: graph ? graph.getClientRects().length > 0 : false,
+      explorerVisible: [...document.querySelectorAll(".explorer")].some(
+        (element) => element.getClientRects().length > 0,
+      ),
     }
   })
 
@@ -112,6 +115,7 @@ try {
   check(mobile.initial.dividerWidth === "1px", "mobile header divider is missing")
   check(mobile.initial.graphSidebarDisplay === "none", "mobile left sidebar is visible")
   check(!mobile.initial.graphVisible, "mobile graph is visible")
+  check(!mobile.initial.explorerVisible, "mobile Explorer is visible")
   check(stickyTop === 0, `mobile header did not remain at the top after scrolling (${stickyTop}px)`)
   await mobile.page.close()
 } finally {

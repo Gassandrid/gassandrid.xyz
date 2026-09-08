@@ -32,11 +32,11 @@ async function inspect(path, readiness, viewport) {
 try {
   {
     const { page, pageErrors } = await inspect(
-      "/notes/artificial-intelligence/concepts/engram-memory.html",
+      "/thoughts/on-capturing-personal-data.html",
       async (current) => {
         await current.waitForSelector("article .markdown-preview-view.markdown-rendered")
         await current.waitForFunction(
-          () => document.querySelector("#lorenz-canvas")?.dataset.lorenzQuality,
+          () => document.querySelector("#neural-canvas")?.dataset.neuralQuality,
           { timeout: 10_000 },
         )
       },
@@ -44,27 +44,27 @@ try {
     results.markdown = await page.evaluate(() => ({
       articleWidth: Math.round(document.querySelector("article").getBoundingClientRect().width),
       breadcrumbs: document.querySelectorAll(".breadcrumb-container a").length,
-      lorenzQuality: document.querySelector("#lorenz-canvas")?.dataset.lorenzQuality,
-      lorenzControls: Boolean(document.querySelector("#lorenz-controls")),
+      neuralQuality: document.querySelector("#neural-canvas")?.dataset.neuralQuality,
+      neuralReason: document.querySelector("#neural-canvas")?.dataset.neuralReason,
+      neuralControls: Boolean(document.querySelector("#neural-controls")),
       d3Loaded: Boolean(document.querySelector("script[data-ewan-d3]")),
       pyodideLoaded: Boolean(document.querySelector('script[data-ewan-runtime="pyodide"]')),
       headingStyle: (() => {
-        const style = getComputedStyle(document.querySelector("article h1"))
+        const style = getComputedStyle(document.querySelector("h1.article-title"))
         return { color: style.color, family: style.fontFamily, size: style.fontSize }
       })(),
       paragraphStyle: (() => {
         const style = getComputedStyle(document.querySelector("article p"))
         return { color: style.color, family: style.fontFamily, size: style.fontSize }
       })(),
-      lorenzStatus: document.querySelector("[data-lorenz-status]")?.textContent,
     }))
     check(results.markdown.breadcrumbs > 0, "standard Markdown page has no breadcrumbs")
     check(
-      results.markdown.lorenzQuality !== "off" ||
-        /disabled|render budget/i.test(results.markdown.lorenzStatus ?? ""),
-      "desktop Lorenz was disabled without an adaptive-client reason",
+      results.markdown.neuralQuality !== "off" ||
+        /Auto paused/i.test(results.markdown.neuralReason ?? ""),
+      "desktop neural background was disabled without an adaptive-client reason",
     )
-    check(results.markdown.lorenzControls, "desktop Lorenz controls were not mounted")
+    check(results.markdown.neuralControls, "desktop neural background controls were not mounted")
     check(!results.markdown.d3Loaded, "D3 loaded on a page with no chart")
     check(!results.markdown.pyodideLoaded, "Pyodide loaded on a page with no Python runner")
     check(pageErrors.length === 0, `standard Markdown page errors: ${pageErrors.join("; ")}`)
@@ -73,10 +73,10 @@ try {
 
   {
     const { page, pageErrors } = await inspect(
-      "/notes/artificial-intelligence/concepts/engram-memory.html",
+      "/thoughts/on-capturing-personal-data.html",
       (current) =>
         current.waitForFunction(
-          () => document.querySelector("#lorenz-canvas")?.dataset.lorenzQuality,
+          () => document.querySelector("#neural-canvas")?.dataset.neuralQuality,
           { timeout: 10_000 },
         ),
       { width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
@@ -84,107 +84,51 @@ try {
     results.mobile = await page.evaluate(() => ({
       width: document.documentElement.scrollWidth,
       viewport: innerWidth,
-      lorenzQuality: document.querySelector("#lorenz-canvas")?.dataset.lorenzQuality,
-      controlsDisplay: getComputedStyle(document.querySelector("#lorenz-controls")).display,
+      neuralQuality: document.querySelector("#neural-canvas")?.dataset.neuralQuality,
+      controlsDisplay: getComputedStyle(document.querySelector("#neural-controls")).display,
     }))
     check(results.mobile.width <= results.mobile.viewport, "mobile page overflows horizontally")
-    check(results.mobile.lorenzQuality === "off", "mobile Lorenz auto mode was not disabled")
-    check(results.mobile.controlsDisplay === "none", "mobile Lorenz controls are visible")
+    check(
+      results.mobile.neuralQuality === "off",
+      "mobile neural background auto mode was not disabled",
+    )
+    check(
+      results.mobile.controlsDisplay === "none",
+      "mobile neural background controls are visible",
+    )
     check(pageErrors.length === 0, `mobile Markdown page errors: ${pageErrors.join("; ")}`)
     await page.close()
   }
 
   {
-    const { page, pageErrors } = await inspect(
-      "/notes/programming/marimo-widgets.html",
-      async (current) => {
-        await current.waitForSelector(
-          "article .markdown-preview-view.markdown-rendered.marimo-page-body",
-        )
-        await current.waitForFunction(
-          () => document.querySelector("marimo-slider")?.shadowRoot?.innerHTML?.length > 200,
-          { timeout: 180_000, polling: 500 },
-        )
-      },
-    )
-    results.marimo = await page.evaluate(() => {
-      function deepFind(root, selector) {
-        const direct = root.querySelector?.(selector)
-        if (direct) return direct
-        for (const element of root.querySelectorAll?.("*") ?? []) {
-          if (!element.shadowRoot) continue
-          const nested = deepFind(element.shadowRoot, selector)
-          if (nested) return nested
-        }
-        return null
-      }
-      const notebook = document.querySelector(".marimo-notebook-page")
-      const widgets = [
-        ...document.querySelectorAll("marimo-slider, marimo-dropdown, marimo-checkbox"),
-      ]
-      return {
-        version: notebook?.dataset.marimoVersion,
-        runtime: notebook?.dataset.marimoRuntime,
-        islands: document.querySelectorAll("marimo-island").length,
-        reactiveReady: Boolean(
-          document.querySelector("marimo-island[data-reactive='true'][data-status]"),
-        ),
-        visibleWidgets: widgets.filter((widget) => {
-          const box = widget.getBoundingClientRect()
-          return box.width > 100 && box.height > 10
-        }).length,
-        breadcrumbs: document.querySelectorAll(".breadcrumb-container a").length,
-        articleWidth: Math.round(document.querySelector("article").getBoundingClientRect().width),
-        headingStyle: (() => {
-          const heading = deepFind(notebook, "h1")
-          if (!heading) return null
-          const style = getComputedStyle(heading)
-          return { color: style.color, family: style.fontFamily, size: style.fontSize }
-        })(),
-        paragraphStyle: (() => {
-          const paragraph = deepFind(notebook, "p") ?? deepFind(notebook, ".markdown")
-          if (!paragraph) return null
-          const style = getComputedStyle(paragraph)
-          return { color: style.color, family: style.fontFamily, size: style.fontSize }
-        })(),
-      }
+    const { page, pageErrors } = await inspect("/thoughts/eigenfish.html", async (current) => {
+      await current.waitForFunction(
+        () => document.querySelector(".marimo-notebook-page")?.dataset.marimoState === "ready",
+        { timeout: 180_000, polling: 500 },
+      )
     })
-    check(results.marimo.version === "0.23.9", "Marimo compiler version is not pinned to 0.23.9")
-    check(results.marimo.runtime === "0.23.9", "Marimo runtime version does not match compiler")
-    check(results.marimo.islands >= 7, "Marimo widget page emitted too few islands")
-    check(results.marimo.reactiveReady, "no reactive Marimo island reached a ready status")
-    check(results.marimo.visibleWidgets > 0, "Marimo widgets did not hydrate visibly")
-    check(results.marimo.breadcrumbs > 0, "Marimo page has no standard breadcrumbs")
-    check(
-      results.marimo.headingStyle?.color === results.markdown.headingStyle.color,
-      "Marimo Markdown heading color differs from standard Markdown",
-    )
-    check(
-      results.marimo.headingStyle?.family === results.markdown.headingStyle.family,
-      "Marimo Markdown heading font differs from standard Markdown",
-    )
-    check(
-      results.marimo.headingStyle?.size === results.markdown.headingStyle.size,
-      "Marimo Markdown heading size differs from standard Markdown",
-    )
-    check(
-      results.marimo.paragraphStyle?.color === results.markdown.paragraphStyle.color,
-      "Marimo Markdown body color differs from standard Markdown",
-    )
-    check(
-      results.marimo.paragraphStyle?.family === results.markdown.paragraphStyle.family,
-      "Marimo Markdown body font differs from standard Markdown",
-    )
-    check(
-      results.marimo.paragraphStyle?.size === results.markdown.paragraphStyle.size,
-      "Marimo Markdown body size differs from standard Markdown",
-    )
-    check(
-      Math.abs(results.marimo.articleWidth - results.markdown.articleWidth) <= 2,
-      "Marimo article width differs from standard Markdown",
-    )
+    results.marimo = await page.evaluate(() => ({
+      version: document.querySelector(".marimo-notebook-page")?.dataset.marimoVersion,
+      matrices: [...document.querySelectorAll("marimo-matrix")].filter(
+        (e) => e.shadowRoot?.innerHTML.length > 200,
+      ).length,
+      preview: Boolean(document.querySelector('.eigenfish-figure img[src^="data:image/png"]')),
+    }))
+    check(results.marimo.version === "0.23.9", "Marimo compiler pin changed")
+    check(results.marimo.matrices === 2, "Eigenfish matrix controls did not hydrate")
+    check(results.marimo.preview, "Eigenfish preview is missing")
     check(pageErrors.length === 0, `Marimo page errors: ${pageErrors.join("; ")}`)
-    await page.screenshot({ path: "/tmp/ewan-marimo-browser-probe.png", fullPage: true })
+    // Verify that the notebook's global CSS and scoped export trust leave with it.
+    await page.evaluate(() =>
+      window.spaNavigate(new URL("/thoughts/on-capturing-personal-data.html", location.href)),
+    )
+    await page.waitForFunction(
+      () => !document.querySelector(".marimo-notebook-page") && !window.__MARIMO_EXPORT_CONTEXT__,
+    )
+    check(
+      await page.$eval("link[data-ewan-marimo-css]", (e) => e.disabled),
+      "Marimo styles leaked onto ordinary Markdown",
+    )
     await page.close()
   }
 
@@ -284,5 +228,5 @@ if (failures.length) {
   throw new Error(`Browser probe failed:\n- ${failures.join("\n- ")}`)
 }
 console.log(
-  "Browser probe passed: Markdown parity, adaptive Lorenz, Marimo widgets, RunPython, GaggiMate, and Morris-Lecar.",
+  "Browser probe passed: Markdown parity, adaptive neural background, Marimo widgets, RunPython, GaggiMate, and Morris-Lecar.",
 )

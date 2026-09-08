@@ -3,7 +3,7 @@ views:
     name: Table
     filters:
       and:
-        - class == ["medication"]
+        - list(class).contains("medication")
         - category.contains("cognitive")
     order:
       - file.basename

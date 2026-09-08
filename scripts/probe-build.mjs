@@ -11,7 +11,7 @@ function standardShell(html, title) {
   assert.match(html, /class="breadcrumb-container"/)
 }
 const index = read("index.html")
-assert.match(index, /id="lorenz-canvas"/)
+assert.match(index, /id="neural-canvas"/)
 assert.match(index, /data-ewan-telemetry-anchor/)
 assert.match(index, /<object data="\.\/attachments\/florilegium-banner\.svg"/)
 assert.ok(exists("attachments/florilegium-banner.svg"))
@@ -63,6 +63,16 @@ assert.doesNotMatch(python, /<script[^>]+(?:pyodide|codemirror)/i)
 const chart = read("thoughts/chart-demo.html")
 assert.match(chart, /data-chart-config=/)
 assert.doesNotMatch(chart, /<script[^>]+d3(?:\.min)?\.js/i)
+const compounds = read("notes/neuropharmacology/nootropic-compounds.base.html")
+assert.ok(
+  (compounds.match(/class="base-card"/g) ?? []).length > 0,
+  "Compound Base must not silently render empty",
+)
+const eigenfish = read("thoughts/eigenfish.html")
+assert.match(eigenfish, /data-marimo-runtime="0\.23\.9"/)
+assert.match(eigenfish, /eigenfish-figure/)
+assert.match(eigenfish, /marimo-matrix/)
+
 let marimoPagesProbed = 0
 for (const [file, title, islands] of [
   ["notes/programming/marimo-test.html", "Marimo Islands Test", 5],
@@ -141,5 +151,5 @@ assert.ok(
   `expected at least 10 TikZ-bearing pages, found ${tikzPages.length}`,
 )
 console.log(
-  `Build probe passed: ${htmlFiles.length} HTML pages, ${tikzPages.length} TikZ pages, ${marimoPagesProbed} optional Marimo fixtures, v4 layout and Bases card parity, graph hygiene, RunPython, charts, GaggiMate, Morris-Lecar, telemetry, and adaptive Lorenz.`,
+  `Build probe passed: ${htmlFiles.length} HTML pages, ${tikzPages.length} TikZ pages, ${marimoPagesProbed} optional Marimo fixtures, v4 layout and Bases card parity, graph hygiene, RunPython, charts, GaggiMate, Morris-Lecar, telemetry, and adaptive neural background.`,
 )

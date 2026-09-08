@@ -146,7 +146,11 @@ plugins:
   - source: ./plugins/ewan-morris-lecar
     enabled: true
     order: 94
+  # Retain the previous attractor study as an optional background.
   - source: ./plugins/ewan-lorenz
+    enabled: false
+    order: 96
+  - source: ./plugins/ewan-neural-background
     enabled: true
     order: 96
     layout:

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict"
 import puppeteer from "puppeteer-core"
+import { createMarimoLoader } from "../plugins/ewan-marimo-resources/index.js"
 
 const origin = process.env.EIGENFISH_ORIGIN ?? "http://localhost:8080"
 const targetPath = "/thoughts/eigenfish.html"
@@ -16,6 +17,38 @@ const browser = await puppeteer.launch({
 })
 
 try {
+  // Exercise loader states independently of CDN timing. A running cell must
+  // never count as ready, and leaving a notebook must release page resources.
+  const fixture = await browser.newPage()
+  await fixture.setRequestInterception(true)
+  fixture.on("request", (request) =>
+    request.respond({
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+      contentType: request.resourceType() === "stylesheet" ? "text/css" : "application/javascript",
+      body: "",
+    }),
+  )
+  await fixture.setContent(
+    '<div class="marimo-notebook-page" data-marimo-state="loading"><span class="marimo-loading-text"></span><marimo-island data-reactive="true" data-status="running"></marimo-island><marimo-island data-reactive="true" data-status="idle"></marimo-island></div>',
+  )
+  await fixture.addScriptTag({ content: createMarimoLoader([]) })
+  assert.equal(
+    await fixture.$eval(".marimo-notebook-page", (e) => e.dataset.marimoState),
+    "loading",
+  )
+  await fixture.$eval('marimo-island[data-status="running"]', (e) => (e.dataset.status = "idle"))
+  await fixture.waitForFunction(
+    () => document.querySelector(".marimo-notebook-page").dataset.marimoState === "ready",
+  )
+  await fixture.evaluate(() => {
+    document.querySelector(".marimo-notebook-page").remove()
+    window.__ewanMarimoLoader.ensure()
+  })
+  assert.equal(await fixture.evaluate(() => window.__MARIMO_EXPORT_CONTEXT__), undefined)
+  assert.equal(await fixture.$eval("link[data-ewan-marimo-css]", (e) => e.disabled), true)
+  await fixture.close()
+
   const page = await browser.newPage()
   page.on("console", (message) => {
     if (message.type() === "error" && consoleErrors.length < 50) {

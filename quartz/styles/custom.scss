@@ -622,6 +622,12 @@ footer {
 }
 
 @media ($mobile) {
+  // No mobile Explorer or drawer, even before its JavaScript initializes.
+  // Keep this explicit because the plugin's display rules load after core CSS.
+  .page > #quartz-body .explorer {
+    display: none !important;
+  }
+
   // Lock horizontal scrolling
   body,
   .page,
@@ -881,47 +887,38 @@ html.reading-mode .sidebar.reading-mode-active .toc-clone {
   }
 }
 
-// Backdrop blur for components over the Lorenz background
-// Uses theme colors from quartz config via CSS variables
-
-// Mixin for glassmorphism effect
-@mixin glass-blur($blur: 12px) {
-  backdrop-filter: blur($blur);
-  -webkit-backdrop-filter: blur($blur);
+// Navigation stays opaque; the reading paper admits only a little of the
+// field. Its small existing grain tile is static and needs no backdrop blur.
+.graph-outer,
+.global-graph-outer {
+  background: var(--light);
 }
 
-// Center pane - uses theme's --light color
 .center {
-  @include glass-blur(12px);
-  background-color: color-mix(in srgb, var(--light) 75%, transparent);
   position: relative;
+  isolation: isolate;
+  background: color-mix(in srgb, var(--light) 94%, transparent);
 
-  // Grainy texture overlay (Arc-style film grain)
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
     z-index: -1;
-    opacity: 0.15;
-    background-image: url("/static/noise.png");
-    background-repeat: repeat;
-    background-size: 128px 128px;
+    pointer-events: none;
+    border-radius: inherit;
+    background: url("/static/noise.png") repeat;
+    opacity: 0.12;
     mix-blend-mode: multiply;
   }
 }
 
 [saved-theme="dark"] .center::before {
-  mix-blend-mode: soft-light;
   opacity: 0.2;
+  mix-blend-mode: soft-light;
 }
 
-// Graph canvas only (not the title)
 .graph-outer,
 .global-graph-outer {
-  @include glass-blur(8px);
-  background-color: color-mix(in srgb, var(--light) 60%, transparent);
   border-radius: 8px;
 }
 
@@ -979,5 +976,129 @@ figure.tikz {
         display: inline;
       }
     }
+  }
+}
+
+// Quiet paper surfaces keep navigation legible above the generative background.
+@media ($desktop) {
+  .sidebar.right > .explorer,
+  .sidebar.right > .backlinks {
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    border-radius: 6px;
+    padding: 1rem;
+    box-sizing: border-box;
+    min-width: 0;
+
+    h2,
+    h3 {
+      margin: 0;
+      font: 500 0.78rem/1.4 var(--bodyFont);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--darkgray);
+    }
+  }
+
+  .sidebar.right > .explorer.collapsed {
+    flex-basis: auto;
+
+    .explorer-content {
+      display: none;
+    }
+  }
+
+  .sidebar.right > .backlinks {
+    flex: 0 0 auto;
+  }
+
+  .sidebar.right > .backlinks > ul.overflow {
+    max-height: min(12rem, 24vh);
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    mask-image: none;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+
+    > li {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--lightgray);
+
+      > a {
+        display: block;
+        padding: 0.5rem 0;
+        font: 400 0.88rem/1.45 var(--bodyFont);
+        color: var(--darkgray);
+        overflow-wrap: anywhere;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--dark);
+          text-decoration: underline;
+          text-underline-offset: 0.2em;
+        }
+      }
+    }
+  }
+
+  .sidebar.right .explorer-content {
+    margin-top: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--lightgray) transparent;
+    overscroll-behavior: contain;
+  }
+
+  .sidebar.right .explorer-content li > a {
+    display: block;
+    padding: 0.25rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    opacity: 1;
+    color: var(--darkgray);
+  }
+
+  .sidebar.right .explorer-content li > a:hover,
+  .sidebar.right .explorer-content li > a.active {
+    background: var(--highlight);
+    color: var(--dark);
+  }
+
+  .sidebar.right .folder-container div > a,
+  .sidebar.right .folder-container div > button span {
+    font-family: var(--bodyFont);
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: var(--darkgray);
+  }
+
+  .sidebar.right .folder-container {
+    padding: 0.18rem 0;
+  }
+
+  .sidebar.right a:focus-visible,
+  .sidebar.right button:focus-visible {
+    outline: 1px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+// Labels retain a paper backing where the neural field passes behind the rail.
+.quartztoc .toc-link {
+  background: var(--light) !important;
+  box-shadow:
+    4px 0 var(--light),
+    -4px 0 var(--light);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explorer svg,
+  .explorer .fold,
+  .explorer-content .folder-outer {
+    transition: none;
   }
 }
