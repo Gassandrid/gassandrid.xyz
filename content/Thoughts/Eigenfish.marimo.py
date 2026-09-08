@@ -162,9 +162,7 @@ def _(base64, np, struct, zlib):
 
 @app.cell(hide_code=True)
 def _(PALETTES, PRESETS, mo):
-    preset = mo.ui.dropdown(
-        options=list(PRESETS), value="Conradi", label="Structure"
-    )
+    preset = mo.ui.dropdown(options=list(PRESETS), value="Conradi", label="Structure")
     samples = mo.ui.slider(
         start=2000,
         stop=30000,
@@ -233,7 +231,9 @@ def _(PRESETS, mo, preset):
     mo.vstack(
         [
             mo.md("## Shape the matrix"),
-            mo.md("Drag or press Enter to edit. Matrix codes: `−2 = −i`, `−1`, `0`, `1`, `2 = i`. Set the same position to `1` in the variable mask to sample it from the torus."),
+            mo.md(
+                "Drag or press Enter to edit. Matrix codes: `−2 = −i`, `−1`, `0`, `1`, `2 = i`. Set the same position to `1` in the variable mask to sample it from the torus."
+            ),
             mo.hstack([matrix_editor, mask_editor], widths="equal", gap=1.5),
         ],
         gap=0.75,
@@ -279,14 +279,12 @@ def _(PALETTES, density_png, eigenvalues, mo, palette, variable_mask):
     else:
         background, foreground = PALETTES[palette.value]
         source = density_png(eigenvalues, background, foreground)
-        artwork = mo.Html(
-            f"""
+        artwork = mo.Html(f"""
             <figure class="eigenfish-figure">
               <img src="{source}" alt="Eigenvalue density generated from the edited complex matrix" />
               <figcaption>{len(eigenvalues):,} eigenvalues · {variable_count} torus-sampled entries</figcaption>
             </figure>
-            """
-        )
+            """)
     artwork
     return
 

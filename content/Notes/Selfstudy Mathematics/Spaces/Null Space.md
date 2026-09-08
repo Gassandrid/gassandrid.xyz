@@ -1,18 +1,23 @@
 ---
 date: 2025-06-26
-updated: 2025-06-26
+updated: 2026-09-08T11:03:55-04:00
 tags:
   - math/linear-algebra
-class: note
+class:
+  - note
+source:
+related:
+author:
+description:
+aliases:
 ---
+
 >[!Abstract] Definition
 > The Null space of an $m-by-n$ matrix $A$ is the collection of those vectors in $\mathbb{R}^n$ that $A$ maps to the zero vector in $\mathbb{R}^m$. More precisely:
 >
 > $$
 > \mathcal{N}(A)= \{ x \in \mathbb{R}^n \mid Ax = 0\}
 > $$
-
----
 
 As an example, let's examine the matrix $A$:
 

@@ -4,7 +4,7 @@ description: works and people that have shaped how i think
 tags:
   - seed
   - philosophy
-updated: 2026-09-07T11:45:32-04:00
+updated: 2026-09-07T11:46:07-04:00
 ---
 
 inspired by [David Cole's](http://davidcole.me/canon/) and [aarnphm's](https://notes.aarnphm.xyz/personal-canon)

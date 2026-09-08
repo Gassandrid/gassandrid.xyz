@@ -93,3 +93,10 @@ The unstable manifold expands under forward iteration while the stable manifold 
 - form the "outflow" from saddle points
 - for chaotic systems unstable manifolds of different saddles can intersect stable manifolds (creating [[Homoclinic Orbit|homoclinic]] and [[Heteroclinic Orbit|heteroclinic]] tangles)
 - intersections are the geometric signature of chaos
+
+
+----
+
+## [[09-08-2026]] Update
+
+Paper [@churchlandPreparatoryActivityExpansive2024] shows that
