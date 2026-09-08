@@ -76,12 +76,6 @@
   font-display: swap;
 }
 
-// banner color switcher for light/darkmode
-// class is indexBanner, setting path of svg to a fill background-color
-[saved-theme="dark"] path.indexBanner {
-  fill: var(--lightgray);
-}
-
 body[data-slug="index"] img {
   filter: invert(0%);
   opacity: 0.85;
@@ -96,8 +90,31 @@ body {
   mix-blend-mode: overlay;
 }
 
-[saved-theme="dark"] body[data-slug="index"] img[src*="banner.svg"] {
-  filter: invert(100%);
+// The SVG stays an external, cacheable asset, while its ink follows saved-theme.
+// An image fallback also avoids an <object>'s separate white document surface.
+body[data-slug="index"] .florilegium-banner {
+  display: block;
+
+  & > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@supports (mask-image: url("")) or (-webkit-mask-image: url("")) {
+  body[data-slug="index"] .florilegium-banner {
+    background-color: var(--gray);
+    -webkit-mask: var(--florilegium-image) center / contain no-repeat;
+    mask: var(--florilegium-image) center / contain no-repeat;
+
+    & > img {
+      opacity: 0;
+    }
+  }
 }
 
 body[data-slug="thoughts/craft"] {

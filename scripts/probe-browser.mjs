@@ -89,13 +89,10 @@ try {
     }))
     check(results.mobile.width <= results.mobile.viewport, "mobile page overflows horizontally")
     check(
-      results.mobile.neuralQuality === "off",
-      "mobile neural background auto mode was not disabled",
+      results.mobile.neuralQuality === "low",
+      "mobile neural background did not start at low quality by default",
     )
-    check(
-      results.mobile.controlsDisplay === "none",
-      "mobile neural background controls are visible",
-    )
+    check(results.mobile.controlsDisplay !== "none", "mobile neural background controls are hidden")
     check(pageErrors.length === 0, `mobile Markdown page errors: ${pageErrors.join("; ")}`)
     await page.close()
   }

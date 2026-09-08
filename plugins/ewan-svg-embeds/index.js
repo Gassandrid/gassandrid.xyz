@@ -36,6 +36,24 @@ export function resolveSvgObjects(html, slug, svgIndex) {
   )
 }
 
+export function themeFlorilegiumBanner(html, slug, svgIndex) {
+  const attachment = svgIndex.get("florilegium-banner.svg")
+  if (slug !== "index" || !attachment) return html
+  const target = joinSegments(pathToRoot(slug), attachment)
+  return html.replace(/<object\b[^>]*>\s*<\/object>/gi, (object) => {
+    const source = object.match(/\bdata=["']([^"']+)["']/i)?.[1]
+    if (source !== target) return object
+    const url = encodeURI(target).replace(
+      /[!'()*]/g,
+      (char) => `%${char.charCodeAt(0).toString(16).toUpperCase()}`,
+    )
+    // A CSS mask lets this monochrome artwork inherit the site's theme without
+    // inlining its large path or changing the canonical attachment. The image
+    // retains the intrinsic dimensions, accessible name, and no-mask fallback.
+    return `<span class="florilegium-banner" style="--florilegium-image:url(&quot;${url}&quot;)"><img src="${url}" alt="Sailing boats — Florilegium banner"></span>`
+  })
+}
+
 export default function EwanSvgEmbeds() {
   return {
     name: "EwanSvgEmbeds",
@@ -45,7 +63,11 @@ export default function EwanSvgEmbeds() {
         () => (tree, file) => {
           const slug = String(file.data.slug ?? path.basename(file.path, path.extname(file.path)))
           visit(tree, "html", (node) => {
-            node.value = resolveSvgObjects(node.value, slug, svgIndex)
+            node.value = themeFlorilegiumBanner(
+              resolveSvgObjects(node.value, slug, svgIndex),
+              slug,
+              svgIndex,
+            )
           })
         },
       ]

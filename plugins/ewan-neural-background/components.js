@@ -9,7 +9,7 @@ const CSS = `
 #neural-controls>summary::-webkit-details-marker{display:none}
 #neural-controls>summary::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--pine)}
 #neural-controls[open]>summary{border-color:var(--gray)}
-#neural-controls .neural-panel{position:absolute;right:0;bottom:2.7rem;width:310px;box-sizing:border-box;padding:1rem;background:var(--light);border:1px solid var(--lightgray);border-radius:6px;box-shadow:0 5px 20px var(--highlight);max-height:70vh;overflow:auto}
+#neural-controls .neural-panel{position:absolute;right:0;bottom:2.7rem;width:min(310px,calc(100vw - 2rem));box-sizing:border-box;padding:1rem;background:var(--light);border:1px solid var(--lightgray);border-radius:6px;box-shadow:0 5px 20px var(--highlight);max-height:70vh;overflow:auto}
 #neural-controls label{display:block;margin:.75rem 0;color:var(--darkgray)}
 #neural-controls label>span{display:flex;justify-content:space-between;gap:1rem}
 #neural-controls input,#neural-controls select{display:block;box-sizing:border-box;width:100%;margin-top:.4rem;accent-color:var(--pine);font:inherit}
@@ -25,7 +25,6 @@ const CSS = `
 #neural-controls button:hover{border-color:var(--secondary);color:var(--dark)}
 #neural-controls output{font-variant-numeric:tabular-nums;color:var(--darkgray);opacity:.85}
 #neural-controls :focus-visible{outline:2px solid var(--secondary);outline-offset:3px}
-@media(max-width:800px){#neural-canvas,#neural-controls{display:none}}
 @media print{#neural-canvas,#neural-controls{display:none}}
 `
 
@@ -36,7 +35,7 @@ function neuralRuntime(create, step) {
   const connection = navigator.connection
   const preferenceKey = "ewan-neural-mode"
   let current = null
-  let selectedMode = "auto"
+  let selectedMode = "on"
   function freshSeed() {
     try {
       return crypto.getRandomValues(new Uint32Array(1))[0]
@@ -81,7 +80,7 @@ function neuralRuntime(create, step) {
     current = null
     const canvas = document.getElementById("neural-canvas")
     if (!canvas) return
-    const low = (navigator.hardwareConcurrency || 4) <= 4
+    const low = compact.matches || (navigator.hardwareConcurrency || 4) <= 4
     const network = create({
       count: low ? 80 : 112,
       seed,
@@ -441,8 +440,8 @@ function neuralRuntime(create, step) {
       let reason = ""
       if (failed) reason = "Animation unavailable"
       else if (!ctx || !baseCtx) reason = "Canvas unavailable"
-      else if (compact.matches) reason = "Motion paused on a small screen"
       else if (selectedMode === "off") reason = "Motion off"
+      else if (automatic && compact.matches) reason = "Auto paused on a small screen"
       else if (automatic && motion.matches) reason = "Auto paused for reduced motion"
       else if (automatic && connection?.saveData) reason = "Auto paused to save data"
       else if (automatic && (navigator.deviceMemory || 8) <= 2)

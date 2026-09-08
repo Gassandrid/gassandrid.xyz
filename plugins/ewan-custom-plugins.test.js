@@ -13,7 +13,11 @@ import EwanMorrisLecar from "./ewan-morris-lecar/index.js"
 import EwanRunPython from "./ewan-run-python/index.js"
 import { Telemetry } from "./ewan-telemetry/components.js"
 import { QuartzTOC } from "./ewan-quartz-toc/components.js"
-import EwanSvgEmbeds, { buildSvgIndex, resolveSvgObjects } from "./ewan-svg-embeds/index.js"
+import EwanSvgEmbeds, {
+  buildSvgIndex,
+  resolveSvgObjects,
+  themeFlorilegiumBanner,
+} from "./ewan-svg-embeds/index.js"
 
 function transformCode(plugin, node) {
   const tree = { type: "root", children: [node] }
@@ -162,6 +166,42 @@ test("Obsidian SVG embeds resolve unique attachment basenames", () => {
     '<object data="./attachments/florilegium-banner.svg" type="image/svg+xml"></object>',
   )
   assert.equal(EwanSvgEmbeds().name, "EwanSvgEmbeds")
+})
+
+test("the home banner uses the site theme without an isolated SVG document", () => {
+  const plugin = EwanSvgEmbeds()
+  const transform = plugin.markdownPlugins({
+    allSlugs: ["attachments/florilegium-banner.svg"],
+  })[0]()
+  const tree = {
+    type: "root",
+    children: [
+      {
+        type: "html",
+        value: '<object data="florilegium-banner.svg" type="image/svg+xml"></object>',
+      },
+    ],
+  }
+  transform(tree, { data: { slug: "index" }, path: "content/index.md" })
+  const banner = tree.children[0].value
+  assert.match(banner, /class="florilegium-banner"/)
+  assert.match(
+    banner,
+    /--florilegium-image:url\(&quot;\.\/attachments\/florilegium-banner\.svg&quot;\)/,
+  )
+  assert.match(banner, /<img src="\.\/attachments\/florilegium-banner\.svg" alt="Sailing boats/)
+  assert.doesNotMatch(banner, /<object|<path/)
+})
+
+test("banner theming leaves other pages, ambiguous assets, and remote SVGs unchanged", () => {
+  const index = buildSvgIndex(["attachments/florilegium-banner.svg"])
+  const local = '<object data="./attachments/florilegium-banner.svg"></object>'
+  assert.equal(themeFlorilegiumBanner(local, "thoughts/index", index), local)
+  assert.equal(themeFlorilegiumBanner(local, "index", new Map()), local)
+  for (const source of ["./attachments/other.svg", "https://example.com/florilegium-banner.svg"]) {
+    const object = `<object data="${source}"></object>`
+    assert.equal(themeFlorilegiumBanner(object, "index", index), object)
+  }
 })
 
 test("graph compatibility patch excludes .base nodes", () => {

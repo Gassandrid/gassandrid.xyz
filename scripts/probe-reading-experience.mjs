@@ -183,12 +183,13 @@ try {
     e.click()
   })
   await page.waitForFunction(() => location.hash === "#dense-79")
+  await page.click("#neural-controls > summary")
+  await page.select("#neural-controls [data-motion]", "auto")
   await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }])
   await page.waitForFunction(
     () => document.querySelector("#neural-canvas").dataset.neuralQuality === "off",
   )
   assert.equal(await page.$eval("#neural-canvas", (e) => getComputedStyle(e).opacity), "0")
-  await page.click("#neural-controls > summary")
   await page.select("#neural-controls [data-motion]", "on")
   await page.waitForFunction(() => document.querySelector("#neural-canvas").dataset.neuralDrawMs, {
     timeout: 20000,

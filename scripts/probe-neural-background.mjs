@@ -24,19 +24,20 @@ try {
   const page = await browser.newPage()
   page.on("pageerror", (error) => errors.push(error.message))
   await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 2 })
-  await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "no-preference" }])
+  await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }])
   await page.goto(origin + route, { waitUntil: "networkidle0" })
   await page.waitForFunction(
     () => Number(document.querySelector("#neural-canvas")?.dataset.neuralFrames) >= 90,
   )
-  const read = () =>
-    page.$eval("#neural-canvas", (canvas) => ({
+  const readCanvas = (targetPage) =>
+    targetPage.$eval("#neural-canvas", (canvas) => ({
       ...canvas.dataset,
       width: canvas.width,
       height: canvas.height,
     }))
-  const readRecipe = () =>
-    page.evaluate(() => {
+  const read = () => readCanvas(page)
+  const readRecipe = (targetPage = page) =>
+    targetPage.evaluate(() => {
       const canvas = document.querySelector("#neural-canvas")
       const controls = document.querySelector("#neural-controls")
       return {
@@ -87,6 +88,7 @@ try {
   }
   result.running = await read()
   assert.equal(result.running.neuralState, "running")
+  assert.equal(await page.$eval(motionControl, (input) => input.value), "on")
   assert.ok(Number(result.running.neuralSpikes) > 0, "Network never spiked")
   assert.ok(Number(result.running.neuralDrawMs) < 8, "Background exceeded draw budget")
   assert.ok(Number(result.running.neuralDpr) <= 1.5)
@@ -94,6 +96,7 @@ try {
   assert.equal(result.running.neuralDropped, "0")
   const firstRecipe = await readRecipe()
   assertBoundRecipe(firstRecipe)
+  result.defaultOn = { desktopReducedMotion: true }
 
   // A full document load starts a unique network; in-document navigation below
   // must retain the reader's experiment instead.
@@ -106,6 +109,97 @@ try {
   assert.notEqual(freshRecipe.seed, firstRecipe.seed, "Full reload reused the previous seed")
   assert.notEqual(freshRecipe.topology, firstRecipe.topology)
   result.freshDocument = { previousSeed: firstRecipe.seed, seed: freshRecipe.seed }
+
+  // A fresh mobile visitor also starts On, including with reduced motion.
+  // Use separate storage to distinguish the default from a saved preference.
+  const mobileContext = await browser.createBrowserContext()
+  const mobilePage = await mobileContext.newPage()
+  mobilePage.on("pageerror", (error) => errors.push(error.message))
+  await mobilePage.setViewport({
+    width: 390,
+    height: 844,
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+  })
+  await mobilePage.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }])
+  await mobilePage.goto(origin + route, { waitUntil: "networkidle0" })
+  await mobilePage.waitForFunction(
+    () => Number(document.querySelector("#neural-canvas")?.dataset.neuralFrames) >= 60,
+  )
+  const freshMobile = await readCanvas(mobilePage)
+  const mobileRecipe = await readRecipe(mobilePage)
+  assertBoundRecipe(mobileRecipe)
+  assert.equal(await mobilePage.$eval(motionControl, (input) => input.value), "on")
+  assert.equal(freshMobile.neuralState, "running")
+  assert.ok(freshMobile.width > 0 && freshMobile.height > 0)
+  assert.ok(freshMobile.width <= 390 && freshMobile.height <= 844)
+  assert.ok(Number(freshMobile.neuralNodes) > 0 && Number(freshMobile.neuralNodes) <= 80)
+  assert.ok(Number(freshMobile.neuralFps) <= 24, "Mobile exceeded its frame-rate cap")
+  assert.ok(Number(freshMobile.neuralDpr) <= 1, "Mobile exceeded its DPR cap")
+  assert.ok(Number(freshMobile.neuralSpikes) > 0, "Fresh mobile network never spiked")
+  assert.ok(Number(freshMobile.neuralDrawMs) < 8, "Mobile exceeded draw budget")
+  assert.equal(freshMobile.neuralDropped, "0")
+  assert.ok(
+    await mobilePage.$eval("#neural-controls", (controls) => controls.getClientRects().length > 0),
+    "Fresh mobile controls are hidden",
+  )
+  await mobilePage.tap("#neural-controls > summary")
+  assert.equal(await mobilePage.$eval("#neural-controls", (controls) => controls.open), true)
+  const mobilePanel = await mobilePage.$eval("#neural-controls .neural-panel", (panel) => {
+    const { left, right, top, bottom } = panel.getBoundingClientRect()
+    return { left, right, top, bottom }
+  })
+  assert.ok(
+    mobilePanel.left >= 0 && mobilePanel.right <= 390,
+    "Mobile settings overflow horizontally",
+  )
+  assert.ok(
+    mobilePanel.top >= 0 && mobilePanel.bottom <= 844,
+    "Mobile settings overflow vertically",
+  )
+  await mobilePage.select(motionControl, "off")
+  const mobileOff = await readCanvas(mobilePage)
+  assert.equal(mobileOff.neuralState, "off")
+  assert.equal(mobileOff.width, 0)
+  assert.equal(mobileOff.height, 0)
+  await pause(250)
+  assert.equal((await readCanvas(mobilePage)).neuralFrames, mobileOff.neuralFrames)
+  assert.deepEqual(await readRecipe(mobilePage), mobileRecipe)
+  await mobilePage.select(motionControl, "on")
+  await mobilePage.waitForFunction(
+    (frames) => {
+      const canvas = document.querySelector("#neural-canvas")
+      return (
+        canvas.dataset.neuralState === "running" && Number(canvas.dataset.neuralFrames) > frames
+      )
+    },
+    {},
+    Number(mobileOff.neuralFrames),
+  )
+  assert.deepEqual(await readRecipe(mobilePage), mobileRecipe, "Mobile Off/On lost settings")
+
+  // The default must never override an explicit saved Off on the next document.
+  await mobilePage.select(motionControl, "off")
+  await mobilePage.reload({ waitUntil: "networkidle0" })
+  await mobilePage.waitForSelector(motionControl)
+  assert.equal(await mobilePage.$eval(motionControl, (input) => input.value), "off")
+  const mobileSavedOff = await readCanvas(mobilePage)
+  assert.equal(mobileSavedOff.neuralState, "off")
+  assert.equal(mobileSavedOff.width, 0)
+  assert.equal(mobileSavedOff.height, 0)
+  await pause(250)
+  assert.equal((await readCanvas(mobilePage)).neuralFrames, mobileSavedOff.neuralFrames)
+  result.freshMobile = {
+    ...freshMobile,
+    defaultOnWithReducedMotion: true,
+    controlsTouchable: true,
+    panelBounds: mobilePanel,
+    offOnPreservedSettings: true,
+    savedOffHonoredAfterReload: true,
+  }
+  await mobileContext.close()
+  await page.bringToFront()
 
   // A real background tab must freeze its simulation and frame count.
   const foreground = await browser.newPage()
@@ -344,20 +438,31 @@ try {
     seedAndParametersAndLayoutRetained: true,
   }
   await page.setViewport({ width: 390, height: 844 })
-  await page.waitForFunction(
-    () => document.querySelector("#neural-canvas").dataset.neuralState === "off",
-  )
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector("#neural-canvas")
+    return (
+      canvas.dataset.neuralState === "running" &&
+      Math.abs(canvas.width / canvas.height - innerWidth / innerHeight) < 0.01
+    )
+  })
+  await waitForFramesAfter((await read()).neuralFrames)
   result.mobile = await read()
-  assert.equal(result.mobile.width, 0)
-  assert.equal(result.mobile.height, 0)
-  assert.equal(
-    await page.$eval("#neural-controls", (controls) => controls.getClientRects().length),
-    0,
+  assert.ok(result.mobile.width > 0 && result.mobile.height > 0)
+  assert.ok(
+    await page.$eval("#neural-controls", (controls) => controls.getClientRects().length > 0),
+    "Controls disappeared when resizing to mobile",
   )
+  assert.deepEqual(await readRecipe(), retainedRecipe, "Resizing to mobile lost settings")
   await page.setViewport({ width: 3840, height: 2160, deviceScaleFactor: 2 })
-  await page.waitForFunction(
-    () => document.querySelector("#neural-canvas").dataset.neuralState === "running",
-  )
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector("#neural-canvas")
+    return (
+      canvas.dataset.neuralState === "running" &&
+      canvas.width > 1000 &&
+      canvas.height > 1000 &&
+      Math.abs(canvas.width / canvas.height - innerWidth / innerHeight) < 0.01
+    )
+  })
   const large = await read()
   assert.ok(large.width * large.height <= 3_000_000, "Large-screen canvas exceeded pixel budget")
   result.largeScreen = {

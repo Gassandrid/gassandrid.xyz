@@ -42,10 +42,12 @@ parameters, neuron count, and step sequence reproduce the same network activity.
 The recipe and ink survive Quartz SPA navigation; simulation time restarts on each
 page. Sliders affect the running network without resetting it.
 
-Auto observes reduced motion, data saving, low device memory and a measured draw
-budget. Every mode pauses in a hidden document; small screens stay disabled.
-Explicit On overrides the automatic desktop constraints. Motion preference persists
-locally. The main reading surface uses 94% theme paper and a faint static grain tile;
+On is the default on desktop and mobile; saved visitor choices still take precedence.
+Mobile uses 80 neurons, 24fps, DPR at most 1, and a panel sized to the viewport.
+Optional Auto observes reduced motion, small screens, data saving, low device
+memory and a measured draw budget. Every mode pauses in a hidden document.
+On overrides Auto's constraints. Motion preference persists locally. The main
+reading surface uses 94% theme paper and a faint static grain tile;
 navigation remains opaque, and the canvas mask attenuates the article area.
 
 The runtime caps the field at 80 or 112 neurons, four to eight outgoing edges per neuron,
