@@ -190,6 +190,9 @@ test("the home banner uses the site theme without an isolated SVG document", () 
     /--florilegium-image:url\(&quot;\.\/attachments\/florilegium-banner\.svg&quot;\)/,
   )
   assert.match(banner, /<img src="\.\/attachments\/florilegium-banner\.svg" alt="Sailing boats/)
+  const dimensions = banner.match(/width="(\d+)" height="(\d+)"/)
+  assert.ok(dimensions, "the lazy image must reserve height before its first load")
+  assert.equal(Number(dimensions[1]) / Number(dimensions[2]), 2964.6 / 460.09)
   assert.doesNotMatch(banner, /<object|<path/)
 })
 

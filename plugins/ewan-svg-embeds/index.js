@@ -49,8 +49,10 @@ export function themeFlorilegiumBanner(html, slug, svgIndex) {
     )
     // A CSS mask lets this monochrome artwork inherit the site's theme without
     // inlining its large path or changing the canonical attachment. The image
-    // retains the intrinsic dimensions, accessible name, and no-mask fallback.
-    return `<span class="florilegium-banner" style="--florilegium-image:url(&quot;${url}&quot;)"><img src="${url}" alt="Sailing boats — Florilegium banner"></span>`
+    // retains the accessible name and no-mask fallback. Integer dimensions use
+    // the SVG's 2964.6 × 460.09 viewBox scaled by 100: this reserves its exact
+    // ratio before Quartz's lazy image loads, including on a fresh mobile visit.
+    return `<span class="florilegium-banner" style="--florilegium-image:url(&quot;${url}&quot;)"><img src="${url}" alt="Sailing boats — Florilegium banner" width="296460" height="46009"></span>`
   })
 }
 

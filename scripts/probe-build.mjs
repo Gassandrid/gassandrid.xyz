@@ -15,6 +15,10 @@ assert.match(index, /id="neural-canvas"/)
 assert.match(index, /data-ewan-telemetry-anchor/)
 assert.match(index, /class="florilegium-banner"/)
 assert.match(index, /<img src="\.\/attachments\/florilegium-banner\.svg"[^>]+alt="Sailing boats/)
+assert.match(
+  index,
+  /<img[^>]+src="\.\/attachments\/florilegium-banner\.svg"[^>]+width="296460"[^>]+height="46009"/,
+)
 assert.doesNotMatch(index, /<object[^>]+data="\.\/attachments\/florilegium-banner\.svg"/)
 assert.ok(exists("attachments/florilegium-banner.svg"))
 assert.doesNotMatch(index, /<h1 class="article-title"|class="content-meta"|class="tags"/)
