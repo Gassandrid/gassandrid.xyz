@@ -102,7 +102,7 @@
     color: var(--marimo-quartz-text) !important;
     line-height: 1.65;
 
-    :is(p, li, blockquote, strong, em, span) {
+    :is(p, li, blockquote, strong, em, span):not(.katex *) {
       color: inherit;
     }
 
@@ -263,7 +263,9 @@
   font-family: var(--bodyFont) !important;
   line-height: 1.65;
 
-  :is(p, li, blockquote, strong, em, span) {
+  // KaTeX spans select math fonts and metrics; prose inheritance must not
+  // override those or alignment and stretchy delimiters stop matching.
+  :is(p, li, blockquote, strong, em, span):not(.katex *) {
     color: inherit;
     font-family: inherit;
   }
@@ -308,5 +310,37 @@
 @keyframes marimo-spinner-rotate {
   to {
     transform: rotate(360deg);
+  }
+}
+
+// Wigglystuff's explicit light/dark classes normally override host colors.
+// Use its presentation variables so theme changes preserve the live model,
+// parameter links, keyboard editor and drag state.
+.latex-tangle {
+  --lt-surface: var(--marimo-quartz-background) !important;
+  --lt-stage: var(--marimo-quartz-background) !important;
+  --lt-ink: var(--marimo-quartz-text) !important;
+  --lt-muted: var(--marimo-quartz-muted) !important;
+  --lt-line: var(--marimo-quartz-border) !important;
+  color-scheme: inherit !important;
+}
+
+:host([data-quartz-theme="light"]) .latex-tangle {
+  [data-tangle-param] {
+    --lt-param-color: var(--lt-param-light) !important;
+  }
+
+  .latex-tangle__editor {
+    --lt-editor-color: var(--lt-editor-light) !important;
+  }
+}
+
+:host([data-quartz-theme="dark"]) .latex-tangle {
+  [data-tangle-param] {
+    --lt-param-color: var(--lt-param-dark) !important;
+  }
+
+  .latex-tangle__editor {
+    --lt-editor-color: var(--lt-editor-dark) !important;
   }
 }

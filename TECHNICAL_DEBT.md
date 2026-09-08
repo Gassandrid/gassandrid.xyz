@@ -180,19 +180,20 @@ ordinary dependency-update noise do not belong here.
   exclude compositing and other page work; the changes remain local and unpublished.
 
 
-## TD-MARIMO-002 — Aligned Markdown math in the islands runtime
+## TD-MARIMO-002 — Aligned Markdown math in the islands runtime (resolved)
 
-- Observed 2026-09-08 on the Lotka–Volterra page with marimo islands 0.23.9:
-  four ordinary Markdown math blocks create MathJax SVGs with `NaNex` dimensions.
-  The same failure occurs in a minimal islands page and the full Quartz shell.
-  Local `mo.md` output preserves the original LaTeX, with and without the
-  Obsidian extension; the browser rendering boundary remains unresolved.
-- The three Wigglystuff `TangleLatex` editors render through KaTeX and synchronize
-  correctly. Editing each editor changes all population plots; the mean-field
-  next step matches the edited parameters. Plotly 5.24.1 is the browser fallback
-  because Plotly 6 binary arrays did not render correctly in this pinned runtime.
-- Exit condition: browser-verify the affected aligned/cases equations with finite
-  SVG dimensions and correct layout, without regressing widget synchronization,
-  Markdown interpolation, or Pyodide startup. Do not suppress generic JS errors.
-- Local reproduction: `LOTKA_BUILT=1 npm --prefix private/tooling run probe:lotka`.
-  This probe reports the known math diagnostics separately from widget checks.
+- Resolved locally 2026-09-08. Plotly's MathJax loader automatically scanned
+  KaTeX's accessibility MathML after marimo rendered it, producing four invalid
+  SVGs and twelve `NaN` dimension errors. Disable MathJax's startup document
+  scan before loading islands; retain explicit chart-label typesetting.
+- Markdown still uses native marimo KaTeX and reactive Python strings. Prose
+  font rules now exclude KaTeX spans. The separate Bernoulli/Binomial formula
+  missing its command backslashes was corrected through the live marimo kernel
+  and synchronized to the published notebook copy.
+- Chrome verified the full Lotka–Volterra page's aligned/cases equations without
+  malformed math or console errors, plus all three linked TangleLatex editors
+  driving the four plots. A separate probe verifies math interpolation in both
+  static-preview and deferred notebooks.
+- Recheck `LOTKA_BUILT=1 npm --prefix private/tooling run probe:lotka` and
+  `npm --prefix private/tooling run probe:markdown` on runtime upgrades.
+  Browser probes and receipts are private; math errors are no longer exempted.

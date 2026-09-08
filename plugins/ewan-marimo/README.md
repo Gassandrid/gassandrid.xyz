@@ -90,8 +90,33 @@ initial parameter value. It leaves the notebook and its editor session untouched
 Authored links are the intended source for graph/backlink metadata. Reactive
 link indexing is out of scope; reactive values in Markdown remain supported.
 
-The Lotka check currently reports a separate limitation: four ordinary aligned
-Markdown math blocks produce invalid MathJax SVG dimensions in the pinned
-islands runtime. This also occurs outside the Quartz page shell. The Wigglystuff
-KaTeX equation editors and their linked plots pass the interaction checks;
-this does not establish full math-rendering parity. See TD-MARIMO-002.
+## Math and host themes
+
+Markdown math stays on marimo's KaTeX renderer, the same rendering engine used
+by ordinary Quartz notes. Plotly loads MathJax for chart labels; the resource
+loader disables its automatic document scan before loading islands. Otherwise
+MathJax reprocesses KaTeX's accessibility MathML and corrupts aligned equations.
+Explicit MathJax chart typesetting remains available. Prose font overrides
+exclude KaTeX's internal spans. Reactive `mo.md` math still renders after each
+Python update.
+
+The resource plugin bridges Quartz's initial theme and subsequent toggles into
+marimo's existing host-theme observer. This adapter depends on the pinned
+0.23.9 `data-vscode-theme-kind` listener and restores the previous attribute on
+SPA teardown; recheck it when upgrading the runtime.
+
+Plotly figures receive Quartz paper, text, grid and annotation colors through
+the native `data-figure` input. Cartesian subplots are included. The original
+trace data, semantic colors, axes and templates are retained, and marimo keeps
+its current zoom state. New Python figures get the current palette.
+Mermaid receives native theme and theme-variable inputs and rerenders its SVG.
+Wigglystuff TangleLatex uses Quartz CSS variables, including dark/light parameter
+accents, without recreating its model or interrupting its exact-entry editor.
+These are presentation changes in the published page; the notebook keeps its
+standalone theme choices. Static plot images cannot be rethemed this way.
+
+`LOTKA_BUILT=1 npm --prefix private/tooling run probe:lotka` tests the actual
+built page in Chrome: all Markdown equations, linked editors, four Plotly
+figures, light/dark/light toggles, chart zoom preservation, an in-progress
+editor, Mermaid colors and SPA cleanup. All console errors fail the probe.
+Private scripts, screenshots and receipts stay in ignored `private/tooling/`.

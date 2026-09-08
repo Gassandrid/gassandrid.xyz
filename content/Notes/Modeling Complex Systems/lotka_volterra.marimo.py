@@ -59,7 +59,6 @@ def _(mo):
     ))
     stochastic_parameter_link = link((parameters.widget, "values"), (stochastic_formula.widget, "values"))
     parameters
-
     return parameters, simulation_formula, stochastic_formula
 
 
@@ -118,7 +117,6 @@ def _(parameters, simulation_formula, stochastic_formula):
     gamma = parameters.values["gamma"]
     c = parameters.values["c"]
     _stochastic_values = stochastic_formula.values
-
     return alpha, c, delta, f_0, gamma, s_0
 
 
@@ -151,7 +149,6 @@ def _(f_t, mo, np, plot_view, s_t):
         _figure.update_layout(xaxis_title="Prey F", yaxis_title="Predators S")
     _figure.update_layout(template="plotly_white", height=360, margin=dict(l=45,r=20,t=20,b=45))
     mo.ui.plotly(_figure)
-
     return (go,)
 
 
@@ -218,7 +215,6 @@ def _(alpha, c, delta, f_0, gamma, generations, s_0):
 
 
     f_t, s_t = simulate_populations(f_0, s_0, alpha, delta, gamma, c, generations.value)
-
     return f_t, np, s_t
 
 
@@ -300,7 +296,6 @@ def _(alpha, c, delta, f_0, gamma, generations, mo, s_0, stochastic_seed):
             mo.md("Use integer initial populations for individual-animal trials."))
     stochastic_f, stochastic_s, stochastic_events, stochastic_truncated = simulate_stochastic(
         f_0, s_0, alpha, delta, gamma, c, generations.value, int(stochastic_seed.value))
-
     return Random, stochastic_f, stochastic_s, stochastic_truncated
 
 
@@ -348,7 +343,6 @@ def _(
             f"Stopped after {len(stochastic_f)-1} generations at the individual-trial work limit; "
             "reduce the horizon or growth probability to run the full trajectory."))
     mo.vstack(_stochastic_outputs)
-
     return
 
 
@@ -440,7 +434,7 @@ def _(Random, bernoulli_draw, bernoulli_n, bernoulli_p, go, mo, np):
         legend=dict(orientation="h",y=1.13))
     mo.vstack([
         mo.ui.plotly(_demo_fig),
-        mo.md(r"$X_i=mathbf{1}[u_i<p]$, $quad K=sum_{i=1}^nX_isimmathrm{Binomial}(n,p)$"),
+        mo.md(r"$X_i=\mathbf{1}[u_i<p],\quad K=\sum_{i=1}^n X_i\sim\mathrm{Binomial}(n,p)$"),
         mo.md(f"Green bar: **{_demo_k} successes** this time."),
     ])
     return
@@ -494,7 +488,6 @@ def _(alpha, c, delta, f_0, gamma, generations, mo, np, s_0, stochastic_seed):
     mo.stop(int(f_0) != f_0 or int(s_0) != s_0, mo.md("Use integer initial populations."))
     binomial_f, binomial_s, binomial_events, binomial_truncated = simulate_binomial(
         f_0, s_0, alpha, delta, gamma, c, generations.value, int(stochastic_seed.value))
-
     return binomial_f, binomial_s, binomial_truncated
 
 
@@ -531,7 +524,6 @@ def _(
     if binomial_truncated:
         _binomial_outputs.append(mo.md(f"Stopped after {len(binomial_f)-1} generations: population exceeded the numerical work limit."))
     mo.vstack(_binomial_outputs)
-
     return
 
 

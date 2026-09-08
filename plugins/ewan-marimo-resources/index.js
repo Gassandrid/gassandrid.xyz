@@ -10,6 +10,9 @@ const PYODIDE_VERSION = "0.27.7"
 const OBSIDIAN_EMBEDS_RUNTIME = fs
   .readFileSync(new URL("./obsidian-embeds.js", import.meta.url), "utf8")
   .replace("export function", "function")
+const THEME_RUNTIME = fs
+  .readFileSync(new URL("./theme.js", import.meta.url), "utf8")
+  .replace("export function", "function")
 
 function marimoRoutes(ctx) {
   return (ctx?.allFiles ?? [])
@@ -38,7 +41,9 @@ export function createMarimoLoader(routes = []) {
   var mountedPage = null;
   var clearMarkdown = null;
   var markdownPage = null;
+  var clearTheme = null;
   ${OBSIDIAN_EMBEDS_RUNTIME}
+  ${THEME_RUNTIME}
   var watchMarkdown = watchObsidianEmbeds;
 
   function normalizedPath(value) {
@@ -175,6 +180,12 @@ export function createMarimoLoader(routes = []) {
   function ensureScript(page) {
     var existing = document.querySelector("script[data-ewan-marimo-runtime]");
     if (existing) return;
+    // Plotly loads MathJax for chart labels. Its default startup scan would
+    // typeset KaTeX's accessibility MathML a second time, producing NaN SVGs.
+    // Keep explicit chart typesetting, but let marimo/Quartz own page math.
+    window.MathJax = window.MathJax || {};
+    window.MathJax.startup = window.MathJax.startup || {};
+    window.MathJax.startup.typeset = false;
     var script = document.createElement("script");
     script.type = "module";
     script.src = runtimeUrl;
@@ -202,6 +213,8 @@ export function createMarimoLoader(routes = []) {
       clearReadiness();
       if (clearMarkdown) clearMarkdown();
       clearMarkdown = null;
+      if (clearTheme) clearTheme();
+      clearTheme = null;
       markdownPage = null;
       var css = document.querySelector("link[data-ewan-marimo-css]");
       if (css) css.disabled = true;
@@ -218,6 +231,8 @@ export function createMarimoLoader(routes = []) {
     if (markdownPage !== page) {
       if (clearMarkdown) clearMarkdown();
       clearMarkdown = watchMarkdown(page);
+      if (clearTheme) clearTheme();
+      clearTheme = watchMarimoTheme(page);
       markdownPage = page;
     }
     preload(true);

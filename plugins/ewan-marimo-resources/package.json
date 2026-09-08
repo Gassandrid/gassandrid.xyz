@@ -7,7 +7,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "build": "mkdir -p dist && cp index.js obsidian-embeds.js dist/"
+    "build": "mkdir -p dist && cp index.js obsidian-embeds.js theme.js dist/"
   },
   "peerDependencies": {
     "preact": "^10.28.2"
