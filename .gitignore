@@ -13,6 +13,9 @@ replit.nix
 .venv-marimo/
 quartz/cli/tui/dist/
 
+# Marimo and cache directories at any depth
+**/__marimo__/
+
 # Agent/tooling state copied into the public content tree
 # Keep local agent guidance private at any depth (including the repository root).
 [Aa][Gg][Ee][Nn][Tt].md
