@@ -19,13 +19,13 @@ export function createNetwork({
   }
   const settings = parameters && typeof parameters === "object" ? parameters : {}
   const defaults = {
-    drive: 0.48 + random() * 0.16,
-    coupling: 0.78 + random() * 0.24,
+    drive: 0.4 + random() * 0.12,
+    coupling: 0.6 + random() * 0.2,
     inhibition: 0.9 + random() * 0.35,
-    oscillation: 0.2 + random() * 0.2,
-    frequency: 0.28 + random() * 0.37,
+    oscillation: 0.15 + random() * 0.15,
+    frequency: 0.22 + random() * 0.28,
     adaptation: 0.35 + random() * 0.25,
-    noise: 0.25 + random() * 0.2,
+    noise: 0.2 + random() * 0.15,
   }
   const values = {
     drive: bounded(settings.drive, defaults.drive, 0, 1),

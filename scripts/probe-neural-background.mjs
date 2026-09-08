@@ -110,7 +110,7 @@ try {
   assert.notEqual(freshRecipe.topology, firstRecipe.topology)
   result.freshDocument = { previousSeed: firstRecipe.seed, seed: freshRecipe.seed }
 
-  // A fresh mobile visitor also starts On, including with reduced motion.
+  // A fresh mobile visitor starts Off and can explicitly enable the animation.
   // Use separate storage to distinguish the default from a saved preference.
   const mobileContext = await browser.createBrowserContext()
   const mobilePage = await mobileContext.newPage()
@@ -124,6 +124,17 @@ try {
   })
   await mobilePage.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }])
   await mobilePage.goto(origin + route, { waitUntil: "networkidle0" })
+  await mobilePage.waitForSelector(motionControl)
+  assert.equal(await mobilePage.$eval(motionControl, (input) => input.value), "off")
+  const defaultMobile = await readCanvas(mobilePage)
+  assert.equal(defaultMobile.neuralState, "off")
+  assert.equal(defaultMobile.width, 0)
+  assert.equal(defaultMobile.height, 0)
+  await pause(250)
+  assert.equal((await readCanvas(mobilePage)).neuralFrames, defaultMobile.neuralFrames)
+  await mobilePage.tap("#neural-controls > summary")
+  await mobilePage.select(motionControl, "on")
+  await mobilePage.tap("#neural-controls > summary")
   await mobilePage.waitForFunction(
     () => Number(document.querySelector("#neural-canvas")?.dataset.neuralFrames) >= 60,
   )
@@ -192,7 +203,7 @@ try {
   assert.equal((await readCanvas(mobilePage)).neuralFrames, mobileSavedOff.neuralFrames)
   result.freshMobile = {
     ...freshMobile,
-    defaultOnWithReducedMotion: true,
+    defaultOffWithReducedMotion: true,
     controlsTouchable: true,
     panelBounds: mobilePanel,
     offOnPreservedSettings: true,

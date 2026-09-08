@@ -35,7 +35,7 @@ function neuralRuntime(create, step) {
   const connection = navigator.connection
   const preferenceKey = "ewan-neural-mode"
   let current = null
-  let selectedMode = "on"
+  let selectedMode = compact.matches ? "off" : "on"
   function freshSeed() {
     try {
       return crypto.getRandomValues(new Uint32Array(1))[0]
