@@ -49,7 +49,7 @@ Validation:
 
 ```sh
 node --test plugins/ewan-marimo.test.js plugins/ewan-custom-plugins.test.js
-npm run probe:markdown
+npm --prefix private/tooling run probe:markdown
 MARIMO_PYTHON="$PWD/.venv-marimo/bin/python" npm run build
 ```
 
@@ -61,3 +61,37 @@ Syntax reference: [Obsidian formatting](https://obsidian.md/help/syntax),
 [links](https://obsidian.md/help/links), [embeds](https://obsidian.md/help/embeds),
 [callouts](https://obsidian.md/help/callouts), and
 [advanced formatting](https://obsidian.md/help/advanced-syntax).
+
+## Wigglystuff and Plotly in browser Python
+
+The islands runtime does not install arbitrary PyPI imports. The compiler now
+checks actual Python imports and inserts an awaited browser-only `micropip`
+bootstrap before any notebook cell runs. Imports of `wigglystuff` load
+`wigglystuff==0.5.21`; imports of `plotly` load `plotly==5.24.1`. Wigglystuff brings
+its AnyWidget/ipywidgets dependencies. Other notebooks incur no extra install.
+
+The Plotly fallback matches the pinned islands renderer: Plotly 6 binary NumPy
+arrays were not rendered correctly in the Lotka–Volterra page. A notebook's
+PEP 723 declaration can override either UI package version; such overrides need
+the same browser checks. Native scientific dependencies remain managed by
+Pyodide, and marimo's own runtime version is never replaced by this bootstrap.
+Local preview execution still uses the compiler environment's installed packages.
+
+No installation cells or site-specific edits are required in the notebook.
+The existing page-scoped AnyWidget export trust is retained. This supports
+browser-compatible Wigglystuff widgets, including `TangleLatex`; it does not
+supply local files, credentials, or hardware APIs for widgets requiring them.
+
+`npm --prefix private/tooling run probe:lotka` compiles the actual Lotka–Volterra note into a temporary
+page, verifies three hydrated equation editors and four plots, edits each linked
+formula, checks synchronization and the mean-field next step, and restores the
+initial parameter value. It leaves the notebook and its editor session untouched.
+
+Authored links are the intended source for graph/backlink metadata. Reactive
+link indexing is out of scope; reactive values in Markdown remain supported.
+
+The Lotka check currently reports a separate limitation: four ordinary aligned
+Markdown math blocks produce invalid MathJax SVG dimensions in the pinned
+islands runtime. This also occurs outside the Quartz page shell. The Wigglystuff
+KaTeX equation editors and their linked plots pass the interaction checks;
+this does not establish full math-rendering parity. See TD-MARIMO-002.

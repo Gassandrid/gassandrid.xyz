@@ -79,5 +79,5 @@ node --test plugins/ewan-neural-background.test.js
 
 The tests cover replay, parameter effects, geometry, 384 minute-long parameter
 corner runs, and three maximum-size ten-minute runs with bounded state and no
-dropped packets. `npm run probe:neural` checks native controls, recipe persistence,
+dropped packets. `npm --prefix private/tooling run probe:neural` checks native controls, recipe persistence,
 SPA cleanup, hidden-tab pause, backing-store limits, and rendering failure in Chrome.

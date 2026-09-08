@@ -60,3 +60,14 @@ test("Obsidian syntax uses native marimo Markdown and preserves interpolation", 
   })
   assert.equal(result.status, 0, result.stdout + result.stderr)
 })
+
+test("Browser packages load before notebook cells without replacing Pyodide libraries", () => {
+  const python =
+    process.env.MARIMO_PYTHON ??
+    (fs.existsSync(".venv-marimo/bin/python") ? ".venv-marimo/bin/python" : "python3")
+  const result = spawnSync(python, ["plugins/ewan-marimo/dependencies.test.py"], {
+    encoding: "utf8",
+    timeout: 30000,
+  })
+  assert.equal(result.status, 0, result.stdout + result.stderr)
+})

@@ -1,5 +1,0 @@
-#!/bin/sh
-set -eu
-
-cd /Users/gassandrid/VAULT
-exec /opt/homebrew/bin/qmd "$@"

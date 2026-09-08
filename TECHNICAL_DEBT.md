@@ -108,7 +108,7 @@ ordinary dependency-update noise do not belong here.
 - Bases: the installed expression engine compares array equality by JavaScript identity. `Nootropic Compounds.base` now uses `list(class).contains("medication")`, a [documented Bases operation](https://obsidian.md/help/bases/functions), in both the content copy and canonical Vault file. The current published corpus produces 22 cards. Other list-equality queries remain an upstream compatibility concern; this is a scoped content repair.
 - Marimo: removed document-module preloading of the worker; delayed speculative hover loading; require all reactive cells to reach idle before reporting ready; disconnect readiness observers/timers and disable notebook CSS on exit. A new notebook DOM still needs a fresh document under the pinned runtime. Eigenfish has desktop/mobile hydration coverage and a synthetic running-to-idle/exit regression check.
 - Dependencies: all four previously tracked advisories are resolved. Baseline and final checks use Node 22.19.0; notebook export uses `.venv-marimo/bin/python` with Marimo 0.23.9.
-- Verification entry points: `npm run check`, `npm test`, `npm run build`, `npm run probe`, `npm run probe:reading`, `npm run probe:browser`, `npm run probe:eigenfish`, and `npm run probe:responsive`. Set `QUARTZ_PROBE_URL` / `EIGENFISH_ORIGIN` to the local server. Browser evidence establishes local behavior; this pass does not deploy the site.
+- Verification entry points: `npm run check`, `npm test`, `npm run build`, `npm run probe`, `npm --prefix private/tooling run probe:reading`, `npm --prefix private/tooling run probe:browser`, `npm --prefix private/tooling run probe:eigenfish`, and `npm --prefix private/tooling run probe:responsive`. Set `QUARTZ_PROBE_URL` / `EIGENFISH_ORIGIN` to the local server. Browser evidence establishes local behavior; this pass does not deploy the site.
 
 ## Neural field and mobile reading — 2026-09-07
 
@@ -178,3 +178,21 @@ ordinary dependency-update noise do not belong here.
   with 112 nodes and 599 edges, zero dropped packets, and no page errors. The
   4K check stayed at 2,999,391 pixels per backing store. These measurements
   exclude compositing and other page work; the changes remain local and unpublished.
+
+
+## TD-MARIMO-002 — Aligned Markdown math in the islands runtime
+
+- Observed 2026-09-08 on the Lotka–Volterra page with marimo islands 0.23.9:
+  four ordinary Markdown math blocks create MathJax SVGs with `NaNex` dimensions.
+  The same failure occurs in a minimal islands page and the full Quartz shell.
+  Local `mo.md` output preserves the original LaTeX, with and without the
+  Obsidian extension; the browser rendering boundary remains unresolved.
+- The three Wigglystuff `TangleLatex` editors render through KaTeX and synchronize
+  correctly. Editing each editor changes all population plots; the mean-field
+  next step matches the edited parameters. Plotly 5.24.1 is the browser fallback
+  because Plotly 6 binary arrays did not render correctly in this pinned runtime.
+- Exit condition: browser-verify the affected aligned/cases equations with finite
+  SVG dimensions and correct layout, without regressing widget synchronization,
+  Markdown interpolation, or Pyodide startup. Do not suppress generic JS errors.
+- Local reproduction: `LOTKA_BUILT=1 npm --prefix private/tooling run probe:lotka`.
+  This probe reports the known math diagnostics separately from widget checks.

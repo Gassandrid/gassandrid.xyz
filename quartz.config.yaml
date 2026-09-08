@@ -21,6 +21,10 @@ configuration:
     - .pi-lens
     - .smart-env
     - .trash
+    - "**/__marimo__/**"
+    - "**/__pycache__/**"
+    - "scripts/**"
+    - "**/*.{aux,log,out,blg,fls,fdb_latexmk,synctex.gz,pyc}"
     - AGENTS.md
     - CLAUDE.md
   theme:

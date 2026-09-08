@@ -152,6 +152,7 @@ function renderIsland(
   const compilerStamp = [
     RENDER_SCRIPT_PATH,
     path.join(path.dirname(RENDER_SCRIPT_PATH), "obsidian.py"),
+    path.join(path.dirname(RENDER_SCRIPT_PATH), "dependencies.py"),
   ]
     .map((fp) => fs.statSync(fp).mtimeMs)
     .join(":")

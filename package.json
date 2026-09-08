@@ -22,16 +22,7 @@
     "plugins:install": "node ./quartz/bootstrap-cli.mjs plugin install --from-config",
     "build": "node ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "probe": "node ./scripts/probe-build.mjs",
-    "probe:browser": "node ./scripts/probe-browser.mjs",
-    "probe:eigenfish": "node ./scripts/probe-marimo-eigenfish.mjs",
-    "probe:markdown": "node ./scripts/probe-marimo-markdown.mjs",
-    "probe:showcase": "node ./scripts/probe-marimo-showcase.mjs",
-    "probe:responsive": "node ./scripts/probe-responsive-layout.mjs",
-    "validate": "npm run plugins:install && npm run check && npm test && npm run build && npm run probe",
-    "probe:reading": "node ./scripts/probe-reading-experience.mjs",
-    "probe:graph": "node ./scripts/probe-graph-performance.mjs",
-    "probe:mobile": "node ./scripts/probe-mobile-navigation.mjs",
-    "probe:neural": "node ./scripts/probe-neural-background.mjs"
+    "validate": "npm run plugins:install && npm run check && npm test && npm run build && npm run probe"
   },
   "engines": {
     "npm": ">=10.9.2",

@@ -146,6 +146,17 @@ const htmlFiles = []
 function walk(dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name)
+    const relative = path.relative(root, p).split(path.sep).join("/")
+    assert.doesNotMatch(
+      relative,
+      /(^|\/)(__marimo__|__pycache__|private)(\/|$)|^scripts\//,
+      `internal tooling emitted: ${relative}`,
+    )
+    assert.doesNotMatch(
+      relative,
+      /\.(aux|log|out|blg|fls|fdb_latexmk|synctex\.gz|pyc)$/,
+      `compiler artifact emitted: ${relative}`,
+    )
     if (e.isDirectory()) walk(p)
     else if (e.name.endsWith(".html")) htmlFiles.push(p)
   }

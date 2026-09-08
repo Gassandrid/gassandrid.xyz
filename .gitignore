@@ -1,5 +1,4 @@
 .DS_Store
-.gitignore
 node_modules
 public
 prof
@@ -31,3 +30,17 @@ content/.pi/
 content/.pi-lens/
 content/.smart-env/
 content/.trash/
+
+# Internal local verification and generated Python caches
+**/__pycache__/
+*.py[cod]
+
+# Local Vault helper copies and LaTeX compiler intermediates
+/content/scripts/
+/content/**/*.aux
+/content/**/*.log
+/content/**/*.out
+/content/**/*.blg
+/content/**/*.fls
+/content/**/*.fdb_latexmk
+/content/**/*.synctex.gz
