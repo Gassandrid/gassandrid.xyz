@@ -403,7 +403,7 @@ def _(mo):
     bernoulli_n = mo.ui.slider(1, 100, value=20, step=1, label="Trials n", show_value=True)
     bernoulli_p = mo.ui.slider(0, 1, value=0.3, step=0.01, label="Success probability p", show_value=True)
     bernoulli_draw = mo.ui.button(value=0, on_click=lambda count: count + 1, label="Draw again")
-    mo.vstack([mo.md("### One trial → count the successes"), mo.hstack([bernoulli_n, bernoulli_p, bernoulli_draw])])
+    mo.vstack([mo.md(""), mo.hstack([bernoulli_n, bernoulli_p, bernoulli_draw])])
     return bernoulli_draw, bernoulli_n, bernoulli_p
 
 
@@ -441,7 +441,7 @@ def _(Random, bernoulli_draw, bernoulli_n, bernoulli_p, go, mo, np):
     mo.vstack([
         mo.ui.plotly(_demo_fig),
         mo.md(r"$X_i=mathbf{1}[u_i<p]$, $quad K=sum_{i=1}^nX_isimmathrm{Binomial}(n,p)$"),
-        mo.md(f"Green bar: **{_demo_k} successes** this time. Heights are exact binomial probabilities, not a sampled histogram. Draw again for another count. Move p to see which trials cross the threshold."),
+        mo.md(f"Green bar: **{_demo_k} successes** this time."),
     ])
     return
 
