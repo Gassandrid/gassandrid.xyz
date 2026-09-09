@@ -916,6 +916,11 @@ html.reading-mode .sidebar.reading-mode-active .toc-clone {
   isolation: isolate;
   background: color-mix(in srgb, var(--light) 94%, transparent);
 
+  // Search lives inside this stacking context; lift it above the graph sidebar.
+  &:has(.search-container.active) {
+    z-index: 2;
+  }
+
   &::before {
     content: "";
     position: absolute;
