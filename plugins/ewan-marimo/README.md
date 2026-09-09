@@ -106,7 +106,11 @@ marimo's existing host-theme observer. This adapter depends on the pinned
 SPA teardown; recheck it when upgrading the runtime.
 
 Plotly figures receive Quartz paper, text, grid and annotation colors through
-the native `data-figure` input. Cartesian subplots are included. The original
+the native `data-figure` input. Fresh React attribute writes are themed
+synchronously before the pinned custom element reads them, avoiding an initial
+white plot followed by a second themed draw on slider updates. The scoped input
+adapter is restored on SPA teardown; DOM observers still cover initial markup
+and other attribute writers. Cartesian subplots are included. The original
 trace data, semantic colors, axes and templates are retained, and marimo keeps
 its current zoom state. New Python figures get the current palette.
 Mermaid receives native theme and theme-variable inputs and rerenders its SVG.
@@ -120,3 +124,39 @@ built page in Chrome: all Markdown equations, linked editors, four Plotly
 figures, light/dark/light toggles, chart zoom preservation, an in-progress
 editor, Mermaid colors and SPA cleanup. All console errors fail the probe.
 Private scripts, screenshots and receipts stay in ignored `private/tooling/`.
+
+
+## Choosing a plotting library
+
+The pinned browser runtime supports all three common paths. A local Chrome
+probe rendered Altair, Plotly and Matplotlib together and changed all three
+using one Python slider. This is basic rendering/reactivity coverage, not a
+claim that every backend, chart type or dependency works in WebAssembly.
+
+- **Altair / `mo.ui.altair_chart`**: a good fit for declarative statistical plots,
+  linked brushing and selections that return dataframes to Python. The native
+  Vega renderer follows the bridged light/dark theme (its own palette, not an
+  exact Quartz palette). Explicit chart styling can override it. Transformed
+  selection data may require VegaFusion; that extra browser dependency is not
+  covered by the basic probe.
+- **Plotly / `mo.ui.plotly`**: a good fit for simulation traces, hover inspection,
+  zoom and scientific subplots. The resource adapter supplies Quartz colors.
+  Browser Python currently defaults to Plotly 5.24.1 for the pinned islands
+  renderer; newer Python serialization formats need separate validation.
+  Supported reactive selections are narrower than supported chart display.
+- **Matplotlib**: a good fit for precise scientific figures and export. Normal
+  figures redraw when Python inputs change, but their rendered image does not
+  change when Quartz's theme toggles. Native selection wrappers and
+  `mo.mpl.interactive` are separate modes; their WebAssembly interactions have
+  not been established by this basic probe. Do not infer live recoloring of an
+  image from the surrounding controls following the theme.
+
+Keep rapid hover/brush interactions in the browser when possible. Python slider
+updates rerun dependent cells for all three libraries; expensive simulations
+still benefit from caching, debouncing, or an explicit run control.
+
+Reusable standalone notebooks and efficiency guidance live in
+[`templates/`](templates/README.md). Generic appearance stays in the resource
+plugin: palettes are read on theme changes, repeated figure inputs reuse cached
+serialization, and internal SVG redraw mutations do not trigger widget scans.
+No duplicate light/dark simulation or background figure generation is added.

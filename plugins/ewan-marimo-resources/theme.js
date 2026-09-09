@@ -7,6 +7,9 @@ export function watchMarimoTheme(page) {
   const plots = new WeakMap()
   let frame = 0
   let disposed = false
+  let restorePlotInput = () => {}
+  let currentColors
+  let currentTheme
 
   function theme() {
     return document.documentElement.getAttribute("saved-theme") === "dark" ? "dark" : "light"
@@ -24,12 +27,13 @@ export function watchMarimoTheme(page) {
     }
   }
 
-  function syncPlot(host, colors) {
-    const source = host.getAttribute("data-figure")
+  function themedPlotInput(host, colors, source) {
     const previous = plots.get(host)
-    if (!source) return
+    if (!source) return source
     const signature = JSON.stringify(colors)
-    if (source === previous?.output && signature === previous.signature) return
+    if (signature === previous?.signature) {
+      if (source === previous.output || source === previous.input) return previous.output
+    }
     const currentLayout =
       source === previous?.output
         ? host.shadowRoot?.querySelector(".js-plotly-plot")?._fullLayout
@@ -38,9 +42,12 @@ export function watchMarimoTheme(page) {
     // original figure; never feed a previous theme back into notebook data.
     let figure
     try {
-      figure = source === previous?.output ? previous.figure : JSON.parse(source)
+      figure =
+        source === previous?.output || source === previous?.input
+          ? previous.figure
+          : JSON.parse(source)
     } catch {
-      return
+      return source
     }
     const layout = {
       ...figure.layout,
@@ -91,8 +98,13 @@ export function watchMarimoTheme(page) {
       font: { ...annotation.font, color: colors.ink },
     }))
     const output = JSON.stringify({ ...figure, layout })
-    plots.set(host, { figure, output, signature })
-    if (source !== output) host.setAttribute("data-figure", output)
+    plots.set(host, {
+      figure,
+      input: source === previous?.output ? previous.input : source,
+      output,
+      signature,
+    })
+    return output
   }
 
   function syncMermaid(host, colors) {
@@ -118,7 +130,22 @@ export function watchMarimoTheme(page) {
 
   function scan(root, colors) {
     if (!observers.has(root)) {
-      const observer = new MutationObserver(schedule)
+      const observer = new MutationObserver((records) => {
+        // Plotly/Vega redraw many SVG paths and labels. Those mutations do not
+        // introduce new widget hosts or change their inputs, so ignore them.
+        const containsWidget = (node) =>
+          node.nodeType === 1 &&
+          (node.localName.startsWith("marimo-") ||
+            node.querySelector("marimo-plotly, marimo-mermaid, marimo-anywidget, marimo-tex"))
+        if (
+          records.some(
+            (record) =>
+              record.type === "attributes" ||
+              [...record.addedNodes, ...record.removedNodes].some(containsWidget),
+          )
+        )
+          schedule()
+      })
       observer.observe(root, {
         subtree: true,
         childList: true,
@@ -127,7 +154,11 @@ export function watchMarimoTheme(page) {
       })
       observers.set(root, observer)
     }
-    for (const host of root.querySelectorAll("marimo-plotly")) syncPlot(host, colors)
+    for (const host of root.querySelectorAll("marimo-plotly")) {
+      const source = host.getAttribute("data-figure")
+      const output = themedPlotInput(host, colors, source)
+      if (source !== output) host.setAttribute("data-figure", output)
+    }
     for (const host of root.querySelectorAll("marimo-mermaid")) syncMermaid(host, colors)
     // Shadow roots inherit Quartz variables, but cannot match ancestors outside
     // the root. This local attribute also selects the widget's dark accents.
@@ -154,7 +185,11 @@ export function watchMarimoTheme(page) {
         observers.delete(root)
       }
     }
-    scan(page, palette())
+    if (!currentColors || currentTheme !== theme()) {
+      currentColors = palette()
+      currentTheme = theme()
+    }
+    scan(page, currentColors)
   }
 
   function schedule() {
@@ -167,11 +202,34 @@ export function watchMarimoTheme(page) {
   })
   document.addEventListener("themechange", schedule)
   sync()
+  // React writes fresh figure attributes before marimo's plugin reads them.
+  // Normalize at that boundary: an observer alone runs after React has already
+  // queued the unthemed figure, causing a white frame followed by a second draw.
+  customElements.whenDefined("marimo-plotly").then((PlotElement) => {
+    if (disposed) return
+    const prototype = PlotElement.prototype
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, "setAttribute")
+    const setAttribute = prototype.setAttribute
+    function setThemedAttribute(name, value) {
+      const output =
+        !disposed && page.isConnected && name === "data-figure"
+          ? themedPlotInput(this, currentColors, String(value))
+          : value
+      setAttribute.call(this, name, output)
+    }
+    prototype.setAttribute = setThemedAttribute
+    restorePlotInput = () => {
+      if (prototype.setAttribute !== setThemedAttribute) return
+      if (descriptor) Object.defineProperty(prototype, "setAttribute", descriptor)
+      else delete prototype.setAttribute
+    }
+  })
   // Custom-element upgrade attaches shadow roots without a light-DOM mutation.
   customElements.whenDefined("marimo-tex").then(schedule)
   customElements.whenDefined("marimo-anywidget").then(schedule)
   return () => {
     disposed = true
+    restorePlotInput()
     cancelAnimationFrame(frame)
     themeObserver.disconnect()
     document.removeEventListener("themechange", schedule)
