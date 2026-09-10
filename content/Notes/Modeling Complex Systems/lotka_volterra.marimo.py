@@ -134,8 +134,59 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Computing the mean field
+
+    A sum of $n$ independent Bernoulli trials with success probability $p$ is binomial, with expectation $np$. Given the current populations $\mathcal F_t=(F_t,S_t)$, write $p_t=1-(1-\delta)^{S_t}$. The event counts have conditional means
+
+    $$
+    \begin{aligned}
+    \mathbb E[B^F_t\mid\mathcal F_t]&=\alpha F_t &&\text{fish births},\\
+    \mathbb E[L_t\mid\mathcal F_t]&=F_t p_t &&\text{fish eaten},\\
+    \mathbb E[B^S_t\mid\mathcal F_t]&=\mathbb E[\mathbb E[B^S_t\mid L_t,\mathcal F_t]\mid\mathcal F_t]
+    =c\,\mathbb E[L_t\mid\mathcal F_t]=cF_t p_t &&\text{shark births},\\
+    \mathbb E[D^S_t\mid\mathcal F_t]&=\gamma S_t &&\text{shark deaths}.
+    \end{aligned}
+    $$
+
+    The nested expectation matters: new sharks are drawn from the **number actually eaten**, $B^S_t\mid L_t\sim\operatorname{Binomial}(L_t,c)$, not directly from all fish.
+
+    Substitute these means into $\Delta F=B^F-L$ and $\Delta S=B^S-D^S$:
+
+    $$
+    \begin{aligned}
+    \mathbb E[\Delta F_t\mid\mathcal F_t]&=\alpha F_t-F_t p_t,\\
+    \mathbb E[\Delta S_t\mid\mathcal F_t]&=cF_t p_t-\gamma S_t.
+    \end{aligned}
+    $$
+
+    These are the exact expected increments from a fixed state. Iterating them gives the deterministic mean-field curve. It is not generally the average stochastic trajectory because
+
+    $$\mathbb E[F_t(1-(1-\delta)^{S_t})]\ne\mathbb E[F_t]\bigl(1-(1-\delta)^{\mathbb E[S_t]}\bigr)$$
+
+    in general. The nonlinear predation term depends on the joint distribution of fish and sharks. The stochastic interpretation also requires $\alpha,\delta,\gamma,c\in[0,1]$.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _(simulation_formula):
     simulation_formula
+    return
+
+
+@app.cell(hide_code=True)
+def _(alpha, c, delta, f_0, gamma, mo, s_0):
+    _initial_eaten = f_0 * (1 - (1 - delta) ** s_0)
+    _initial_fish_births = alpha * f_0
+    _initial_shark_births = c * _initial_eaten
+    _initial_shark_deaths = gamma * s_0
+    mo.md(f"""
+    **First mean-field step with these parameters:** expected fish births = **{_initial_fish_births:.3f}**, eaten = **{_initial_eaten:.3f}**, shark births = **{_initial_shark_births:.3f}**, shark deaths = **{_initial_shark_deaths:.3f}**.
+
+    $(F_1,S_1)$ = **({f_0+_initial_fish_births-_initial_eaten:.3f}, {s_0+_initial_shark_births-_initial_shark_deaths:.3f})**.
+    """)
     return
 
 
