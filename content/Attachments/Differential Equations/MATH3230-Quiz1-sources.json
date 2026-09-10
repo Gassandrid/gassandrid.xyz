@@ -1,0 +1,126 @@
+{
+  "checked_at": "2026-09-09T20:31:36.789278+00:00",
+  "quiz": "Quiz 1",
+  "date": "2026-09-11",
+  "announced_scope": "Lectures 1 and 2",
+  "sources": [
+    {
+      "url": "https://tlakoba.w3.uvm.edu/common_files/3_step_review.html",
+      "sha256": "2380e8dadbd486a71dec01162c5a3fca873ba187d435e8cded37b4508547b815",
+      "bytes": 1479,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_sec1pt2.pdf",
+      "sha256": "11f157033422d11e58b62a37ff382e11bedc724dd4d39cdc3a19be2c5325aaab",
+      "bytes": 427650,
+      "local_attachment": "MATH3230-HW-sec1.2.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_sec1pt3.pdf",
+      "sha256": "33f04dc6c7b051a1749db5f6f9948b1388cd3cc84b8c3c9d55a025c0befe341b",
+      "bytes": 919700,
+      "local_attachment": "MATH3230-HW-sec1.3.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_sec2pt2_pp2526.pdf",
+      "sha256": "69694e3765f6f3774f46d027927f26979cd565bd122fc1f688481caedde4102e",
+      "bytes": 384800,
+      "local_attachment": "MATH3230-HW-sec2.2-pp25-26.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_sec2pt9.pdf",
+      "sha256": "c0f2c306e839e44755fea64cb290d79396577439f9460a8bbbf65b371dfe8fbd",
+      "bytes": 714691,
+      "local_attachment": "MATH3230-HW-sec2.9.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_secs1p2and3_Answers.pdf",
+      "sha256": "bff058311a5e4a0903b9dcff5115a39223a8e708883cd12e8a17cc5f19981a21",
+      "bytes": 36010,
+      "local_attachment": "MATH3230-HW-answers-sec1.2-1.3.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_secs2pt1to4_Answers.pdf",
+      "sha256": "e0117a7fdea073d884e482fde6bcf118a4ca6110024807846a2a452cbddf95cb",
+      "bytes": 329126,
+      "local_attachment": "MATH3230-HW-answers-sec2.1-2.4.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/HW_secs_2pt1to4.pdf",
+      "sha256": "2d64beda4ec0da30143c5eddea233da08b1d96b08468cad3912974ee72d430cd",
+      "bytes": 1947049,
+      "local_attachment": "MATH3230-HW-sec2.1-2.4.pdf"
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/common_files/HowToApproachHomeworkProblems.html",
+      "sha256": "8bae11b35f65d583e48e3be3b98836a7bf1cffa694a0ff2609daedcad42de09f",
+      "bytes": 3287,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/Lectures/Lecture_1.pdf",
+      "sha256": "bbd91cd03c55d6f0ea29d948fa2482397dc7eddcc0b68715a5c3693a2fb6af02",
+      "bytes": 1472179,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/Lectures/Lecture_1_Ex4.pdf",
+      "sha256": "6d09202df3c732452408be9e4b4ff45f7d13357674dbf8d4d0887df39843a1ad",
+      "bytes": 279097,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/Lectures/Lecture_2.pdf",
+      "sha256": "72cc4066c0b11d33f9af02c1780788387ca993a9fa5f26b04d081f2de09646e0",
+      "bytes": 1405040,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/background.pdf",
+      "sha256": "e3a74770ad4a3458320f16f7ba633c09553cafba407feff94907aba502736c79",
+      "bytes": 43385,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/homework.html",
+      "sha256": "ab564b09ab779c6a7d6c001b8d6033006ca2d37ff224cd1058ed3a1d4b9f881d",
+      "bytes": 365749,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/prep_test1.pdf",
+      "sha256": "47d8459d49ccc5aa9350064f4dbccdc2414bdb8734befb3f8ce77ae596c095f2",
+      "bytes": 23716,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/syllabus_26F_3230.pdf",
+      "sha256": "99837809b9cb7260975f3be1dbf1ec8c03da621e801d88592a2e70e8983c5ad2",
+      "bytes": 52536,
+      "local_attachment": null
+    },
+    {
+      "url": "https://tlakoba.w3.uvm.edu/26_fall/math_3230/index.html",
+      "sha256": "997097eea293a514cd5385bac7494c331abe34198b0476e0d840da26a2438f83",
+      "bytes": 23301
+    }
+  ],
+  "figures": [
+    {
+      "name": "MATH3230-HW1-1.2.21.png",
+      "source": "HW_sec1pt2.pdf",
+      "pdf_page": 1
+    },
+    {
+      "name": "MATH3230-HW2-2.2.25.png",
+      "source": "HW_secs_2pt1to4.pdf",
+      "pdf_page": 4
+    },
+    {
+      "name": "MATH3230-HW2-2.2.28.png",
+      "source": "HW_secs_2pt1to4.pdf",
+      "pdf_page": 5
+    }
+  ]
+}

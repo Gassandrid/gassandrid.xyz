@@ -41,12 +41,16 @@ def _(mo):
     ))
 
     from ipywidgets import link
-    parameters.values = {'f_0': 80, 's_0': 8, 'alpha': 0.137, 'delta': 0.016, 'gamma': 0.009, 'c': 0.05}
+    parameters.values = {'f_0': 80, 's_0': 8, 'alpha': 0.121, 'delta': 0.017, 'gamma': 0.009, 'c': 0.048}
+
+    _symbols = {"f_0": r"f_0", "s_0": r"s_0", "alpha": r"\alpha",
+                "delta": r"\delta", "gamma": r"\gamma", "c": "c"}
 
     simulation_formula = mo.ui.anywidget(TangleLatex(
         theme="light",
         latex=r"\begin{aligned}F_{t+1} &= F_t + \tangle{alpha} F_t - F_t[1-(1-\tangle{delta})^{S_t}] \\ S_{t+1} &= S_t + \tangle{c} F_t[1-(1-\tangle{delta})^{S_t}] - \tangle{gamma} S_t \\ F_0 &= \tangle{f_0},\qquad S_0 = \tangle{s_0}\end{aligned}",
-        parameters={_name: {**_spec, "value": parameters.values[_name]}
+        parameters={_name: {**_spec, "value": parameters.values[_name],
+                             "display": "symbol", "symbol": _symbols[_name]}
                     for _name, _spec in parameters.parameters.items()},
     ))
     parameter_link = link((parameters.widget, "values"), (simulation_formula.widget, "values"))
@@ -54,7 +58,8 @@ def _(mo):
     stochastic_formula = mo.ui.anywidget(TangleLatex(
         theme="light",
         latex=r"\begin{aligned}p_t &= 1-(1-\tangle{delta})^{S_t} \\ E_{i,t} &= \mathbf{1}[V_{i,t}<p_t] \\ \Delta F_t &= \sum_{i=1}^{F_t}\left(\mathbf{1}[U_{i,t}<\tangle{alpha}]-E_{i,t}\right) \\ \Delta S_t &= \sum_{i=1}^{F_t} E_{i,t}\mathbf{1}[W_{i,t}<\tangle{c}]-\sum_{j=1}^{S_t}\mathbf{1}[Z_{j,t}<\tangle{gamma}] \\ F_{t+1}&=F_t+\Delta F_t,\qquad S_{t+1}=S_t+\Delta S_t \\ F_0&=\tangle{f_0},\qquad S_0=\tangle{s_0}\end{aligned}",
-        parameters={_name: {**_spec, "value": parameters.values[_name]}
+        parameters={_name: {**_spec, "value": parameters.values[_name],
+                             "display": "symbol", "symbol": _symbols[_name]}
                     for _name, _spec in parameters.parameters.items()},
     ))
     stochastic_parameter_link = link((parameters.widget, "values"), (stochastic_formula.widget, "values"))

@@ -12,7 +12,7 @@ source:
 related:
 author:
 date: 2025-10-08
-updated: 2026-07-18T11:31:51-07:00
+updated: 2026-09-09T15:42:30-04:00
 aliases:
   - Quantified Self
 ---

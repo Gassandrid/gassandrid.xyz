@@ -1,6 +1,6 @@
 ---
 date: 2026-09-02T15:47:11-04:00
-updated: 2026-09-02T15:48:34-04:00
+updated: 2026-09-09T15:41:34-04:00
 class:
   - note
 tags:
@@ -11,6 +11,7 @@ related:
 author:
 description:
 aliases:
+  - Brain Cross Sections
 ---
 
 ## Axial
